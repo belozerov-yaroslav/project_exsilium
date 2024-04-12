@@ -7,29 +7,28 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private CustomInput _input;
+    [SerializeField] private CustomInputInitializer _input;
     private Rigidbody2D _rb;
     private Vector2 _moveVector;
     [SerializeField] private float moveSpeed = 5f;
 
     private void Awake()
     {
-        _input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
     {
-        _input.Enable();
-        _input.Player.Movment.performed += OnMovementPerformed;
-        _input.Player.Movment.canceled += OnMovementCanceled;
+        _input.CustomInput.Enable();
+        _input.CustomInput.Player.Movment.performed += OnMovementPerformed;
+        _input.CustomInput.Player.Movment.canceled += OnMovementCanceled;
     }
     
     private void OnDisable()
     {
-        _input.Disable();
-        _input.Player.Movment.performed -= OnMovementPerformed;
-        _input.Player.Movment.canceled -= OnMovementCanceled;
+        _input.CustomInput.Disable();
+        _input.CustomInput.Player.Movment.performed -= OnMovementPerformed;
+        _input.CustomInput.Player.Movment.canceled -= OnMovementCanceled;
     }
 
     private void FixedUpdate()
