@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BackMusicScript : MonoBehaviour
 {
-    private AudioSource _audioSource;
+    [FormerlySerializedAs("Audio Source")] public AudioSource audioSource;
     private bool _isOn = true;
     private float _lastTimeOn;
     private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _lastTimeOn = -_audioSource.time;
+        _lastTimeOn = -audioSource.clip.length;
     }
 
     // Update is called once per frame
@@ -18,15 +18,14 @@ public class BackMusicScript : MonoBehaviour
     {
         if (_isOn)
         {
-            if (Time.time - _lastTimeOn > _audioSource.time)
+            if (Time.time - _lastTimeOn > audioSource.clip.length)
             {
                 _lastTimeOn = Time.time;
-                Debug.Log("a");
-                _audioSource.Play();
+                audioSource.Play();
             }
         }
         else 
-            _audioSource.Stop();
+            audioSource.Stop();
     }
 
     public void MusicOn() => _isOn = true;

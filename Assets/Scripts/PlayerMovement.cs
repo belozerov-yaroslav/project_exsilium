@@ -11,12 +11,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveVector;
     [SerializeField] private float moveSpeed = 5f;
-    private FootstepsController _footstepsController;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _footstepsController = GetComponent<FootstepsController>();
     }
 
     private void OnEnable()
