@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rb;
     private Vector2 _moveVector;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Animator animator;
+    private static readonly int Horizontal1 = Animator.StringToHash("Horizontal");
+    private static readonly int Vertical1 = Animator.StringToHash("Vertical");
 
     private void Awake()
     {
@@ -39,11 +42,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         _moveVector = value.ReadValue<Vector2>();
+        animator.SetFloat(Horizontal1, _moveVector.x);
+        animator.SetFloat(Vertical1, _moveVector.y);
     }
     
     private void OnMovementCanceled(InputAction.CallbackContext value)
     {
         _moveVector = Vector2.zero;
-        
+        animator.SetFloat(Horizontal1, 0f);
+        animator.SetFloat(Vertical1, 0f);
     }
 }
