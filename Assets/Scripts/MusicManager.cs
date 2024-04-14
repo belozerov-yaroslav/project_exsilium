@@ -13,6 +13,6 @@ public class MusicManager : MonoBehaviour
     
     void Update()
     {
-        _backMusic.MusicOff();
+        _backMusic.MusicOn();
     }
 }
