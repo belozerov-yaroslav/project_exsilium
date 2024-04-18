@@ -45,4 +45,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _moveVector = Vector2.zero;
     }
+
+    public bool CheckVelocity() => _rb.velocity != Vector2.zero;
+    
 }
