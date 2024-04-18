@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     private static readonly int Horizontal1 = Animator.StringToHash("Horizontal");
     private static readonly int Vertical1 = Animator.StringToHash("Vertical");
+    private static readonly int LastHorizontal1 = Animator.StringToHash("LastHorizontal");
+    private static readonly int LastVertical1 = Animator.StringToHash("LastVertical");
 
     private void Awake()
     {
@@ -36,20 +38,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        animator.SetFloat(Horizontal1, _rb.velocity.x);
+        animator.SetFloat(Vertical1, _rb.velocity.y);
+        if (_rb.velocity.x != 0 || _rb.velocity.y != 0)
+        {
+            animator.SetFloat(LastHorizontal1, _rb.velocity.x);
+            animator.SetFloat(LastVertical1, _rb.velocity.y);
+        }
         _rb.velocity = _moveVector * moveSpeed;
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         _moveVector = value.ReadValue<Vector2>();
-        animator.SetFloat(Horizontal1, _moveVector.x);
-        animator.SetFloat(Vertical1, _moveVector.y);
-    }
+    }   
     
     private void OnMovementCanceled(InputAction.CallbackContext value)
     {
         _moveVector = Vector2.zero;
-        animator.SetFloat(Horizontal1, 0f);
-        animator.SetFloat(Vertical1, 0f);
     }
 }
