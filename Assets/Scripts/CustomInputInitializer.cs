@@ -8,5 +8,6 @@ public class CustomInputInitializer : MonoBehaviour
     private void Awake()
     {
         CustomInput = new CustomInput();
+        CustomInput.Global.BestiaryNavigation.Disable();
     }
 }
