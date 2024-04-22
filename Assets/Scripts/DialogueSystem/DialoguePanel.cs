@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,8 +13,8 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] GameObject textExample;
     [SerializeField] GameObject choiceBtnExample;
     [SerializeField] float btnTextMargin = 5f;
-    private List<GameObject> currentMessages = new List<GameObject>();
-    private List<GameObject> currentChoiceButtons = new List<GameObject>();
+    private List<GameObject> currentMessages = new();
+    private List<GameObject> currentChoiceButtons = new();
     private Stack<float> lastMessagePos = new(new float[] { 0 });
 
     private float contentHeight = 0;
@@ -27,11 +28,6 @@ public class DialoguePanel : MonoBehaviour
 
         instance = this;
     }
-
-    private void Start()
-    {
-    }
-
     public static DialoguePanel GetInstance()
     {
         return instance;
@@ -113,9 +109,12 @@ public class DialoguePanel : MonoBehaviour
     {
         contentHeight += adjustSize;
         content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, contentHeight);
+        var newPosition = content.transform.position;
+        newPosition.y = Math.Max(newPosition.y, contentHeight);
+        content.transform.position = newPosition;
     }
 
-    public void ButtonClicked(int index)
+    private void ButtonClicked(int index)
     {
         DeleteChoiceButtons();
         DialogueManager.GetInstance().MakeChoice(index);
@@ -128,8 +127,6 @@ public class DialoguePanel : MonoBehaviour
             Destroy(choiceButton);
             lastMessagePos.Pop();
         }
-
-
         currentChoiceButtons.Clear();
         AdjustContentSize(-(contentHeight + lastMessagePos.Peek()));
     }
