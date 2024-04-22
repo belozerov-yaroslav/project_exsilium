@@ -306,12 +306,12 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""BestiaryNavigation"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""f6aaae46-5e14-44e7-9896-fce6923c5a1c"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Double"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
