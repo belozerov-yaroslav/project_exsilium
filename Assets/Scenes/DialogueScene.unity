@@ -273,9 +273,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1220374306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.04345703, y: 113.89996}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.04345703, y: -36.100037}
   m_SizeDelta: {x: 626.69, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62614981
@@ -325,8 +325,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -989,9 +989,9 @@ RectTransform:
   - {fileID: 1384499822}
   m_Father: {fileID: 1220374306}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.04348755, y: 123.9}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0.04348755, y: -26.099998}
   m_SizeDelta: {x: 626.687, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &301853310
@@ -1584,7 +1584,7 @@ GameObject:
   - component: {fileID: 770757383}
   - component: {fileID: 770757382}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: testDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1637,7 +1637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3be55ec0a8a8b64088075d12942c5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSON: {fileID: 4900000, guid: d70c1cc99e906ae4585a24798359a61e, type: 3}
+  inkJSON: {fileID: 4900000, guid: c17ed09282884724fa0a49a350e28574, type: 3}
   _input: {fileID: 153787647}
 --- !u!212 &770757384
 SpriteRenderer:
@@ -1922,10 +1922,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1220374305}
-  spaceBetweenMessages: 20
+  spaceBetweenMessages: 15
   textExample: {fileID: 62614979}
   choiceBtnExample: {fileID: 301853308}
-  btnTextMargin: 5
+  btnTextMargin: 10
 --- !u!1 &938155512
 GameObject:
   m_ObjectHideFlags: 0
@@ -26169,7 +26169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 888000180}
-  loadGlobalsJSON: {fileID: 4900000, guid: 837b0b689002c9343811fae66b977c36, type: 3}
+  loadGlobalsJSON: {fileID: 4900000, guid: fe6f8a2e23b801c499ec262ff856b5b1, type: 3}
 --- !u!4 &1073192621
 Transform:
   m_ObjectHideFlags: 0
@@ -27350,8 +27350,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -27980,11 +27980,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1220374306}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
-  m_Inertia: 1
+  m_Inertia: 0
   m_DecelerationRate: 0.135
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 271636097}
