@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class Bestiary : MonoBehaviour
 {
     [SerializeField] private CustomInputInitializer _input;
+    [SerializeField] private Canvas _canvas;
     private bool _isOpen;
 
     private void Start()
@@ -26,6 +27,7 @@ public class Bestiary : MonoBehaviour
         _isOpen = true;
         _input.CustomInput.Global.BestiaryNavigation.Enable();
         _input.CustomInput.Player.Disable();
+        _canvas.enabled = true;
     }
 
     private void CloseBestiary()
@@ -33,5 +35,6 @@ public class Bestiary : MonoBehaviour
         _isOpen = false;
         _input.CustomInput.Global.BestiaryNavigation.Disable();
         _input.CustomInput.Player.Enable();
+        _canvas.enabled = false;
     }
 }
