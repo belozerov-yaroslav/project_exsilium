@@ -25,15 +25,15 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         _input.CustomInput.Enable();
-        _input.CustomInput.Player.Movment.performed += OnMovementPerformed;
-        _input.CustomInput.Player.Movment.canceled += OnMovementCanceled;
+        _input.CustomInput.Player.Movement.performed += OnMovementPerformed;
+        _input.CustomInput.Player.Movement.canceled += OnMovementCanceled;
     }
     
     private void OnDisable()
     {
         _input.CustomInput.Disable();
-        _input.CustomInput.Player.Movment.performed -= OnMovementPerformed;
-        _input.CustomInput.Player.Movment.canceled -= OnMovementCanceled;
+        _input.CustomInput.Player.Movement.performed -= OnMovementPerformed;
+        _input.CustomInput.Player.Movement.canceled -= OnMovementCanceled;
     }
 
     private void FixedUpdate()

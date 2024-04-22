@@ -15,12 +15,12 @@ public class InteractionManager : MonoBehaviour
 
     private void Start()
     {
-        _input.CustomInput.Global.Interaction.performed += OnInteractionPerformed;
+        _input.CustomInput.Player.Interaction.performed += OnInteractionPerformed;
     }
 
     private void OnDisable()
     {
-        _input.CustomInput.Global.Interaction.performed -= OnInteractionPerformed;
+        _input.CustomInput.Player.Interaction.performed -= OnInteractionPerformed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
