@@ -28,7 +28,8 @@ INCLUDE globals.ink
 
 === quest_check ===
 {quest1:-> quest_finish} 
-Пещера находится на юге, принеси мне мою коробку. -> END
+Пещера находится на юге, принеси мне мою коробку. 
+-> END
 
 
 === quest_finish ===
