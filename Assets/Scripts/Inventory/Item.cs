@@ -6,10 +6,22 @@ using UnityEngine.Serialization;
 
 public class Item : MonoBehaviour
 {
-    public Sprite ItemSprite { get; private set; }
-
-    private void Start()
+    private static Dictionary<int, string> _actions = new Dictionary<int, string>()
     {
-        ItemSprite = GetComponent<SpriteRenderer>().sprite;
+        {1,"нож подействовал"},
+        {2,"свеча действие"},
+        {3,"крест действие"},
+        {4,"икона действие"},
+        {5,"травы действие"},
+        {6,"благовония действие"},
+        {7,"молитвенник действие"},
+        {8,"мел действие"},
+    };
+
+    public int itemId;
+    
+    public void DoAction()
+    {
+        Debug.Log(_actions[itemId]);
     }
 }

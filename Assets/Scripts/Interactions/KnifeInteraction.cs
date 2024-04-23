@@ -7,7 +7,6 @@ namespace Interactions
         public AudioSource interactionSound;
         public void Interact()
         {
-            Inventory.AddItem(GetComponent<Item>());
             interactionSound.Play();
             Debug.Log("На нож нажали");
         }
