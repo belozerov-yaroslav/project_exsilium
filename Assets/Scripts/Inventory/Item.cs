@@ -19,7 +19,13 @@ public class Item : MonoBehaviour
     };
 
     public int itemId;
-    
+    [FormerlySerializedAs("ItemIcon")] public Sprite itemIcon;
+
+    private void Start()
+    {
+        itemIcon = GetComponent<SpriteRenderer>().sprite;
+    }
+
     public void DoAction()
     {
         Debug.Log(_actions[itemId]);
