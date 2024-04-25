@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,11 +9,12 @@ using TMPro;
 public class DialoguePanel : MonoBehaviour
 {
     private static DialoguePanel instance;
-    [SerializeField] GameObject content;
-    [SerializeField] float spaceBetweenMessages = 20f;
-    [SerializeField] GameObject textExample;
-    [SerializeField] GameObject choiceBtnExample;
-    [SerializeField] float btnTextMargin = 5f;
+    [SerializeField] private Canvas dialogueCanvas;
+    [SerializeField] private GameObject content;
+    [SerializeField] private float spaceBetweenMessages = 20f;
+    [SerializeField] private GameObject textExample;
+    [SerializeField] private GameObject choiceBtnExample;
+    [SerializeField] private float btnTextMargin = 5f;
     private List<GameObject> currentMessages = new();
     private List<GameObject> currentChoiceButtons = new();
     private Stack<float> lastMessagePos = new(new float[] { 0 });
@@ -35,25 +37,27 @@ public class DialoguePanel : MonoBehaviour
 
     public void Show()
     {
-        gameObject.SetActive(true);
+        dialogueCanvas.enabled = true;
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        dialogueCanvas.enabled = false;
         DeleteChoiceButtons();
         DeleteAllMessages();
     }
 
-    public void DisplayMessage(string message)
+    public void DisplayMessage(DialogueLine dialogueLine)
     {
-        if (message == "")
+        if (dialogueLine.Text == "")
             return;
 
         GameObject newTextElement = Instantiate(textExample, content.transform);
         TextMeshProUGUI textElem = newTextElement.GetComponent<TextMeshProUGUI>();
+
+        textElem.color = dialogueLine.Author.Color;
         
-        textElem.text = message;
+        textElem.text = dialogueLine.Text;
         newTextElement.SetActive(true);
         AdjustTransformToTextSize(textElem);
         var textHeight = textElem.rectTransform.rect.height;

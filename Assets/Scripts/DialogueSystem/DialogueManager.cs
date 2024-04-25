@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DialogueSystem;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
@@ -11,9 +12,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Load Globals JSON")]
     [SerializeField] private TextAsset loadGlobalsJSON;
 
-    private const string QUEST_GIVE_TAG = "quest_give";
-    private const string QUEST_FINISH_TAG = "quest_finish";
-    private const string CALL_FUNCTION_TAG = "call";
+    [SerializeField] private DialogueParser _dialogueParser;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -44,9 +43,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-        }
         // return right away if dialogue isn't playing
         if (!dialogueIsPlaying)
         {
@@ -81,10 +77,9 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            // set text for the current dialogue line
-            dialoguePanel.DisplayMessage(currentStory.Continue());
+            
+            dialoguePanel.DisplayMessage(_dialogueParser.ParseLine(currentStory.Continue(), currentStory.currentTags));
             // HandleTags(currentStory.currentTags);
-            // display choices, if any, for this dialogue line
             DisplayChoices();
         }
         else
@@ -107,41 +102,8 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+        ContinueStory();
     }
-    // private void HandleTags(List<string> currentTags)
-    // {
-    //     // loop through each tag and handle it accordingly
-    //     foreach (string tag in currentTags)
-    //     {
-    //         Debug.Log("handle");
-    //         // parse the tag
-    //         string[] splitTag = tag.Split(':');
-    //         if (splitTag.Length != 2)
-    //         {
-    //             Debug.LogError("Tag could not be appropriately parsed: " + tag);
-    //         }
-    //         string tagKey = splitTag[0].Trim();
-    //         string tagValue = splitTag[1].Trim();
-    //
-    //         // handle the tag
-    //         switch (tagKey)
-    //         {
-    //             case QUEST_GIVE_TAG:
-    //                 QuestManager.Instance.AddQuest(tagValue);
-    //                 break;
-    //             case QUEST_FINISH_TAG:
-    //                 QuestManager.Instance.FinishQuest(tagValue);
-    //                 break;
-    //             case CALL_FUNCTION_TAG:
-    //                 Debug.Log("��������");
-    //                 SpecialFunctions.Instance.CallFunction(tagValue);
-    //                 break;
-    //             default:
-    //                 Debug.LogWarning("Tag came in but is not currently being handled: " + tag);
-    //                 break;
-    //         }
-    //     }
-    // }
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
         Ink.Runtime.Object variableValue = null;
