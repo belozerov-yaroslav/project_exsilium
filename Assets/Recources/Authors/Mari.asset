@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d4c678d9b048c4bb2588d3520a4e4a, type: 3}
   m_Name: Mari
   m_EditorClassIdentifier: 
-  Color: {r: 1, g: 0, b: 0, a: 0}
-  authorName: "\u041C\u0430\u0440\u0438\u044F"
+  Color: {r: 1, g: 0.1745283, b: 0.1745283, a: 1}
+  authorName: "\u043C\u0430\u0440\u0438\u044F"
   tag: mari

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d4c678d9b048c4bb2588d3520a4e4a, type: 3}
   m_Name: Fedor
   m_EditorClassIdentifier: 
-  Color: {r: 0.8584906, g: 0.66956747, b: 0, a: 0}
-  authorName: "\u0424\u0451\u0434\u043E\u0440"
+  Color: {r: 0.8584906, g: 0.66956747, b: 0, a: 1}
+  authorName: "\u0444\u0451\u0434\u043E\u0440"
   tag: fedor

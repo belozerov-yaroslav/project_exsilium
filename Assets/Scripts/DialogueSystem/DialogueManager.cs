@@ -61,7 +61,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.Show();
         dialogueVariables.StartListening(currentStory);
 
-        ContinueStory();
+        //ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()

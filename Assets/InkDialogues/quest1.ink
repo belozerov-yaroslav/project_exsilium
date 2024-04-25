@@ -21,8 +21,8 @@ INCLUDE globals.ink
 {quest1_accepted:-> quest_check} 
 Ну так что? Возьмешься за задание?#author:mari
 +Напомни, пожалуйста, где находится пещера с тайником?#author:fedor
-    Отсюда надо направиться на юг. -> meet
-+Принять задание #author:fedor
+    Отсюда надо направиться на юг.#author:mari -> meet
++[Принять задание] #author:fedor
     ~ quest1_accepted = true
     Хорошо, я выполню твоё поручение.#author:fedor 
     -> END
@@ -32,11 +32,11 @@ INCLUDE globals.ink
 
 === quest_check ===
 {quest1:-> quest_finish} 
-Пещера находится на юге, принеси мне мою коробку. #author:mari
+Пещера находится на юге, принеси мне мою коробку.#author:mari
 + < завершить диалог > -> END
 
 
 === quest_finish ===
 ~ quest1_finished = true   
-Огромное спасибо, вот твои деньги.#quest_finish:quest1#author:mari
+Огромное спасибо, вот твои деньги.#author:mari
 + < завершить диалог > -> END

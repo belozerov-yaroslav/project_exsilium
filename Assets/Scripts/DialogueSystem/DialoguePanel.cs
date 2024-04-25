@@ -11,12 +11,13 @@ public class DialoguePanel : MonoBehaviour
     private static DialoguePanel instance;
     [SerializeField] private Canvas dialogueCanvas;
     [SerializeField] private GameObject content;
-    [SerializeField] private float spaceBetweenMessages = 20f;
     [SerializeField] private GameObject textExample;
     [SerializeField] private GameObject choiceBtnExample;
-    [SerializeField] private float btnTextMargin = 5f;
-    private List<GameObject> currentMessages = new();
-    private List<GameObject> currentChoiceButtons = new();
+    [SerializeField] private float spaceBetweenMessages = 15f;
+    [SerializeField] private float btnTextMargin = 10f;
+    [SerializeField] private float startSpace = 15f;
+    private readonly List<GameObject> currentMessages = new();
+    private readonly List<GameObject> currentChoiceButtons = new();
     private Stack<float> lastMessagePos = new(new float[] { 0 });
 
     private float contentHeight = 0;
@@ -27,7 +28,7 @@ public class DialoguePanel : MonoBehaviour
         {
             Debug.LogWarning("Found more than one Dialogue Panel in the scene");
         }
-
+        lastMessagePos.Push(-startSpace);
         instance = this;
     }
     public static DialoguePanel GetInstance()
@@ -49,27 +50,38 @@ public class DialoguePanel : MonoBehaviour
 
     public void DisplayMessage(DialogueLine dialogueLine)
     {
-        if (dialogueLine.Text == "")
+        if (string.IsNullOrWhiteSpace(dialogueLine.Text))
             return;
 
-        GameObject newTextElement = Instantiate(textExample, content.transform);
-        TextMeshProUGUI textElem = newTextElement.GetComponent<TextMeshProUGUI>();
-
-        textElem.color = dialogueLine.Author.Color;
+        var newTextElement = Instantiate(textExample, content.transform);
+        var textElem = newTextElement.GetComponent<TextMeshProUGUI>();
         
-        textElem.text = dialogueLine.Text;
+        textElem.text = dialogueLine.ToString();
         newTextElement.SetActive(true);
         AdjustTransformToTextSize(textElem);
         var textHeight = textElem.rectTransform.rect.height;
 
         var localPosition = newTextElement.transform.localPosition;
-        localPosition = new Vector3(localPosition.x, lastMessagePos.Peek() - spaceBetweenMessages - textHeight / 2, 0);
+        localPosition = new Vector3(localPosition.x, lastMessagePos.Peek() - spaceBetweenMessages, 0);
         newTextElement.transform.localPosition = localPosition;
         
-        lastMessagePos.Push(localPosition.y - textHeight / 2);
+        lastMessagePos.Push(localPosition.y - textHeight);
         AdjustContentSize(textHeight + spaceBetweenMessages);
+        
+        if (dialogueLine.Author != null)
+            DrawAuthorName(dialogueLine, localPosition);
 
         currentMessages.Add(newTextElement);
+    }
+
+    private void DrawAuthorName(DialogueLine dialogueLine, Vector3 localPosition)
+    {
+        var authorTextElement = Instantiate(textExample, content.transform);
+        authorTextElement.transform.localPosition = localPosition;
+        var authorText = authorTextElement.GetComponent<TextMeshProUGUI>();
+        authorText.text = dialogueLine.Author.authorName + ':';
+        authorText.color = dialogueLine.Author.Color;
+        authorTextElement.SetActive(true);
     }
 
     public void DisplayChoices(List<string> choices)
@@ -88,12 +100,11 @@ public class DialoguePanel : MonoBehaviour
                 .SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, textHeight + 2 * btnTextMargin);
 
             choiceBtn.transform.localPosition = new Vector3(choiceBtn.transform.localPosition.x,
-                lastMessagePos.Peek() - spaceBetweenMessages - btnTextMargin - textHeight / 2, 0);
+                lastMessagePos.Peek() - spaceBetweenMessages - btnTextMargin, 0);
 
             var i = index; // c# - гений, эта строка нужна для обхода "особенностей языка", НЕ УБИРАТЬ
             choiceBtn.GetComponent<Button>().onClick.AddListener(() => ButtonClicked(i));
             index += 1;
-
 
             AdjustContentSize(spaceBetweenMessages + textHeight + 2 * btnTextMargin);
             lastMessagePos.Push(lastMessagePos.Peek() - spaceBetweenMessages - (textHeight + 2 * btnTextMargin));
@@ -111,7 +122,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void AdjustContentSize(float adjustSize)
     {
-        contentHeight += adjustSize;
+        contentHeight += adjustSize + 5;
         content.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, contentHeight);
         var newPosition = content.transform.position;
         newPosition.y = Math.Max(newPosition.y, contentHeight);
@@ -126,7 +137,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void DeleteChoiceButtons()
     {
-        foreach (GameObject choiceButton in currentChoiceButtons)
+        foreach (var choiceButton in currentChoiceButtons)
         {
             Destroy(choiceButton);
             lastMessagePos.Pop();
@@ -137,13 +148,10 @@ public class DialoguePanel : MonoBehaviour
 
     private void DeleteAllMessages()
     {
-        foreach (GameObject message in currentMessages)
-        {
+        foreach (var message in currentMessages)
             Destroy(message);
-        }
 
         currentMessages.Clear();
-        lastMessagePos.Push(0);
         AdjustContentSize(-contentHeight);
     }
 }
