@@ -339,7 +339,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Keyboard AD"",
-                    ""id"": ""25b07c48-ff5a-4788-b636-e05032120c82"",
+                    ""id"": ""7b6e692a-068b-4d51-aec3-fe8859191a22"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -350,7 +350,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""105ad161-0b29-4587-bf48-f4d74386d539"",
+                    ""id"": ""ecd7ebda-0fed-4048-88ef-8c5fccf936b2"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -361,7 +361,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""d72647b4-5915-47a3-9dca-3568cacc070b"",
+                    ""id"": ""7ba62d29-6e25-450b-884d-444837437e71"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -372,7 +372,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Keyboard arrows"",
-                    ""id"": ""13988872-1f91-49be-aaca-e005328cc4af"",
+                    ""id"": ""5a766cfb-23a6-4886-b60d-bf8f25ff17a9"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -383,7 +383,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""0cb6cf3c-2a82-4671-88b0-5bf548719c0e"",
+                    ""id"": ""1f1f25c6-dd4e-48cc-860d-cbd84943660b"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -394,7 +394,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""560f6951-2bc5-4ed0-85fb-1cac19c1b4ed"",
+                    ""id"": ""b918438f-fe51-48c7-bf28-33cb1b8daf06"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -405,7 +405,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Gamepad"",
-                    ""id"": ""563db18c-5fa0-483c-a026-3e8e1bbdb453"",
+                    ""id"": ""0156a4a7-77f1-4222-bb4f-792a849bc8dd"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -416,7 +416,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""07e1bfde-a86a-4646-ba62-5f20c1acff7b"",
+                    ""id"": ""210867d5-e401-4ce9-98e3-b44795c76c54"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -427,7 +427,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""f86d5893-29cc-4263-acd4-df9218d96f54"",
+                    ""id"": ""5a6623d8-56e2-4775-bd80-5451fc5f8940"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -435,161 +435,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""BestiaryNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""Dialogue"",
-            ""id"": ""b48f4fff-c463-400b-83bb-76b921f1a1cd"",
-            ""actions"": [
-                {
-                    ""name"": ""NextPhrase"",
-                    ""type"": ""Button"",
-                    ""id"": ""225c62ef-24c1-46f3-a41b-be447e39d1f7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""482e92f5-8057-45d1-a15d-583255f377c8"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NextPhrase"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Keyboard AD"",
-                    ""id"": ""25b07c48-ff5a-4788-b636-e05032120c82"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""105ad161-0b29-4587-bf48-f4d74386d539"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""d72647b4-5915-47a3-9dca-3568cacc070b"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Keyboard arrows"",
-                    ""id"": ""13988872-1f91-49be-aaca-e005328cc4af"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""0cb6cf3c-2a82-4671-88b0-5bf548719c0e"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""560f6951-2bc5-4ed0-85fb-1cac19c1b4ed"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""563db18c-5fa0-483c-a026-3e8e1bbdb453"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""07e1bfde-a86a-4646-ba62-5f20c1acff7b"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""f86d5893-29cc-4263-acd4-df9218d96f54"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BestiaryNavigation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                }
-            ]
-        },
-        {
-            ""name"": ""Dialogue"",
-            ""id"": ""b48f4fff-c463-400b-83bb-76b921f1a1cd"",
-            ""actions"": [
-                {
-                    ""name"": ""NextPhrase"",
-                    ""type"": ""Button"",
-                    ""id"": ""225c62ef-24c1-46f3-a41b-be447e39d1f7"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""482e92f5-8057-45d1-a15d-583255f377c8"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""NextPhrase"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -604,9 +449,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
         m_Global_BestiaryNavigation = m_Global.FindAction("BestiaryNavigation", throwIfNotFound: true);
-        // Dialogue
-        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
-        m_Dialogue_NextPhrase = m_Dialogue.FindAction("NextPhrase", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -772,52 +614,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public GlobalActions @Global => new GlobalActions(this);
-
-    // Dialogue
-    private readonly InputActionMap m_Dialogue;
-    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
-    private readonly InputAction m_Dialogue_NextPhrase;
-    public struct DialogueActions
-    {
-        private @CustomInput m_Wrapper;
-        public DialogueActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @NextPhrase => m_Wrapper.m_Dialogue_NextPhrase;
-        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
-        public void AddCallbacks(IDialogueActions instance)
-        {
-            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
-            @NextPhrase.started += instance.OnNextPhrase;
-            @NextPhrase.performed += instance.OnNextPhrase;
-            @NextPhrase.canceled += instance.OnNextPhrase;
-        }
-
-        private void UnregisterCallbacks(IDialogueActions instance)
-        {
-            @NextPhrase.started -= instance.OnNextPhrase;
-            @NextPhrase.performed -= instance.OnNextPhrase;
-            @NextPhrase.canceled -= instance.OnNextPhrase;
-        }
-
-        public void RemoveCallbacks(IDialogueActions instance)
-        {
-            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IDialogueActions instance)
-        {
-            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -827,9 +623,5 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     {
         void OnOpenBestiary(InputAction.CallbackContext context);
         void OnBestiaryNavigation(InputAction.CallbackContext context);
-    }
-    public interface IDialogueActions
-    {
-        void OnNextPhrase(InputAction.CallbackContext context);
     }
 }

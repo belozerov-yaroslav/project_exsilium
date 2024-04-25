@@ -18,7 +18,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
-        _input.CustomInput.Global.Interaction.performed += OnInteraction;
+        _input.CustomInput.Player.Interaction.performed += OnInteraction;
     }
 
     private void OnInteraction(InputAction.CallbackContext callback)
