@@ -266,9 +266,17 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-<<<<<<< HEAD
                 },
-=======
+                {
+                    ""name"": """",
+                    ""id"": ""7f824eae-9f33-4ad7-8647-0f6578b9d2fc"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -293,10 +301,27 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenBestiary"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6c78d64-bbb2-47a3-b6fc-17a79beed934"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BestiaryNavigation"",
+                    ""type"": ""Value"",
+                    ""id"": ""f6aaae46-5e14-44e7-9896-fce6923c5a1c"",
+                    ""expectedControlType"": ""Double"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
->>>>>>> feature/inventory
                 {
                     ""name"": """",
                     ""id"": ""a136b1b9-43f3-4a2f-b443-a66e473789fc"",
@@ -428,33 +453,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Global"",
-            ""id"": ""207f9d82-9ff1-479a-b0db-dfcdb06f94f3"",
-            ""actions"": [
-                {
-                    ""name"": ""OpenBestiary"",
-                    ""type"": ""Button"",
-                    ""id"": ""b6c78d64-bbb2-47a3-b6fc-17a79beed934"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
-                {
-                    ""name"": ""BestiaryNavigation"",
-                    ""type"": ""Value"",
-                    ""id"": ""f6aaae46-5e14-44e7-9896-fce6923c5a1c"",
-                    ""expectedControlType"": ""Double"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                }
-            ],
-            ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""79692516-83b8-4745-b876-30bfc2156b07"",
@@ -587,13 +586,10 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
-<<<<<<< HEAD
-        m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
-        m_Global_BestiaryNavigation = m_Global.FindAction("BestiaryNavigation", throwIfNotFound: true);
-=======
         m_Global_Interaction = m_Global.FindAction("Interaction", throwIfNotFound: true);
         m_Global_Inventory = m_Global.FindAction("Inventory", throwIfNotFound: true);
->>>>>>> feature/inventory
+        m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
+        m_Global_BestiaryNavigation = m_Global.FindAction("BestiaryNavigation", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -709,24 +705,18 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     // Global
     private readonly InputActionMap m_Global;
     private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
-<<<<<<< HEAD
-    private readonly InputAction m_Global_OpenBestiary;
-    private readonly InputAction m_Global_BestiaryNavigation;
-=======
     private readonly InputAction m_Global_Interaction;
     private readonly InputAction m_Global_Inventory;
->>>>>>> feature/inventory
+    private readonly InputAction m_Global_OpenBestiary;
+    private readonly InputAction m_Global_BestiaryNavigation;
     public struct GlobalActions
     {
         private @CustomInput m_Wrapper;
         public GlobalActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
-<<<<<<< HEAD
-        public InputAction @OpenBestiary => m_Wrapper.m_Global_OpenBestiary;
-        public InputAction @BestiaryNavigation => m_Wrapper.m_Global_BestiaryNavigation;
-=======
         public InputAction @Interaction => m_Wrapper.m_Global_Interaction;
         public InputAction @Inventory => m_Wrapper.m_Global_Inventory;
->>>>>>> feature/inventory
+        public InputAction @OpenBestiary => m_Wrapper.m_Global_OpenBestiary;
+        public InputAction @BestiaryNavigation => m_Wrapper.m_Global_BestiaryNavigation;
         public InputActionMap Get() { return m_Wrapper.m_Global; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -736,40 +726,34 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GlobalActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GlobalActionsCallbackInterfaces.Add(instance);
-<<<<<<< HEAD
-            @OpenBestiary.started += instance.OnOpenBestiary;
-            @OpenBestiary.performed += instance.OnOpenBestiary;
-            @OpenBestiary.canceled += instance.OnOpenBestiary;
-            @BestiaryNavigation.started += instance.OnBestiaryNavigation;
-            @BestiaryNavigation.performed += instance.OnBestiaryNavigation;
-            @BestiaryNavigation.canceled += instance.OnBestiaryNavigation;
-=======
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
->>>>>>> feature/inventory
+            @OpenBestiary.started += instance.OnOpenBestiary;
+            @OpenBestiary.performed += instance.OnOpenBestiary;
+            @OpenBestiary.canceled += instance.OnOpenBestiary;
+            @BestiaryNavigation.started += instance.OnBestiaryNavigation;
+            @BestiaryNavigation.performed += instance.OnBestiaryNavigation;
+            @BestiaryNavigation.canceled += instance.OnBestiaryNavigation;
         }
 
         private void UnregisterCallbacks(IGlobalActions instance)
         {
-<<<<<<< HEAD
-            @OpenBestiary.started -= instance.OnOpenBestiary;
-            @OpenBestiary.performed -= instance.OnOpenBestiary;
-            @OpenBestiary.canceled -= instance.OnOpenBestiary;
-            @BestiaryNavigation.started -= instance.OnBestiaryNavigation;
-            @BestiaryNavigation.performed -= instance.OnBestiaryNavigation;
-            @BestiaryNavigation.canceled -= instance.OnBestiaryNavigation;
-=======
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
->>>>>>> feature/inventory
+            @OpenBestiary.started -= instance.OnOpenBestiary;
+            @OpenBestiary.performed -= instance.OnOpenBestiary;
+            @OpenBestiary.canceled -= instance.OnOpenBestiary;
+            @BestiaryNavigation.started -= instance.OnBestiaryNavigation;
+            @BestiaryNavigation.performed -= instance.OnBestiaryNavigation;
+            @BestiaryNavigation.canceled -= instance.OnBestiaryNavigation;
         }
 
         public void RemoveCallbacks(IGlobalActions instance)
@@ -794,12 +778,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     }
     public interface IGlobalActions
     {
-<<<<<<< HEAD
-        void OnOpenBestiary(InputAction.CallbackContext context);
-        void OnBestiaryNavigation(InputAction.CallbackContext context);
-=======
         void OnInteraction(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
->>>>>>> feature/inventory
+        void OnOpenBestiary(InputAction.CallbackContext context);
+        void OnBestiaryNavigation(InputAction.CallbackContext context);
     }
 }

@@ -244,6 +244,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7f824eae-9f33-4ad7-8647-0f6578b9d2fc",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interaction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -268,6 +279,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenBestiary",
+                    "type": "Button",
+                    "id": "b6c78d64-bbb2-47a3-b6fc-17a79beed934",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BestiaryNavigation",
+                    "type": "Value",
+                    "id": "f6aaae46-5e14-44e7-9896-fce6923c5a1c",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -402,33 +431,7 @@
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Global",
-            "id": "207f9d82-9ff1-479a-b0db-dfcdb06f94f3",
-            "actions": [
-                {
-                    "name": "OpenBestiary",
-                    "type": "Button",
-                    "id": "b6c78d64-bbb2-47a3-b6fc-17a79beed934",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 },
-                {
-                    "name": "BestiaryNavigation",
-                    "type": "Value",
-                    "id": "f6aaae46-5e14-44e7-9896-fce6923c5a1c",
-                    "expectedControlType": "Double",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                }
-            ],
-            "bindings": [
                 {
                     "name": "",
                     "id": "79692516-83b8-4745-b876-30bfc2156b07",
