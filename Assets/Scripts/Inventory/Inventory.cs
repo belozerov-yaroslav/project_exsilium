@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     private int _indexCurrentItem = -1;
     private bool _isOpened = false;
     private bool _isItemSelected = false;
+    [SerializeField] private CustomInputInitializer _inputInitializer;
     
     private void Start()
     {
@@ -23,6 +24,9 @@ public class Inventory : MonoBehaviour
             InventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
         }
         inventoryPanel.SetActive(_isOpened);
+        _inputInitializer.CustomInput.Global.Inventory.performed += CloseOpenInventory;
+        _inputInitializer.CustomInput.Global.Inventory.performed += InteractCurrentItem;
+        _inputInitializer.CustomInput.Global.Inventory.performed += ChangeCurrentItem;
     }
 
     public void AddItem(Item newItem)

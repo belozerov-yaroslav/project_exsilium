@@ -67,14 +67,16 @@ public class DialoguePanel : MonoBehaviour
         
         lastMessagePos.Push(localPosition.y - textHeight);
         AdjustContentSize(textHeight + spaceBetweenMessages);
-        
-        if (dialogueLine.Author != null)
-            DrawAuthorName(dialogueLine, localPosition);
 
+        if (dialogueLine.Author != null)
+        {
+            var elem = DrawAuthorName(dialogueLine, localPosition);
+            currentMessages.Add(elem);
+        }
         currentMessages.Add(newTextElement);
     }
 
-    private void DrawAuthorName(DialogueLine dialogueLine, Vector3 localPosition)
+    private GameObject DrawAuthorName(DialogueLine dialogueLine, Vector3 localPosition)
     {
         var authorTextElement = Instantiate(textExample, content.transform);
         authorTextElement.transform.localPosition = localPosition;
@@ -82,6 +84,7 @@ public class DialoguePanel : MonoBehaviour
         authorText.text = dialogueLine.Author.authorName + ':';
         authorText.color = dialogueLine.Author.Color;
         authorTextElement.SetActive(true);
+        return authorTextElement;
     }
 
     public void DisplayChoices(List<string> choices)
@@ -153,5 +156,7 @@ public class DialoguePanel : MonoBehaviour
 
         currentMessages.Clear();
         AdjustContentSize(-contentHeight);
+        lastMessagePos.Clear();
+        lastMessagePos.Push(-startSpace);
     }
 }
