@@ -21,9 +21,9 @@ public class Bestiary : MonoBehaviour
 
     private void Start()
     {
-        _input.CustomInput.Global.BestiaryNavigation.Disable();
+        _input.CustomInput.Bestiary.BestiaryNavigation.Disable();
         _input.CustomInput.Global.OpenBestiary.performed += HandleAction;
-        _input.CustomInput.Global.BestiaryNavigation.performed += HandleNavigation;
+        _input.CustomInput.Bestiary.BestiaryNavigation.performed += HandleNavigation;
     }
 
     private void HandleNavigation(InputAction.CallbackContext obj)
@@ -46,7 +46,7 @@ public class Bestiary : MonoBehaviour
     private void OpenBestiary()
     {
         _isOpen = true;
-        _input.CustomInput.Global.BestiaryNavigation.Enable();
+        _input.CustomInput.Bestiary.BestiaryNavigation.Enable();
         _input.CustomInput.Player.Disable();
         _canvas.enabled = true;
         openSound.Play();
@@ -55,7 +55,7 @@ public class Bestiary : MonoBehaviour
     private void CloseBestiary()
     {
         _isOpen = false;
-        _input.CustomInput.Global.BestiaryNavigation.Disable();
+        _input.CustomInput.Bestiary.BestiaryNavigation.Disable();
         _input.CustomInput.Player.Enable();
         _canvas.enabled = false;
         closeSound.Play();
