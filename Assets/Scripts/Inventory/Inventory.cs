@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 {
     public GameObject inventoryPanel;
     
-    private static readonly List<ItemSlot > InventorySlots = new List<ItemSlot >();
+    private static readonly List<ItemSlot> InventorySlots = new();
     private int _indexCurrentItem = -1;
     private bool _isOpened = false;
     private bool _isItemSelected = false;
@@ -46,7 +46,7 @@ public class Inventory : MonoBehaviour
     {
         if(!context.performed || context.control.name !="space" ||
            _indexCurrentItem == -1 || !_isItemSelected) return;
-        InventorySlots[_indexCurrentItem - 1].Item.DoAction();   
+        InventorySlots[_indexCurrentItem - 1].Item.DoAction(); 
     }
 
     public void ChangeCurrentItem(InputAction.CallbackContext context)

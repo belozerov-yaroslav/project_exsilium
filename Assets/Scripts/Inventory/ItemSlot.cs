@@ -18,5 +18,6 @@ public class ItemSlot : MonoBehaviour
     {
         Item = newItem;
         _image.sprite = Item.itemIcon;
+        _image.color = Color.white;
     }
 }
