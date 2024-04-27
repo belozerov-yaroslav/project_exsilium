@@ -9,7 +9,7 @@ public abstract class GameState : MonoBehaviour
     public abstract void TurnOff();
     protected void Transite(GameState gameState)
     {
-        TurnOff();
+        //TurnOff();
         OnTransition?.Invoke(gameState);
     }
     

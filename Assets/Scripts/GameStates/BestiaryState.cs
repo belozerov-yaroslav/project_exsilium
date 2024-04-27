@@ -17,7 +17,6 @@ namespace GameStates
 
         public override void TurnOn()
         {
-            Debug.Log("kekw");
             _bestiary.OpenBestiary();
             CustomInputInitializer.CustomInput.Bestiary.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += CloseBestiary;

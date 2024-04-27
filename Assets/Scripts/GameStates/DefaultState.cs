@@ -17,7 +17,6 @@ namespace GameStates
 
         public override void TurnOn()
         {
-            Debug.Log("lol))");
             CustomInputInitializer.CustomInput.Player.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += HandleBestiary;
         }

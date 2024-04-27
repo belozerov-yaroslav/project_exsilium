@@ -553,6 +553,34 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""17b0d8c3-5061-4650-a9bb-10e539c9c55a"",
+            ""actions"": [
+                {
+                    ""name"": ""NextPhrase"",
+                    ""type"": ""Button"",
+                    ""id"": ""e961b663-4806-4d2d-8d21-4805cce687a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""40fa2b98-cf2c-4a68-a849-071ea9988d87"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextPhrase"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -568,6 +596,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // Bestiary
         m_Bestiary = asset.FindActionMap("Bestiary", throwIfNotFound: true);
         m_Bestiary_BestiaryNavigation = m_Bestiary.FindAction("BestiaryNavigation", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_NextPhrase = m_Dialogue.FindAction("NextPhrase", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -779,6 +810,52 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public BestiaryActions @Bestiary => new BestiaryActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+    private readonly InputAction m_Dialogue_NextPhrase;
+    public struct DialogueActions
+    {
+        private @CustomInput m_Wrapper;
+        public DialogueActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextPhrase => m_Wrapper.m_Dialogue_NextPhrase;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+            @NextPhrase.started += instance.OnNextPhrase;
+            @NextPhrase.performed += instance.OnNextPhrase;
+            @NextPhrase.canceled += instance.OnNextPhrase;
+        }
+
+        private void UnregisterCallbacks(IDialogueActions instance)
+        {
+            @NextPhrase.started -= instance.OnNextPhrase;
+            @NextPhrase.performed -= instance.OnNextPhrase;
+            @NextPhrase.canceled -= instance.OnNextPhrase;
+        }
+
+        public void RemoveCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -792,5 +869,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface IBestiaryActions
     {
         void OnBestiaryNavigation(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnNextPhrase(InputAction.CallbackContext context);
     }
 }

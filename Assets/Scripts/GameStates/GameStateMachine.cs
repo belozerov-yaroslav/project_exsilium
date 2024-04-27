@@ -13,20 +13,22 @@ public class GameStateMachine : MonoBehaviour
     {
         CustomInputInitializer.CustomInput.Player.Disable();
         CustomInputInitializer.CustomInput.Bestiary.Disable();
+        CustomInputInitializer.CustomInput.Dialogue.Disable();
         _gameStates.ForEach(state => state.OnTransition += StateTransition);
         _statesStack.Push(_gameStates.Find(state => state is DefaultState));
         _statesStack.Peek().TurnOn();
     }
 
-    private void StateTransition(GameState state)
+    public void StateTransition(GameState state)
     {
         if (state == null)
         {
-            _statesStack.Pop();
+            _statesStack.Pop().TurnOff();
             _statesStack.Peek().TurnOn();
         }
         else
         {
+            _statesStack.Peek().TurnOff();
             _statesStack.Push(state);
             state.TurnOn();
         }
