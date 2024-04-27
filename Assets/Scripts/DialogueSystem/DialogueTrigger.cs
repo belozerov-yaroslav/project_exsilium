@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
-    [SerializeField] private CustomInputInitializer _input;
 
     private bool playerInRange;
 
@@ -18,7 +17,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Start()
     {
-        _input.CustomInput.Player.Interaction.performed += OnInteraction;
+        CustomInputInitializer.CustomInput.Player.Interaction.performed += OnInteraction;
     }
 
     private void OnInteraction(InputAction.CallbackContext callback)

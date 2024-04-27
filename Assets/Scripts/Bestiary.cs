@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class Bestiary : MonoBehaviour
 {
-    [SerializeField] private CustomInputInitializer _input;
     [SerializeField] private Animator animator;
     [SerializeField] private Canvas _canvas;
     private bool _isOpen;
@@ -21,9 +20,7 @@ public class Bestiary : MonoBehaviour
 
     private void Start()
     {
-        _input.CustomInput.Bestiary.BestiaryNavigation.Disable();
-        _input.CustomInput.Global.OpenBestiary.performed += HandleAction;
-        _input.CustomInput.Bestiary.BestiaryNavigation.performed += HandleNavigation;
+        CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed += HandleNavigation;
     }
 
     private void HandleNavigation(InputAction.CallbackContext obj)
@@ -36,27 +33,17 @@ public class Bestiary : MonoBehaviour
         animator.SetTrigger(Browsed);
         browsingSound.Play();
     }
-
-    private void HandleAction(InputAction.CallbackContext value)
-    {
-        if (_isOpen) CloseBestiary();
-        else OpenBestiary();
-    }
-
-    private void OpenBestiary()
+    
+    public void OpenBestiary()
     {
         _isOpen = true;
-        _input.CustomInput.Bestiary.BestiaryNavigation.Enable();
-        _input.CustomInput.Player.Disable();
         _canvas.enabled = true;
         openSound.Play();
     }
 
-    private void CloseBestiary()
+    public void CloseBestiary()
     {
         _isOpen = false;
-        _input.CustomInput.Bestiary.BestiaryNavigation.Disable();
-        _input.CustomInput.Player.Enable();
         _canvas.enabled = false;
         closeSound.Play();
     }
