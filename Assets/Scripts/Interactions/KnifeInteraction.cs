@@ -1,10 +1,11 @@
+using Inventory.Items_Classes;
 using UnityEngine;
 
 namespace Interactions
 {
     public class KnifeInteraction : MonoBehaviour, InteractionAbstraction
     {
-        public Inventory playerInventory;
+        public Inventory.Inventory playerInventory;
         public AudioSource interactionSound;
         public void Interact()
         {
