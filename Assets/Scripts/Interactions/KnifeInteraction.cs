@@ -7,11 +7,13 @@ namespace Interactions
     {
         public Inventory.Inventory playerInventory;
         public AudioSource interactionSound;
+        [SerializeField] private BubbleText _bubbleText;
         public void Interact()
         {
             playerInventory.AddItem(GetComponent<Item>());
             interactionSound.Play();
             Debug.Log("На нож нажали");
+            _bubbleText?.ShowMessage("На нож нажали");
         }
     }
 }
