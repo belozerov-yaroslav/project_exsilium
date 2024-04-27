@@ -7,7 +7,6 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private CustomInputInitializer _input;
     private Rigidbody2D _rb;
     private Vector2 _moveVector;
     [SerializeField] private float moveSpeed = 5f;
@@ -24,16 +23,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.CustomInput.Enable();
-        _input.CustomInput.Player.Movement.performed += OnMovementPerformed;
-        _input.CustomInput.Player.Movement.canceled += OnMovementCanceled;
+        CustomInputInitializer.CustomInput.Enable();
+        CustomInputInitializer.CustomInput.Player.Movement.performed += OnMovementPerformed;
+        CustomInputInitializer.CustomInput.Player.Movement.canceled += OnMovementCanceled;
     }
     
     private void OnDisable()
     {
-        _input.CustomInput.Disable();
-        _input.CustomInput.Player.Movement.performed -= OnMovementPerformed;
-        _input.CustomInput.Player.Movement.canceled -= OnMovementCanceled;
+        CustomInputInitializer.CustomInput.Disable();
+        CustomInputInitializer.CustomInput.Player.Movement.performed -= OnMovementPerformed;
+        CustomInputInitializer.CustomInput.Player.Movement.canceled -= OnMovementCanceled;
     }
 
     private void FixedUpdate()

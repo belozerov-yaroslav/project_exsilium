@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem;
+using GameStates;
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
@@ -13,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [SerializeField] private DialogueParser _dialogueParser;
+    
+    [SerializeField] private GameStateMachine _stateManager;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -37,21 +40,13 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        CustomInputInitializer.CustomInput.Dialogue.NextPhrase.performed += _ =>
+        {
+            if (currentStory.currentChoices.Count == 0)
+                ContinueStory();
+        };
         dialogueIsPlaying = false;
         dialoguePanel.Hide();
-    }
-
-    private void Update()
-    {
-        // return right away if dialogue isn't playing
-        if (!dialogueIsPlaying)
-        {
-            return;
-        }
-        if (currentStory.currentChoices.Count == 0 && Input.GetKeyDown(KeyCode.E))
-        {
-            ContinueStory();
-        }
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -60,14 +55,15 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.Show();
         dialogueVariables.StartListening(currentStory);
-
-        //ContinueStory();
+        _stateManager.StateTransition(DialogueState.Instance);
+        ContinueStory();
     }
 
     private IEnumerator ExitDialogueMode()
     {
         yield return new WaitForSeconds(0.2f);
 
+        _stateManager.StateTransition(null);
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         dialoguePanel.Hide();

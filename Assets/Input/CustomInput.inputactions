@@ -263,15 +263,6 @@
             "id": "207f9d82-9ff1-479a-b0db-dfcdb06f94f3",
             "actions": [
                 {
-                    "name": "Interaction",
-                    "type": "Button",
-                    "id": "9b7fb392-5fe9-4805-9836-98ee4592fb9a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Inventory",
                     "type": "Button",
                     "id": "46e935fc-204a-49c8-87f0-6273436a8646",
@@ -288,40 +279,9 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "BestiaryNavigation",
-                    "type": "Value",
-                    "id": "f6aaae46-5e14-44e7-9896-fce6923c5a1c",
-                    "expectedControlType": "Double",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "a136b1b9-43f3-4a2f-b443-a66e473789fc",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5ae9ed5-3532-4412-9690-ad439d1aa2ef",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interaction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "433a592b-9f2a-4735-8cb8-0610c52a2ae6",
@@ -453,10 +413,27 @@
                     "action": "OpenBestiary",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "Bestiary",
+            "id": "84adc999-975b-4604-8acb-24e3744c3184",
+            "actions": [
+                {
+                    "name": "BestiaryNavigation",
+                    "type": "Value",
+                    "id": "815e9b6c-d215-4ce8-9190-4da602325c33",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
                 {
                     "name": "Keyboard AD",
-                    "id": "7b6e692a-068b-4d51-aec3-fe8859191a22",
+                    "id": "7504ef1f-7c8e-43fb-9951-c761a6db35c8",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -467,7 +444,7 @@
                 },
                 {
                     "name": "negative",
-                    "id": "ecd7ebda-0fed-4048-88ef-8c5fccf936b2",
+                    "id": "9811bab7-1434-46df-b367-6ba70a008d26",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -478,7 +455,7 @@
                 },
                 {
                     "name": "positive",
-                    "id": "7ba62d29-6e25-450b-884d-444837437e71",
+                    "id": "9cd57cca-8020-43cd-b170-809db05b6f50",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -489,7 +466,7 @@
                 },
                 {
                     "name": "Keyboard arrows",
-                    "id": "5a766cfb-23a6-4886-b60d-bf8f25ff17a9",
+                    "id": "beb5e35b-abd1-45ba-9192-2a75e95a4429",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -500,7 +477,7 @@
                 },
                 {
                     "name": "positive",
-                    "id": "1f1f25c6-dd4e-48cc-860d-cbd84943660b",
+                    "id": "c32ce27b-5705-4f0b-ad22-f52134be81c8",
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
@@ -511,7 +488,7 @@
                 },
                 {
                     "name": "negative",
-                    "id": "b918438f-fe51-48c7-bf28-33cb1b8daf06",
+                    "id": "ece13aa7-0277-452a-833c-4ced1ab3df3d",
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
@@ -522,7 +499,7 @@
                 },
                 {
                     "name": "Gamepad",
-                    "id": "0156a4a7-77f1-4222-bb4f-792a849bc8dd",
+                    "id": "b2c53a9c-e47a-40b5-908a-840383889fd1",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -533,7 +510,7 @@
                 },
                 {
                     "name": "negative",
-                    "id": "210867d5-e401-4ce9-98e3-b44795c76c54",
+                    "id": "069153bc-710f-4fcf-8c25-d325601cddee",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
@@ -544,7 +521,7 @@
                 },
                 {
                     "name": "positive",
-                    "id": "5a6623d8-56e2-4775-bd80-5451fc5f8940",
+                    "id": "f76c2cb2-8288-4872-95cd-6b3271e390d0",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
@@ -552,6 +529,34 @@
                     "action": "BestiaryNavigation",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Dialogue",
+            "id": "17b0d8c3-5061-4650-a9bb-10e539c9c55a",
+            "actions": [
+                {
+                    "name": "NextPhrase",
+                    "type": "Button",
+                    "id": "e961b663-4806-4d2d-8d21-4805cce687a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "40fa2b98-cf2c-4a68-a849-071ea9988d87",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextPhrase",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

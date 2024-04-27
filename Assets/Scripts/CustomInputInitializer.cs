@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CustomInputInitializer : MonoBehaviour
 {
-    public CustomInput CustomInput;
+    public static CustomInput CustomInput;
     private void Awake()
     {
+        if (CustomInput != null)
+            Debug.LogError("Two customInputs in scene");
         CustomInput = new CustomInput();
     }
 }

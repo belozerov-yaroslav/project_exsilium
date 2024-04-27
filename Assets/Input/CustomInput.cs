@@ -285,15 +285,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             ""id"": ""207f9d82-9ff1-479a-b0db-dfcdb06f94f3"",
             ""actions"": [
                 {
-                    ""name"": ""Interaction"",
-                    ""type"": ""Button"",
-                    ""id"": ""9b7fb392-5fe9-4805-9836-98ee4592fb9a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Inventory"",
                     ""type"": ""Button"",
                     ""id"": ""46e935fc-204a-49c8-87f0-6273436a8646"",
@@ -310,40 +301,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BestiaryNavigation"",
-                    ""type"": ""Value"",
-                    ""id"": ""f6aaae46-5e14-44e7-9896-fce6923c5a1c"",
-                    ""expectedControlType"": ""Double"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a136b1b9-43f3-4a2f-b443-a66e473789fc"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interaction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e5ae9ed5-3532-4412-9690-ad439d1aa2ef"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interaction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""433a592b-9f2a-4735-8cb8-0610c52a2ae6"",
@@ -475,10 +435,27 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""OpenBestiary"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Bestiary"",
+            ""id"": ""84adc999-975b-4604-8acb-24e3744c3184"",
+            ""actions"": [
+                {
+                    ""name"": ""BestiaryNavigation"",
+                    ""type"": ""Value"",
+                    ""id"": ""815e9b6c-d215-4ce8-9190-4da602325c33"",
+                    ""expectedControlType"": ""Double"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": ""Keyboard AD"",
-                    ""id"": ""7b6e692a-068b-4d51-aec3-fe8859191a22"",
+                    ""id"": ""7504ef1f-7c8e-43fb-9951-c761a6db35c8"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -489,7 +466,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""ecd7ebda-0fed-4048-88ef-8c5fccf936b2"",
+                    ""id"": ""9811bab7-1434-46df-b367-6ba70a008d26"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -500,7 +477,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""7ba62d29-6e25-450b-884d-444837437e71"",
+                    ""id"": ""9cd57cca-8020-43cd-b170-809db05b6f50"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -511,7 +488,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Keyboard arrows"",
-                    ""id"": ""5a766cfb-23a6-4886-b60d-bf8f25ff17a9"",
+                    ""id"": ""beb5e35b-abd1-45ba-9192-2a75e95a4429"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -522,7 +499,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""1f1f25c6-dd4e-48cc-860d-cbd84943660b"",
+                    ""id"": ""c32ce27b-5705-4f0b-ad22-f52134be81c8"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -533,7 +510,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""b918438f-fe51-48c7-bf28-33cb1b8daf06"",
+                    ""id"": ""ece13aa7-0277-452a-833c-4ced1ab3df3d"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -544,7 +521,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Gamepad"",
-                    ""id"": ""0156a4a7-77f1-4222-bb4f-792a849bc8dd"",
+                    ""id"": ""b2c53a9c-e47a-40b5-908a-840383889fd1"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -555,7 +532,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""210867d5-e401-4ce9-98e3-b44795c76c54"",
+                    ""id"": ""069153bc-710f-4fcf-8c25-d325601cddee"",
                     ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -566,7 +543,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""5a6623d8-56e2-4775-bd80-5451fc5f8940"",
+                    ""id"": ""f76c2cb2-8288-4872-95cd-6b3271e390d0"",
                     ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -574,6 +551,34 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""BestiaryNavigation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Dialogue"",
+            ""id"": ""17b0d8c3-5061-4650-a9bb-10e539c9c55a"",
+            ""actions"": [
+                {
+                    ""name"": ""NextPhrase"",
+                    ""type"": ""Button"",
+                    ""id"": ""e961b663-4806-4d2d-8d21-4805cce687a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""40fa2b98-cf2c-4a68-a849-071ea9988d87"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextPhrase"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -586,10 +591,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
-        m_Global_Interaction = m_Global.FindAction("Interaction", throwIfNotFound: true);
         m_Global_Inventory = m_Global.FindAction("Inventory", throwIfNotFound: true);
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
-        m_Global_BestiaryNavigation = m_Global.FindAction("BestiaryNavigation", throwIfNotFound: true);
+        // Bestiary
+        m_Bestiary = asset.FindActionMap("Bestiary", throwIfNotFound: true);
+        m_Bestiary_BestiaryNavigation = m_Bestiary.FindAction("BestiaryNavigation", throwIfNotFound: true);
+        // Dialogue
+        m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
+        m_Dialogue_NextPhrase = m_Dialogue.FindAction("NextPhrase", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -705,18 +714,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     // Global
     private readonly InputActionMap m_Global;
     private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
-    private readonly InputAction m_Global_Interaction;
     private readonly InputAction m_Global_Inventory;
     private readonly InputAction m_Global_OpenBestiary;
-    private readonly InputAction m_Global_BestiaryNavigation;
     public struct GlobalActions
     {
         private @CustomInput m_Wrapper;
         public GlobalActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Interaction => m_Wrapper.m_Global_Interaction;
         public InputAction @Inventory => m_Wrapper.m_Global_Inventory;
         public InputAction @OpenBestiary => m_Wrapper.m_Global_OpenBestiary;
-        public InputAction @BestiaryNavigation => m_Wrapper.m_Global_BestiaryNavigation;
         public InputActionMap Get() { return m_Wrapper.m_Global; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -726,34 +731,22 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GlobalActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GlobalActionsCallbackInterfaces.Add(instance);
-            @Interaction.started += instance.OnInteraction;
-            @Interaction.performed += instance.OnInteraction;
-            @Interaction.canceled += instance.OnInteraction;
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
             @OpenBestiary.started += instance.OnOpenBestiary;
             @OpenBestiary.performed += instance.OnOpenBestiary;
             @OpenBestiary.canceled += instance.OnOpenBestiary;
-            @BestiaryNavigation.started += instance.OnBestiaryNavigation;
-            @BestiaryNavigation.performed += instance.OnBestiaryNavigation;
-            @BestiaryNavigation.canceled += instance.OnBestiaryNavigation;
         }
 
         private void UnregisterCallbacks(IGlobalActions instance)
         {
-            @Interaction.started -= instance.OnInteraction;
-            @Interaction.performed -= instance.OnInteraction;
-            @Interaction.canceled -= instance.OnInteraction;
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
             @OpenBestiary.started -= instance.OnOpenBestiary;
             @OpenBestiary.performed -= instance.OnOpenBestiary;
             @OpenBestiary.canceled -= instance.OnOpenBestiary;
-            @BestiaryNavigation.started -= instance.OnBestiaryNavigation;
-            @BestiaryNavigation.performed -= instance.OnBestiaryNavigation;
-            @BestiaryNavigation.canceled -= instance.OnBestiaryNavigation;
         }
 
         public void RemoveCallbacks(IGlobalActions instance)
@@ -771,6 +764,98 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public GlobalActions @Global => new GlobalActions(this);
+
+    // Bestiary
+    private readonly InputActionMap m_Bestiary;
+    private List<IBestiaryActions> m_BestiaryActionsCallbackInterfaces = new List<IBestiaryActions>();
+    private readonly InputAction m_Bestiary_BestiaryNavigation;
+    public struct BestiaryActions
+    {
+        private @CustomInput m_Wrapper;
+        public BestiaryActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @BestiaryNavigation => m_Wrapper.m_Bestiary_BestiaryNavigation;
+        public InputActionMap Get() { return m_Wrapper.m_Bestiary; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BestiaryActions set) { return set.Get(); }
+        public void AddCallbacks(IBestiaryActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BestiaryActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BestiaryActionsCallbackInterfaces.Add(instance);
+            @BestiaryNavigation.started += instance.OnBestiaryNavigation;
+            @BestiaryNavigation.performed += instance.OnBestiaryNavigation;
+            @BestiaryNavigation.canceled += instance.OnBestiaryNavigation;
+        }
+
+        private void UnregisterCallbacks(IBestiaryActions instance)
+        {
+            @BestiaryNavigation.started -= instance.OnBestiaryNavigation;
+            @BestiaryNavigation.performed -= instance.OnBestiaryNavigation;
+            @BestiaryNavigation.canceled -= instance.OnBestiaryNavigation;
+        }
+
+        public void RemoveCallbacks(IBestiaryActions instance)
+        {
+            if (m_Wrapper.m_BestiaryActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBestiaryActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BestiaryActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BestiaryActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BestiaryActions @Bestiary => new BestiaryActions(this);
+
+    // Dialogue
+    private readonly InputActionMap m_Dialogue;
+    private List<IDialogueActions> m_DialogueActionsCallbackInterfaces = new List<IDialogueActions>();
+    private readonly InputAction m_Dialogue_NextPhrase;
+    public struct DialogueActions
+    {
+        private @CustomInput m_Wrapper;
+        public DialogueActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextPhrase => m_Wrapper.m_Dialogue_NextPhrase;
+        public InputActionMap Get() { return m_Wrapper.m_Dialogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DialogueActions set) { return set.Get(); }
+        public void AddCallbacks(IDialogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Add(instance);
+            @NextPhrase.started += instance.OnNextPhrase;
+            @NextPhrase.performed += instance.OnNextPhrase;
+            @NextPhrase.canceled += instance.OnNextPhrase;
+        }
+
+        private void UnregisterCallbacks(IDialogueActions instance)
+        {
+            @NextPhrase.started -= instance.OnNextPhrase;
+            @NextPhrase.performed -= instance.OnNextPhrase;
+            @NextPhrase.canceled -= instance.OnNextPhrase;
+        }
+
+        public void RemoveCallbacks(IDialogueActions instance)
+        {
+            if (m_Wrapper.m_DialogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDialogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DialogueActions @Dialogue => new DialogueActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -778,9 +863,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     }
     public interface IGlobalActions
     {
-        void OnInteraction(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnOpenBestiary(InputAction.CallbackContext context);
+    }
+    public interface IBestiaryActions
+    {
         void OnBestiaryNavigation(InputAction.CallbackContext context);
+    }
+    public interface IDialogueActions
+    {
+        void OnNextPhrase(InputAction.CallbackContext context);
     }
 }

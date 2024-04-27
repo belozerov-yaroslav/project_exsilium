@@ -7,19 +7,18 @@ using UnityEngine.InputSystem;
 public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private OutlineManager _outlineManager;
-    [SerializeField] private CustomInputInitializer _input;
     [SerializeField] private BoxCollider2D _playerTrigger;
     [SerializeField] private MonoBehaviour _action;
     private bool _ifPlayerInTrigger = false;
 
     private void Start()
     {
-        _input.CustomInput.Player.Interaction.performed += OnInteractionPerformed;
+        CustomInputInitializer.CustomInput.Player.Interaction.performed += OnInteractionPerformed;
     }
 
     private void OnDisable()
     {
-        _input.CustomInput.Player.Interaction.performed -= OnInteractionPerformed;
+        CustomInputInitializer.CustomInput.Player.Interaction.performed -= OnInteractionPerformed;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
