@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
-    [SerializeField] private List<IQuest> _quests;
+    [SerializeField] private List<Quest> _quests;
     private int _index;
-    private IQuest _currentQuest;
+    private Quest _currentQuest;
 
     public void Awake()
     {
@@ -16,7 +16,7 @@ public class QuestManager : MonoBehaviour
 
     public void FixedUpdate()
     {
-        _currentQuest.Update();
+        _currentQuest.UpdateQuest();
         if (!_currentQuest.IsFinished) return;
         _index++;
         if (_index < _quests.Count) _currentQuest = _quests[_index];
