@@ -9,7 +9,7 @@ public class Bestiary : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Canvas _canvas;
     private bool _isOpen;
-    private const float MaxPage = 3.01f;
+    private const float MaxPage = 4.01f;
     private float _page;
     private static readonly int Page = Animator.StringToHash("Page");
     private static readonly int Browsed = Animator.StringToHash("Browsed");
