@@ -12,13 +12,16 @@ public class QuestManager : MonoBehaviour
     public void Awake()
     {
         _currentQuest = _quests[0];
+        _currentQuest.QuestCompeted += HandleQuest;
     }
 
-    public void FixedUpdate()
+    private void HandleQuest()
     {
-        _currentQuest.UpdateQuest();
-        if (!_currentQuest.IsFinished) return;
+        _currentQuest.QuestCompeted -= HandleQuest;
+        _currentQuest.FinishQuest();
         _index++;
-        if (_index < _quests.Count) _currentQuest = _quests[_index];
+        if (_index >= _quests.Count) return;
+        _currentQuest = _quests[_index];
+        _currentQuest.QuestCompeted += HandleQuest;
     }
 }

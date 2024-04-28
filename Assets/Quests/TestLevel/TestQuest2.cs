@@ -5,20 +5,24 @@ using UnityEngine;
 
 public class TestQuest2 : Quest
 {
-    [SerializeField] private Collider2D trigger;
-    [SerializeField] private Collider2D playerTrigger;
+    [SerializeField] private TestTrigger trigger;
 
-    public override void UpdateQuest()
+
+    public void Awake()
     {
-        if (!trigger.IsTouching(playerTrigger)) return;
-        IsFinished = true;
-        Finish();
+        trigger.PlayerEntered += HandleTrigger;
     }
 
-    private void Finish()
+    private void HandleTrigger()
     {
-        Debug.Log("Квест завершён ");
+        QuestCompeted?.Invoke();
     }
-    
-    public override bool IsFinished { get; protected set; }
+
+    public override event Action QuestCompeted;
+
+    public override void FinishQuest()
+    {
+        Debug.Log("Квест пройден!");
+        Destroy(trigger.gameObject);
+    }
 }
