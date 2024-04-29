@@ -9,6 +9,7 @@
         Icon = 4,
         Incense = 6,
         Knife = 1,
-        PrayerBook = 7
+        PrayerBook = 7,
+        Salt = 9
     }
 }

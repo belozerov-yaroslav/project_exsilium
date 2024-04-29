@@ -25,8 +25,8 @@ namespace BanishSystem
 
         public bool EquivalentTo(BanishStep obj)
         {
-            return obj._interactionItemEnum != _interactionItemEnum &&
-                   !(_percentageOfCorrectness - 0.1 > obj._percentageOfCorrectness) &&
+            return obj._interactionItemEnum == _interactionItemEnum &&
+                   _percentageOfCorrectness - 0.1 <= obj._percentageOfCorrectness &&
                    _nearItems.All(item => obj._nearItems.Contains(item)) &&
                    (_pray == PrayEnum.None || _pray == obj._pray);
         }

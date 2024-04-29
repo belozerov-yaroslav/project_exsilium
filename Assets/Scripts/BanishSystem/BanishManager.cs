@@ -10,7 +10,7 @@ namespace BanishSystem
         [SerializeField] private int level;
         private BanishStep[] _steps;
         private int _index;
-        private bool _finished = false;
+        private bool _finished;
         public void Awake()
         {
             inventory.ItemHasAdded += HandleItemAddendum;

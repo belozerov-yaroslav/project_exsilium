@@ -10,7 +10,6 @@ namespace BanishSystem
         private static readonly Dictionary<int, BanishStep[]> BanishSteps = new()
             { { 1, new []
             {
-                new BanishStep(ItemEnum.Candle, Array.Empty<ItemEnum>()) ,
                 new BanishStep(ItemEnum.Knife, new [] {ItemEnum.Candle})
             } } };
 
