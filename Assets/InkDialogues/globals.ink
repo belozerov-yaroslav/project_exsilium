@@ -9,3 +9,4 @@ VAR quest1_firstMeet = true
 VAR mari_met = false
 VAR take_keys = false
 VAR liho_banished = false
+VAR know_thing = false
