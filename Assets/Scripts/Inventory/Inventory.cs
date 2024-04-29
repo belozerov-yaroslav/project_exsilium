@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Inventory.Items_Classes;
 using UnityEngine;
@@ -30,8 +31,12 @@ namespace Inventory
         public void AddItem(Item newItem)
         {
             InventorySlots[newItem.ItemId - 1].InsertItem(newItem);
+            ItemHasAdded?.Invoke(newItem);
         }
+        
+        public event Action<Item> ItemHasAdded;
 
+        
         public void CloseOpenInventory(InputAction.CallbackContext context)
         {
             if (!context.performed | context.control.name != "i") return;
