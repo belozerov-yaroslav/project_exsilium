@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Inventory.Items_Classes;
 using UnityEngine;
@@ -11,8 +12,8 @@ namespace Inventory
 
         private static readonly List<ItemSlot> InventorySlots = new();
         private int _indexCurrentItem = -1;
-        private bool _isOpened = false;
-        private bool _isItemSelected = false;
+        private bool _isOpened;
+        private bool _isItemSelected;
 
         private void Start()
         {
@@ -29,24 +30,27 @@ namespace Inventory
 
         public void AddItem(Item newItem)
         {
-            InventorySlots[newItem.ItemId - 1].InsertItem(newItem);
+            InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
+            ItemHasAdded?.Invoke(newItem);
         }
 
-        public void CloseOpenInventory(InputAction.CallbackContext context)
+        public event Action<Item> ItemHasAdded;
+
+        private void CloseOpenInventory(InputAction.CallbackContext context)
         {
             if (!context.performed | context.control.name != "i") return;
             _isOpened = !_isOpened;
             inventoryPanel.SetActive(_isOpened);
         }
 
-        public void InteractCurrentItem(InputAction.CallbackContext context)
+        private void InteractCurrentItem(InputAction.CallbackContext context)
         {
             if (!context.performed || context.control.name != "space" ||
                 _indexCurrentItem == -1 || !_isItemSelected) return;
             InventorySlots[_indexCurrentItem].Item.DoAction();
         }
 
-        public void ChangeCurrentItem(InputAction.CallbackContext context)
+        private void ChangeCurrentItem(InputAction.CallbackContext context)
         {
             if (!context.performed | !int.TryParse(context.control.name, out var keyNumber)) return;
             if (InventorySlots[keyNumber - 1].IsEmpty()) return;

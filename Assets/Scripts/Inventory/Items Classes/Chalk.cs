@@ -1,15 +1,16 @@
+using System;
+using BanishSystem;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Chalk : Item
     {
-        private int _itemId;
-
-        public override int ItemId
+        private ItemEnum _itemEnum;
+        public override ItemEnum Enum
         {
-            get => _itemId;
-            set { }
+            get => _itemEnum;
+            set {}
         }
 
         private Sprite _itemIcon;
@@ -23,12 +24,15 @@ namespace Inventory.Items_Classes
         private void Start()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemId = 8;
+            _itemEnum = ItemEnum.Chalk;
         }
 
         public override void DoAction()
         {
             Debug.Log("МЕЛ");
+            WasInteracted?.Invoke(CollectInfo());
         }
+
+        public override event Action<BanishStep> WasInteracted;
     }
 }

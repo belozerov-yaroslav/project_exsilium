@@ -1,13 +1,15 @@
+using System;
+using BanishSystem;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Herbs : Item
     {
-        private int _itemId;
-        public override int ItemId
+        private ItemEnum _itemEnum;
+        public override ItemEnum Enum
         {
-            get => _itemId;
+            get => _itemEnum;
             set {}
         }
 
@@ -22,12 +24,15 @@ namespace Inventory.Items_Classes
         private void Start()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemId = 5;
+            _itemEnum = ItemEnum.Herbs;
         }
         
         public override void DoAction()
         {
             Debug.Log("ТРАВЫ");
+            WasInteracted?.Invoke(CollectInfo());
         }
+
+        public override event Action<BanishStep> WasInteracted;
     }
 }
