@@ -5,7 +5,5 @@ using UnityEngine;
 
 public interface InteractionAbstraction
 {
-    public void Interact()
-    {
-    }
+    public void Interact();
 }

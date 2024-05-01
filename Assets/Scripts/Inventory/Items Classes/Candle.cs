@@ -23,6 +23,7 @@ namespace Inventory.Items_Classes
 
         private void Start()
         {
+            IsDropable = true;
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
             _itemEnum = ItemEnum.Candle;
         }
@@ -31,6 +32,7 @@ namespace Inventory.Items_Classes
         {
             Debug.Log("СВЕЧА");
             WasInteracted?.Invoke(CollectInfo());
+            DropItem();
         }
 
         public override event Action<BanishStep> WasInteracted;
