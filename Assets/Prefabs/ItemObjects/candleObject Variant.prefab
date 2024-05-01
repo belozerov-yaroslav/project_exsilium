@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 6438945816128254990, guid: 1d5c17a5ee7b53f428d60850e06a89f2, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b6b0113326fe0dd4f883c1b398a657ea, type: 3}
+      objectReference: {fileID: 21300000, guid: 50e8fe16bb2f65d41a8dae7974e2e507, type: 3}
     - target: {fileID: 6438945816128254990, guid: 1d5c17a5ee7b53f428d60850e06a89f2, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -102,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7983071978930866749, guid: 1d5c17a5ee7b53f428d60850e06a89f2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7983071978930866749, guid: 1d5c17a5ee7b53f428d60850e06a89f2, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.32
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7983071978930866749, guid: 1d5c17a5ee7b53f428d60850e06a89f2, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
