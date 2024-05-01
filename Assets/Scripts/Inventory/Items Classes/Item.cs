@@ -19,6 +19,10 @@ namespace Inventory.Items_Classes
                 {
                     ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
                     ItemEnum.Knife, ItemEnum.PrayerBook
+                }, new[]
+                {
+                    ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
+                    ItemEnum.Knife, ItemEnum.PrayerBook
                 });
         }
 

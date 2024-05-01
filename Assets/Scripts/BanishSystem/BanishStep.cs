@@ -9,15 +9,17 @@ namespace BanishSystem
     {
         private readonly ItemEnum _interactionItemEnum;
         private readonly ItemEnum[] _nearItems;
+        private readonly ItemEnum[] _itemsOnMap;
         private readonly float _percentageOfCorrectness;
         private readonly PrayEnum _pray;
 
 
-        public BanishStep(ItemEnum interactionItemEnum, ItemEnum[] nearItems, float percentageOfCorrectness = 100f,
+        public BanishStep(ItemEnum interactionItemEnum, ItemEnum[] nearItems, ItemEnum[] itemsOnMap, float percentageOfCorrectness = 100f,
             PrayEnum pray = PrayEnum.None)
         {
             _interactionItemEnum = interactionItemEnum;
             _nearItems = nearItems;
+            _itemsOnMap = itemsOnMap;
             _percentageOfCorrectness = percentageOfCorrectness;
             _pray = pray;
         }
@@ -28,6 +30,7 @@ namespace BanishSystem
             return obj._interactionItemEnum == _interactionItemEnum &&
                    _percentageOfCorrectness - 0.1 <= obj._percentageOfCorrectness &&
                    _nearItems.All(item => obj._nearItems.Contains(item)) &&
+                   _itemsOnMap.All(item => obj._itemsOnMap.Contains(item)) &&
                    (_pray == PrayEnum.None || _pray == obj._pray);
         }
     }
