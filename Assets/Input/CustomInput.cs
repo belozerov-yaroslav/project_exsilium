@@ -62,6 +62,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ItemChange"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8fa81f8-2852-489e-a2ef-728f81e1a9e4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -309,111 +318,111 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d31aba29-724e-4b5a-bcb6-98a346628056"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f24f10e5-d5c0-4fcd-9c0a-536b3f6fb58d"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9158e20e-3ff0-46c1-84c1-ef9c91eec1c9"",
-                    ""path"": ""<Keyboard>/3"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f190e1c5-5c29-4a66-a0ec-980e60fe0260"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""864449bd-5aef-48e4-85bf-91de9ff8e32b"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""627be834-cedc-4a66-9438-063e70c92204"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""81fdbbdb-3bad-4bf3-938f-7529f8d49791"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""447e3a1b-eaa7-495b-a804-09687560b3de"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""29781878-567f-46a0-99c9-6798fee3847f"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Inventory"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f4ebefa5-fa1e-48cf-bc35-f1556e739d83"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ItemIteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cec5638-cfbc-439d-8733-a05de788d6a8"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdead3ef-1167-4715-9bc9-fb362f4697b5"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a5e3b2b8-52b3-41ac-ac83-b60d2a4c9b47"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bea3e382-c6c2-449a-aa99-93d1b4c3bdd1"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4354333f-b270-4939-bb79-1ba65d309639"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c2c79109-25f7-4f8f-8494-611968abc423"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""952463d1-91f8-4891-be42-e40b759c93a0"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6f99500-4d73-4c4b-99a5-8f8033c9d317"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07f373ec-974f-4815-bcff-f527969623bc"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -611,6 +620,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_ItemIteraction = m_Player.FindAction("ItemIteraction", throwIfNotFound: true);
+        m_Player_ItemChange = m_Player.FindAction("ItemChange", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
@@ -685,6 +695,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_ItemIteraction;
+    private readonly InputAction m_Player_ItemChange;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -693,6 +704,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @ItemIteraction => m_Wrapper.m_Player_ItemIteraction;
+        public InputAction @ItemChange => m_Wrapper.m_Player_ItemChange;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -714,6 +726,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ItemIteraction.started += instance.OnItemIteraction;
             @ItemIteraction.performed += instance.OnItemIteraction;
             @ItemIteraction.canceled += instance.OnItemIteraction;
+            @ItemChange.started += instance.OnItemChange;
+            @ItemChange.performed += instance.OnItemChange;
+            @ItemChange.canceled += instance.OnItemChange;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -730,6 +745,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ItemIteraction.started -= instance.OnItemIteraction;
             @ItemIteraction.performed -= instance.OnItemIteraction;
             @ItemIteraction.canceled -= instance.OnItemIteraction;
+            @ItemChange.started -= instance.OnItemChange;
+            @ItemChange.performed -= instance.OnItemChange;
+            @ItemChange.canceled -= instance.OnItemChange;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -891,6 +909,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnInteraction(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnItemIteraction(InputAction.CallbackContext context);
+        void OnItemChange(InputAction.CallbackContext context);
     }
     public interface IGlobalActions
     {
