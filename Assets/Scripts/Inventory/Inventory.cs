@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Inventory.Items_Classes;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,6 +14,8 @@ namespace Inventory
         private static readonly List<ItemSlot> InventorySlots = new();
         private int _indexCurrentItem = -1;
         private bool _isOpened;
+
+        private readonly HashSet<ItemEnum> _itemsOnMap = new(); 
 
         public static Inventory Instance { get; private set; }
 
@@ -35,6 +38,8 @@ namespace Inventory
 
         public void AddItem(Item newItem)
         {
+            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.Enum))
+                _itemsOnMap.Remove(newItem.Enum);
             InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
         }
 
@@ -68,8 +73,14 @@ namespace Inventory
             if (_indexCurrentItem == -1) return;
             InventorySlots[_indexCurrentItem].Item.DoAction();
             if (!InventorySlots[_indexCurrentItem].Item.IsDropable) return;
+            _itemsOnMap.Add(InventorySlots[_indexCurrentItem].Item.Enum);
             InventorySlots[_indexCurrentItem].DeleteItem();
             _indexCurrentItem = -1;
+        }
+
+        public ItemEnum[] GetItemsOnMap()
+        {
+            return _itemsOnMap.ToArray();
         }
     }
 }
