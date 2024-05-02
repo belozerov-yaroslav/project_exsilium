@@ -5,13 +5,23 @@ using UnityEngine;
 
 public class TestQuest1 : Quest
 {
-    [SerializeField] private Collider2D trigger;
-    [SerializeField] private Collider2D playerTrigger;
+    [SerializeField] private TestTrigger trigger;
 
-    public override void UpdateQuest()
+
+    public void Awake()
     {
-        if (!trigger.IsTouching(playerTrigger)) return;
-        IsFinished = true;
+        trigger.PlayerEntered += HandleTrigger;
     }
-    public override bool IsFinished { get; protected set; }
+
+    private void HandleTrigger()
+    {
+        QuestCompeted?.Invoke();
+    }
+
+    public override event Action QuestCompeted;
+
+    public override void FinishQuest()
+    {
+        Destroy(trigger.gameObject);
+    }
 }
