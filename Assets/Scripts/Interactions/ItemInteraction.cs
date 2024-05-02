@@ -7,6 +7,6 @@ public class ItemInteraction : MonoBehaviour, InteractionAbstraction
     public void Interact()
     {
         Inventory.Inventory.Instance.AddItem(item);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

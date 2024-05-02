@@ -17,7 +17,7 @@ public class BubbleText : MonoBehaviour
     {
         CoroutineLocker += 1;
         var t = CoroutineLocker;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         if (CoroutineLocker != t) yield break;
         _text.enabled = false;
         CoroutineLocker = 0;

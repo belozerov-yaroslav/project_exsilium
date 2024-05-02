@@ -29,7 +29,7 @@ namespace Inventory.Items_Classes
         
         public override void DoAction()
         {
-            Debug.Log("Н О Ж");
+            Debug.Log("КРЕСТ");
             WasInteracted?.Invoke(CollectInfo());
         }
 

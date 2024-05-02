@@ -8,7 +8,7 @@ public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private OutlineManager _outlineManager;
     [SerializeField] private MonoBehaviour _action;
-    private bool _ifPlayerInTrigger = false;
+    private bool _ifPlayerInTrigger;
 
     private void Start()
     {
@@ -22,14 +22,14 @@ public class InteractionManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("PlayerInteraction")) return;
         _ifPlayerInTrigger = true;
         _outlineManager.TurnOnOutline();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("PlayerInteraction")) return;
         _ifPlayerInTrigger = false;
         _outlineManager.TurnOffOutline();
     }

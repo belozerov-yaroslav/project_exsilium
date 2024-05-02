@@ -35,6 +35,7 @@ namespace Inventory.Items_Classes
             if (objectPrefab == null) return;
             var obj = Instantiate(objectPrefab, playerTransform.position, playerTransform.rotation);
             obj.GetComponent<ItemInteraction>().item = this;
+            obj.SetActive(true);
         }
 
         public abstract event Action<BanishStep> WasInteracted;

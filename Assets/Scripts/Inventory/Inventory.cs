@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Inventory.Items_Classes;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,18 +11,21 @@ namespace Inventory
     {
         public GameObject inventoryPanel;
 
-        private static readonly List<ItemSlot> InventorySlots = new();
+        private static readonly List<ItemSlot> InventorySlots = new(9);
         private int _indexCurrentItem = -1;
         private bool _isOpened;
 
         public static Inventory Instance { get; private set; }
 
-        private void Start()
+        private void Awake()
         {
             if (Instance != null)
                 Debug.LogError("Find another inventory on the scene");
             Instance = this;
-            
+        }
+
+        private void Start()
+        {
             for (var i = 0; i < transform.childCount; i++)
             {
                 InventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
@@ -36,6 +40,7 @@ namespace Inventory
         public void AddItem(Item newItem)
         {
             InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
+            if (InventorySlots.Select(x => x.Item).All(x => x != null)) InventoryFilled?.Invoke();
         }
 
         private void CloseOpenInventory(InputAction.CallbackContext context)
@@ -71,5 +76,6 @@ namespace Inventory
             InventorySlots[_indexCurrentItem].DeleteItem();
             _indexCurrentItem = -1;
         }
+        public event Action InventoryFilled;
     }
 }
