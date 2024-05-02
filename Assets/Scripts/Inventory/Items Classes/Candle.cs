@@ -1,13 +1,15 @@
+using System;
+using BanishSystem;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Candle : Item
     {
-        private int _itemId;
-        public override int ItemId
+        private ItemEnum _itemEnum;
+        public override ItemEnum Enum
         {
-            get => _itemId;
+            get => _itemEnum;
             set {}
         }
 
@@ -21,13 +23,18 @@ namespace Inventory.Items_Classes
 
         private void Start()
         {
+            IsDropable = true;
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemId = 2;
+            _itemEnum = ItemEnum.Candle;
         }
         
         public override void DoAction()
         {
             Debug.Log("СВЕЧА");
+            WasInteracted?.Invoke(CollectInfo());
+            DropItem();
         }
+
+        public override event Action<BanishStep> WasInteracted;
     }
 }

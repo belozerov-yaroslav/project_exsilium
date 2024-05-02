@@ -8,7 +8,6 @@ public class Bestiary : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Canvas _canvas;
-    private bool _isOpen;
     private const float MaxPage = 4.01f;
     private float _page;
     private static readonly int Page = Animator.StringToHash("Page");
@@ -36,14 +35,12 @@ public class Bestiary : MonoBehaviour
     
     public void OpenBestiary()
     {
-        _isOpen = true;
         _canvas.enabled = true;
         openSound.Play();
     }
 
     public void CloseBestiary()
     {
-        _isOpen = false;
         _canvas.enabled = false;
         closeSound.Play();
     }

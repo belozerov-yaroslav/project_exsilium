@@ -28,6 +28,14 @@ public class ItemSlot : MonoBehaviour
         _itemImage.color = Color.white;
     }
 
+    public void DeleteItem()
+    {
+        Item = null;
+        _itemImage.sprite = null;
+        _itemImage.color = _backgroundColor;
+        TurnItem(false);
+    }
+
     public void TurnItem(bool isSelected) => _outlineImage.color = isSelected ? _outlineColor : _backgroundColor;
     
     public bool IsEmpty() => Item == null;

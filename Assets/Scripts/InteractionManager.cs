@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class InteractionManager : MonoBehaviour
 {
     [SerializeField] private OutlineManager _outlineManager;
-    [SerializeField] private BoxCollider2D _playerTrigger;
     [SerializeField] private MonoBehaviour _action;
     private bool _ifPlayerInTrigger = false;
 
@@ -23,14 +22,14 @@ public class InteractionManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other != _playerTrigger) return;
+        if (!other.CompareTag("Player")) return;
         _ifPlayerInTrigger = true;
         _outlineManager.TurnOnOutline();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other != _playerTrigger) return;
+        if (!other.CompareTag("Player")) return;
         _ifPlayerInTrigger = false;
         _outlineManager.TurnOffOutline();
     }

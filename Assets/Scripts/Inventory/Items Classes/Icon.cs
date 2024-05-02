@@ -1,16 +1,17 @@
+using System;
+using BanishSystem;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Icon : Item
     {
-        private int _itemId;
-        public override int ItemId
+        private ItemEnum _itemEnum;
+        public override ItemEnum Enum
         {
-            get => _itemId;
+            get => _itemEnum;
             set {}
         }
-
         private Sprite _itemIcon;
 
         public override Sprite ItemIcon
@@ -22,12 +23,15 @@ namespace Inventory.Items_Classes
         private void Start()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemId = 4;
+            _itemEnum = ItemEnum.Icon;
         }
         
         public override void DoAction()
         {
             Debug.Log("ИКОНА");
+            WasInteracted?.Invoke(CollectInfo());
         }
+
+        public override event Action<BanishStep> WasInteracted;
     }
 }
