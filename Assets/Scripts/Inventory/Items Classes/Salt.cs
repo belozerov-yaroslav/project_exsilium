@@ -30,6 +30,7 @@ namespace Inventory.Items_Classes
         public override void DoAction()
         {
             Debug.Log("Соль");
+            WasInteracted?.Invoke(CollectInfo());
         }
 
         public override event Action<BanishStep> WasInteracted;

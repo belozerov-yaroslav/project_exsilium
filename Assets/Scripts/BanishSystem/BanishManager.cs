@@ -16,6 +16,8 @@ namespace BanishSystem
         private const int GhostTolerance = 10;
         private int _currentMistakesCost;
 
+        [SerializeField] private BubbleText _bubbleText;
+
         public void Awake()
         {
             _steps = BanishStepsCompiler.BuildSteps(level);
@@ -36,6 +38,8 @@ namespace BanishSystem
                 if (_index >= _steps.Length - 1)
                 {
                     Debug.Log("ПРИЗРАК ИЗГНАН");
+                    _bubbleText.ShowMessage("ПРИЗРАК ИЗГНАН");
+                        
                     _finished = true;
                     BanishFinished?.Invoke();
                 }

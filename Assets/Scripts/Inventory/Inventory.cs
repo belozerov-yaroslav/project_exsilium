@@ -38,7 +38,8 @@ namespace Inventory
             CustomInputInitializer.CustomInput.Player.ItemChange.performed += ChangeCurrentItem;
             CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnItemInteraction;
             
-            ItemInjector.instance.Inject();
+            Debug.Log("start");
+            ItemInjector.instance?.Inject();
         }
 
         public void AddItem(Item newItem)
