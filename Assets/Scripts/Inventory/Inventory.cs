@@ -15,6 +15,8 @@ namespace Inventory
         private int _indexCurrentItem = -1;
         private bool _isOpened;
 
+        private readonly HashSet<ItemEnum> _itemsOnMap = new(); 
+
         public static Inventory Instance { get; private set; }
 
         private void Awake()
@@ -41,6 +43,8 @@ namespace Inventory
 
         public void AddItem(Item newItem)
         {
+            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.Enum))
+                _itemsOnMap.Remove(newItem.Enum);
             InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
             if (InventorySlots.Select(x => x.Item).All(x => x != null)) InventoryFilled?.Invoke();
         }
@@ -75,9 +79,15 @@ namespace Inventory
             if (_indexCurrentItem == -1) return;
             InventorySlots[_indexCurrentItem].Item.DoAction();
             if (!InventorySlots[_indexCurrentItem].Item.IsDropable) return;
+            _itemsOnMap.Add(InventorySlots[_indexCurrentItem].Item.Enum);
             InventorySlots[_indexCurrentItem].DeleteItem();
             _indexCurrentItem = -1;
         }
         public event Action InventoryFilled;
+
+        public ItemEnum[] GetItemsOnMap()
+        {
+            return _itemsOnMap.ToArray();
+        }
     }
 }
