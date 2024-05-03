@@ -12796,6 +12796,7 @@ GameObject:
   - component: {fileID: 1340758928}
   - component: {fileID: 1340758927}
   - component: {fileID: 1340758932}
+  - component: {fileID: 1340758933}
   m_Layer: 0
   m_Name: mari
   m_TagString: Untagged
@@ -12945,6 +12946,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0.12127924, y: 0}
   m_Size: {x: 2.014268, y: 2.5707254}
   m_Direction: 0
+--- !u!95 &1340758933
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1340758926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b20e4807794b1ef4e9dbe5616a8fd450, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1352625951
 GameObject:
   m_ObjectHideFlags: 0
@@ -14106,7 +14128,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 15
   m_Sprite: {fileID: 21300000, guid: 8f0fcfcb16f010e4fb1c61b1ebf859e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
