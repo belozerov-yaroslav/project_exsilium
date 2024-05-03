@@ -418,6 +418,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ClosePrayerBook",
+                    "type": "Button",
+                    "id": "68f7aac5-cbdb-4a88-a389-fda9b7d03720",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -440,6 +449,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "OpenBestiary",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4284761c-9492-4422-a3de-470f7796eed7",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClosePrayerBook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

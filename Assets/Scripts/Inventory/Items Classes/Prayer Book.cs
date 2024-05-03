@@ -7,7 +7,8 @@ namespace Inventory.Items_Classes
     public class PrayerBook : Item
     {
         private ItemEnum _itemEnum;
-
+        public Canvas prayCanvas;
+        
         public override ItemEnum Enum
         {
             get => _itemEnum;
@@ -32,6 +33,7 @@ namespace Inventory.Items_Classes
         {
             Debug.Log("МОЛИТВЫ");
             WasInteracted?.Invoke(CollectInfo());
+            GameStateMachine.Instance.StateTransition(PrayerBookState.Instance); 
         }
 
         private new BanishStep CollectInfo()

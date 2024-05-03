@@ -8,15 +8,24 @@ public class GameStateMachine : MonoBehaviour
 {
     [SerializeField] private List<GameState> _gameStates;
     private readonly Stack<GameState> _statesStack = new Stack<GameState>();
-
+    public static GameStateMachine Instance { get; private set; }
+    
     public void Start()
     {
+        
         CustomInputInitializer.CustomInput.Player.Disable();
         CustomInputInitializer.CustomInput.Bestiary.Disable();
         CustomInputInitializer.CustomInput.Dialogue.Disable();
         _gameStates.ForEach(state => state.OnTransition += StateTransition);
         _statesStack.Push(_gameStates.Find(state => state is DefaultState));
         _statesStack.Peek().TurnOn();
+    }
+
+    public void Awake()
+    {
+        if(Instance != null)
+            Debug.LogError("Two GameStateMachine at scene");
+        Instance = this;
     }
 
     public void StateTransition(GameState state)
