@@ -7,6 +7,8 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
 {
     [SerializeField] private FirstQuest quest;
     [SerializeField] private BubbleText bubble;
+    [SerializeField] private Rigidbody2D player;
+    [SerializeField] private Transform streetTeleport;
     private bool _itemsCollected;
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
     {
         if (_itemsCollected)
         {
-            Debug.Log("Типа вышел на улицу");
+            player.position = streetTeleport.position;
         }
         else
         {
