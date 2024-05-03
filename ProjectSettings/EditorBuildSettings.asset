@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DialogueScene.unity
     guid: 5858dff1afaef584b81d29194ce9afb8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: abb35331d72f03c47ad7d14eaf791921
   - enabled: 1

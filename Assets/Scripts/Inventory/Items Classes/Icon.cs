@@ -20,7 +20,7 @@ namespace Inventory.Items_Classes
             set{}
         }
 
-        private void Start()
+        private void Awake()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
             _itemEnum = ItemEnum.Icon;

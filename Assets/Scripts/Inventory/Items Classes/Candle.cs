@@ -21,7 +21,7 @@ namespace Inventory.Items_Classes
             set{}
         }
 
-        private void Start()
+        private void Awake()
         {
             IsDropable = true;
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
