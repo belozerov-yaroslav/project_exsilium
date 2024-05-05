@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BanishSystem;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -9,40 +10,42 @@ using Random = UnityEngine.Random;
 public class TargetCircle : MonoBehaviour
 {
     public GameObject parentCanvas;
-    public float timeAim;
+    [SerializeField] public float timeAim;
 
     public GameObject backGroundPanel;
-    public float maxDistanceOffset;
+
+    public bool isSuccessfully;
     
     private WayPoint _waypointScript;
-    private SpriteRenderer _spriteRenderer;
     private Image _backgroundImage;
+    private AppearanceScript _appearanceScript;
+    private SpriteRenderer _spriteRenderer;
     
     private bool _isStarted;
     private Vector2 _circleCenter;
     private float _circleRadius;
+    private float _timeLeft;
     
     private int _score;
     private int _maxScore;
+    public float scorePercent;
+    public PrayEnum pray;
  
     private Color _currentColor;
     
-    private float _startTime;
-    [SerializeField] public float timeDelay;
     [SerializeField] public float transparencyStep;
-    private Color _circleFullColor;
-    private float _timeLeft;
-    [SerializeField] public float correctnessCoefficient ;
     
     //Дефолтные значения для нового запуска
-    private Color _defaultColor;
-    private Color _circleStartColor;
+    private Color _defaultBackColor;
+    private Color _defaultCircleColor;
     private Vector2 _startPosition;
     void Start()
     {
         _waypointScript = GetComponent<WayPoint>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
         _backgroundImage = backGroundPanel.GetComponent<Image>();
+        _appearanceScript = GetComponent<AppearanceScript>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        
         _currentColor = _backgroundImage.color;
         _maxScore = (int)timeAim * 50;
         
@@ -50,50 +53,52 @@ public class TargetCircle : MonoBehaviour
         _circleCenter = transform.position;
  
         
-        _defaultColor = new Color(0,0,0,0f);
-        _circleStartColor = _spriteRenderer.color;
-        
-        _circleFullColor = new Color(_circleStartColor.r,_circleStartColor.g, _circleStartColor.b, 1f);
+        _defaultBackColor = _currentColor;
+        _defaultCircleColor = _spriteRenderer.color;
+        _startPosition = transform.localPosition;
     }
 
     private void FixedUpdate()
     {
         _circleCenter = transform.position;
-        if (_isStarted)
-        {
-            if (timeAim + _startTime - Time.time < 0)
-            {
-                FinishAim();
-            }
+        if(!_isStarted || (_timeLeft + _appearanceScript.timeAppearance - Time.time > 0)) return;
+        if(!_waypointScript.IsStarted)
+            StartMove();
+        if (_timeLeft + timeAim + _appearanceScript.timeAppearance - Time.time > 0)
             CheckAccuracy();
-        }
+        else
+           FinishAim();
+
     }
+    
     public void StartAim()
     {
-        _startTime = Time.time;
         _isStarted = true;
-        parentCanvas.SetActive(true);
+        _timeLeft = Time.time;
+        _appearanceScript.StartAppear();
     }
+
+    public void StartMove() => _waypointScript.IsStarted = true;
+
+
+    public delegate void Result(float percent,PrayEnum pray);
+    public static event Result OnFinished;
     
     public void FinishAim()
     {
-        if(_score > _maxScore*correctnessCoefficient)
-            Debug.Log("набрал нужное количество");
-        else
-        {
-            Debug.Log("не набрал нужное количество");
-        }
-
-        _backgroundImage.color = _defaultColor;
-        _currentColor = _defaultColor;
         _isStarted = false;
         _waypointScript.StopWay();
-        parentCanvas.SetActive(false);
+        _backgroundImage.color = _defaultBackColor;
+        _spriteRenderer.color = _defaultCircleColor;
+        transform.localPosition = _startPosition;
+        GameStateMachine.Instance.StateTransition(null);
+        scorePercent = _score / _maxScore * 100f;
+        OnFinished?.Invoke(scorePercent,pray);
     }
 
     private void CheckAccuracy()
     {
-        var centerPosition = Camera.main!.WorldToScreenPoint(_circleCenter);
+        var centerPosition = Camera.main.WorldToScreenPoint(_circleCenter);
         var distance = (centerPosition - Input.mousePosition).magnitude;
         if (distance <= _circleRadius)
         {
@@ -111,7 +116,7 @@ public class TargetCircle : MonoBehaviour
     private void GetBright()
     {
         _currentColor = new Color(_currentColor.r, _currentColor.g, _currentColor.b, 
-            Math.Max(_currentColor.a -3*transparencyStep,0f));
+            Math.Max(_currentColor.a - 3 * transparencyStep, 0f));
         _backgroundImage.color = _currentColor;
     }
     
