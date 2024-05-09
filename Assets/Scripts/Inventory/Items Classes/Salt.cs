@@ -1,11 +1,14 @@
 using System;
 using BanishSystem;
+using GameStates;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Salt : Item
     {
+        private Animator _animator;
+        private Player _player;
         private ItemEnum _itemEnum;
         public override ItemEnum Enum
         {
@@ -14,6 +17,9 @@ namespace Inventory.Items_Classes
         }
 
         private Sprite _itemIcon;
+        private static readonly int InteractSalt = Animator.StringToHash("InteractSalt");
+        private static readonly int LastHorizontal = Animator.StringToHash("LastHorizontal");
+        private static readonly int LastVertical = Animator.StringToHash("LastVertical");
 
         public override Sprite ItemIcon
         {
@@ -21,16 +27,27 @@ namespace Inventory.Items_Classes
             set{}
         }
 
-        private void Awake()
+        private void Start()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
             _itemEnum = ItemEnum.Salt;
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
+            _player.SaltInteractCompleted += CompleteAction;
         }
         
         public override void DoAction()
         {
-            Debug.Log("Соль");
+            GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
+            _animator.SetTrigger(InteractSalt);
+        }
+
+        private void CompleteAction()
+        {
+            _animator.SetFloat(LastVertical, -1);
+            _animator.SetFloat(LastHorizontal, 0);
             WasInteracted?.Invoke(CollectInfo());
+            GameStateMachine.Instance.StateTransition(null);
         }
 
         public override event Action<BanishStep> WasInteracted;

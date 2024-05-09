@@ -1,38 +1,56 @@
 using System;
 using BanishSystem;
+using GameStates;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Candle : Item
     {
+        private Animator _animator;
+        private Player _player;
         private ItemEnum _itemEnum;
+
         public override ItemEnum Enum
         {
             get => _itemEnum;
-            set {}
+            set { }
         }
 
-        private Sprite _itemIcon;
+
+        [SerializeField] private Sprite itemIcon;
+        private static readonly int InteractCandle = Animator.StringToHash("InteractCandle");
+        private static readonly int LastHorizontal = Animator.StringToHash("LastHorizontal");
+        private static readonly int LastVertical = Animator.StringToHash("LastVertical");
 
         public override Sprite ItemIcon
         {
-            get => _itemIcon;
-            set{}
+            get => itemIcon;
+            set { }
         }
 
-        private void Awake()
+        private void Start()
         {
             IsDropable = true;
-            _itemIcon = GetComponent<SpriteRenderer>().sprite;
             _itemEnum = ItemEnum.Candle;
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
+            _player.CandleInteractCompleted += CompleteAction;
         }
-        
+
         public override void DoAction()
         {
-            Debug.Log("СВЕЧА");
+            GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
+            _animator.SetTrigger(InteractCandle);
+        }
+
+        private void CompleteAction()
+        {
+            _animator.SetFloat(LastVertical, -1);
+            _animator.SetFloat(LastHorizontal, 0);
             WasInteracted?.Invoke(CollectInfo());
             DropItem();
+            GameStateMachine.Instance.StateTransition(null);
         }
 
         public override event Action<BanishStep> WasInteracted;
