@@ -69,7 +69,7 @@ MonoBehaviour:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 77.52
-  m_PointLightOuterAngle: 77.52
+  m_PointLightOuterAngle: 105
   m_PointLightInnerRadius: 0
   m_PointLightOuterRadius: 3.5011244
   m_ShapeLightParametricSides: 5
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 8519412372972040645}
   - component: {fileID: 1174931030492425629}
   - component: {fileID: 3169345270526242362}
+  - component: {fileID: 2384492550051635181}
   m_Layer: 0
   m_Name: Lighter
   m_TagString: Untagged
@@ -214,6 +215,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49122, y: 0.17848003}
   m_EdgeRadius: 0
+--- !u!95 &2384492550051635181
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4426756220733692233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35338520fc6a1134a8da03dc1cd8b70f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7230695261301712488
 GameObject:
   m_ObjectHideFlags: 0
