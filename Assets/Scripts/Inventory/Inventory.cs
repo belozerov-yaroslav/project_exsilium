@@ -32,13 +32,10 @@ namespace Inventory
             {
                 InventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
             }
-
-            inventoryPanel.SetActive(_isOpened);
-            CustomInputInitializer.CustomInput.Player.Inventory.performed += CloseOpenInventory;
+            
             CustomInputInitializer.CustomInput.Player.ItemChange.performed += ChangeCurrentItem;
             CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnItemInteraction;
             
-            Debug.Log("start");
             ItemInjector.instance?.Inject();
         }
 
@@ -49,12 +46,7 @@ namespace Inventory
             InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
             if (InventorySlots.Select(x => x.Item).All(x => x != null)) InventoryFilled?.Invoke();
         }
-
-        private void CloseOpenInventory(InputAction.CallbackContext context)
-        {
-            _isOpened = !_isOpened;
-            inventoryPanel.SetActive(_isOpened);
-        }
+        
 
         private void ChangeCurrentItem(InputAction.CallbackContext context)
         {

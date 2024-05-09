@@ -21,24 +21,28 @@ public class PrayManager : MonoBehaviour
 
     public void FirstButtonAction()
     {
+        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayHolySpirit;
         StartCircle();
     }
     
     public void SecondButtonAction()
     {
+        Debug.Log("Нажали");
         targetCircle.pray =  PrayEnum.PrayAgainstDemonsMachinations;
         StartCircle();
     }
     
     public void ThirdButtonAction()
     {
+        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayArchangelMichael;
         StartCircle();
     }
 
     public void FourthButtonAction()
     {
+        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayFairCross;
         StartCircle();
     }
