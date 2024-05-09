@@ -7,11 +7,12 @@ using UnityEngine;
 public class GameStateMachine : MonoBehaviour
 {
     [SerializeField] private List<GameState> _gameStates;
-    public static GameStateMachine Instance;
     private readonly Stack<GameState> _statesStack = new Stack<GameState>();
-
+    public static GameStateMachine Instance { get; private set; }
+    
     public void Start()
     {
+        
         CustomInputInitializer.CustomInput.Player.Disable();
         CustomInputInitializer.CustomInput.Bestiary.Disable();
         CustomInputInitializer.CustomInput.Dialogue.Disable();
@@ -20,6 +21,13 @@ public class GameStateMachine : MonoBehaviour
         _statesStack.Peek().TurnOn();
         if (Instance != null)
             Debug.LogWarning("Found more than one stateMachine in the scene");
+        Instance = this;
+    }
+
+    public void Awake()
+    {
+        if(Instance != null)
+            Debug.LogError("Two GameStateMachine at scene");
         Instance = this;
     }
 

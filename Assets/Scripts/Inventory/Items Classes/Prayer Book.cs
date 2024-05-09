@@ -7,7 +7,10 @@ namespace Inventory.Items_Classes
     public class PrayerBook : Item
     {
         private ItemEnum _itemEnum;
-
+        public Canvas prayCanvas;
+        private PrayEnum _pray;
+        private float _percentageCorrectness;
+        
         public override ItemEnum Enum
         {
             get => _itemEnum;
@@ -26,12 +29,20 @@ namespace Inventory.Items_Classes
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
             _itemEnum = ItemEnum.PrayerBook;
+            TargetCircle.OnFinished += GetPrayResults;
+        }
+
+        private void GetPrayResults(float percent, PrayEnum pray)
+        {
+            _pray = pray;
+            _percentageCorrectness = percent;
+            WasInteracted?.Invoke(CollectInfo());
         }
 
         public override void DoAction()
         {
             Debug.Log("МОЛИТВЫ");
-            WasInteracted?.Invoke(CollectInfo());
+            GameStateMachine.Instance.StateTransition(PrayerBookState.Instance); 
         }
 
         private new BanishStep CollectInfo()
@@ -45,7 +56,7 @@ namespace Inventory.Items_Classes
                 {
                     ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
                     ItemEnum.Knife, ItemEnum.PrayerBook
-                }, 100f, PrayEnum.PrayArchangelMichael);
+                }, _percentageCorrectness, _pray);
         }
 
         public override event Action<BanishStep> WasInteracted;
