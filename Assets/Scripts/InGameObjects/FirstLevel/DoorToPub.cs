@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace InGameObjects.FirstLevel
@@ -6,8 +7,16 @@ namespace InGameObjects.FirstLevel
     public class DoorToPub : MonoBehaviour, InteractionAbstraction
     {
         [SerializeField] private string pubLevelName;
+        [SerializeField] private AudioSource doorSound;
+
+        public void Start()
+        {
+            doorSound = GetComponent<AudioSource>();
+        }
+
         public void Interact()
         {
+            doorSound.Play();
             SceneManager.LoadScene(pubLevelName);
         }
     }
