@@ -10,13 +10,13 @@ public class PrayManager : MonoBehaviour
 
     public WayPoint wayPoint;
     public TargetCircle targetCircle;
-    public AppearanceScript appearanceScript;
     
     private static Dictionary<PrayEnum, float> _velocityDict = new Dictionary<PrayEnum, float>
     {
         {PrayEnum.PrayHolySpirit,0.005f},
         {PrayEnum.PrayAgainstDemonsMachinations,0.01f},
-        {PrayEnum.PrayArchangelMichael , 0.015f}
+        {PrayEnum.PrayArchangelMichael , 0.015f},
+        {PrayEnum.PrayFairCross, 0.012f}
     };
 
     public void FirstButtonAction()
@@ -34,6 +34,12 @@ public class PrayManager : MonoBehaviour
     public void ThirdButtonAction()
     {
         targetCircle.pray = PrayEnum.PrayArchangelMichael;
+        StartCircle();
+    }
+
+    public void FourthButtonAction()
+    {
+        targetCircle.pray = PrayEnum.PrayFairCross;
         StartCircle();
     }
 

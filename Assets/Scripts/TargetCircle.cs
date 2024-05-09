@@ -9,12 +9,9 @@ using Random = UnityEngine.Random;
 
 public class TargetCircle : MonoBehaviour
 {
-    public GameObject parentCanvas;
     [SerializeField] public float timeAim;
 
     public GameObject backGroundPanel;
-
-    public bool isSuccessfully;
     
     private WayPoint _waypointScript;
     private Image _backgroundImage;
