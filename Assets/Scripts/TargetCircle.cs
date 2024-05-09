@@ -10,7 +10,8 @@ using Random = UnityEngine.Random;
 public class TargetCircle : MonoBehaviour
 {
     [SerializeField] public float timeAim;
-
+    public Canvas PrayGameCanvas;
+    
     public GameObject backGroundPanel;
     
     private WayPoint _waypointScript;
@@ -89,6 +90,7 @@ public class TargetCircle : MonoBehaviour
         _spriteRenderer.color = _defaultCircleColor;
         transform.localPosition = _startPosition;
         GameStateMachine.Instance.StateTransition(null);
+        PrayGameCanvas.enabled = false;
         scorePercent = _score / _maxScore * 100f;
         OnFinished?.Invoke(scorePercent,pray);
     }

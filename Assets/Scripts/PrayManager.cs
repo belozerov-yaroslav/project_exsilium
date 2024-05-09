@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PrayManager : MonoBehaviour
 {
     [SerializeField] public GameObject path;
+    public Canvas PrayGameCanvas;
 
     public WayPoint wayPoint;
     public TargetCircle targetCircle;
@@ -21,28 +22,24 @@ public class PrayManager : MonoBehaviour
 
     public void FirstButtonAction()
     {
-        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayHolySpirit;
         StartCircle();
     }
     
     public void SecondButtonAction()
     {
-        Debug.Log("Нажали");
         targetCircle.pray =  PrayEnum.PrayAgainstDemonsMachinations;
         StartCircle();
     }
     
     public void ThirdButtonAction()
     {
-        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayArchangelMichael;
         StartCircle();
     }
 
     public void FourthButtonAction()
     {
-        Debug.Log("Нажали");
         targetCircle.pray = PrayEnum.PrayFairCross;
         StartCircle();
     }
@@ -51,6 +48,7 @@ public class PrayManager : MonoBehaviour
 
     public void StartCircle()
     {
+        PrayGameCanvas.enabled = true;
         SetWaypoint();
         targetCircle.StartAim();
     }
