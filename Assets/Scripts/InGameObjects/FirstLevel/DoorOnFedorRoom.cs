@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
 {
@@ -9,6 +10,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
     [SerializeField] private BubbleText bubble;
     [SerializeField] private Rigidbody2D player;
     [SerializeField] private Transform streetTeleport;
+    [SerializeField] private Light2D globalLight2D;
     private bool _itemsCollected;
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
     {
         if (_itemsCollected)
         {
+            globalLight2D.intensity = 0.15f;
             player.position = streetTeleport.position;
         }
         else
