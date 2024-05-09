@@ -25,13 +25,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent<Item>(out var item))
-            _itemsInCollider.Add(item);
+        if (other.gameObject.TryGetComponent<ItemInteraction>(out var item))
+            _itemsInCollider.Add(item.item);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent<Item>(out var item))
-            _itemsInCollider.Remove(item);
+        if (other.gameObject.TryGetComponent<ItemInteraction>(out var item))
+            _itemsInCollider.Remove(item.item);
     }
 }

@@ -28,7 +28,6 @@ namespace Inventory.Items_Classes
         }
         private void Awake()
         {
-            IsDropable = true;
             _itemEnum = ItemEnum.Salt;
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
         }

@@ -41,7 +41,6 @@ namespace Inventory.Items_Classes
 
         public override void DoAction()
         {
-            Debug.Log("МОЛИТВЫ");
             GameStateMachine.Instance.StateTransition(PrayerBookState.Instance); 
         }
 
@@ -56,7 +55,7 @@ namespace Inventory.Items_Classes
                 {
                     ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
                     ItemEnum.Knife, ItemEnum.PrayerBook
-                }, _percentageCorrectness, _pray);
+                }, 100, _pray);
         }
 
         public override event Action<BanishStep> WasInteracted;
