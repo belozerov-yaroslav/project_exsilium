@@ -26,11 +26,15 @@ namespace Inventory.Items_Classes
             get => _itemIcon;
             set{}
         }
+        private void Awake()
+        {
+            IsDropable = true;
+            _itemEnum = ItemEnum.Salt;
+            _itemIcon = GetComponent<SpriteRenderer>().sprite;
+        }
 
         private void Start()
         {
-            _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemEnum = ItemEnum.Salt;
             _animator = Player.Instance.GetComponent<Animator>();
             _player = Player.Instance.GetComponent<Player>();
             _player.SaltInteractCompleted += CompleteAction;

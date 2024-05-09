@@ -44,10 +44,10 @@ public class Player : MonoBehaviour
     {
         _animator.SetFloat(Horizontal1, _rb.velocity.x);
         _animator.SetFloat(Vertical1, _rb.velocity.y);
-        if (_rb.velocity.x != 0 || _rb.velocity.y != 0)
+        if (_moveVector.x != 0 || _moveVector.y != 0)
         {
-            _animator.SetFloat(LastHorizontal1, _rb.velocity.x);
-            _animator.SetFloat(LastVertical1, _rb.velocity.y);
+            _animator.SetFloat(LastHorizontal1, _moveVector.x);
+            _animator.SetFloat(LastVertical1, _moveVector.y);
         }
         _rb.velocity = _moveVector * moveSpeed;
     }

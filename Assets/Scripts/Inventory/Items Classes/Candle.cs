@@ -29,10 +29,14 @@ namespace Inventory.Items_Classes
             set { }
         }
 
-        private void Start()
+        private void Awake()
         {
             IsDropable = true;
             _itemEnum = ItemEnum.Candle;
+        }
+
+        private void Start()
+        {
             _animator = Player.Instance.GetComponent<Animator>();
             _player = Player.Instance.GetComponent<Player>();
             _player.CandleInteractCompleted += CompleteAction;
