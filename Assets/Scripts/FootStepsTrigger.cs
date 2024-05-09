@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class FootStepsTrigger : MonoBehaviour
 {
-    [FormerlySerializedAs("PlayerMovement")] public PlayerMovement playerMovement;
+    [FormerlySerializedAs("playerMovement")] [FormerlySerializedAs("Player")] public Player player;
     public float minPitch;
     public float maxPitch;
     
@@ -20,7 +20,7 @@ public class FootStepsTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && playerMovement.CheckVelocity() && Time.time - _lastPlay > _footstepSound.clip.length)
+        if (other.CompareTag("Player") && player.CheckVelocity() && Time.time - _lastPlay > _footstepSound.clip.length)
         {
             _lastPlay = Time.time;
             _footstepSound.Play();

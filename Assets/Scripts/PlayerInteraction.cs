@@ -5,7 +5,6 @@ using System.Linq;
 using Inventory.Items_Classes;
 using UnityEditor;
 using UnityEngine;
-using Inventory.Items_Classes;
 
 public class PlayerInteraction : MonoBehaviour
 {

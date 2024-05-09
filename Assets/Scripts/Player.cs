@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Rigidbody2D _rb;
     private Vector2 _moveVector;
+    public static GameObject Instance;
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Animator animator;
+    private Animator _animator;
     private static readonly int Horizontal1 = Animator.StringToHash("Horizontal");
     private static readonly int Vertical1 = Animator.StringToHash("Vertical");
     private static readonly int LastHorizontal1 = Animator.StringToHash("LastHorizontal");
@@ -19,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        if (Instance != null)
+            Debug.LogWarning("Found more than one player in the scene");
+        Instance = gameObject;
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -37,12 +42,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        animator.SetFloat(Horizontal1, _rb.velocity.x);
-        animator.SetFloat(Vertical1, _rb.velocity.y);
+        _animator.SetFloat(Horizontal1, _rb.velocity.x);
+        _animator.SetFloat(Vertical1, _rb.velocity.y);
         if (_rb.velocity.x != 0 || _rb.velocity.y != 0)
         {
-            animator.SetFloat(LastHorizontal1, _rb.velocity.x);
-            animator.SetFloat(LastVertical1, _rb.velocity.y);
+            _animator.SetFloat(LastHorizontal1, _rb.velocity.x);
+            _animator.SetFloat(LastVertical1, _rb.velocity.y);
         }
         _rb.velocity = _moveVector * moveSpeed;
     }
@@ -58,5 +63,20 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public bool CheckVelocity() => _rb.velocity != Vector2.zero;
+
+    public void InteractCompleted(string item)
+    {
+        switch (item)
+        {
+            case "candle":
+                CandleInteractCompleted?.Invoke();
+                break;
+            case "salt":
+                SaltInteractCompleted?.Invoke();
+                break;
+        }
+    }
     
+    public event Action CandleInteractCompleted;
+    public event Action SaltInteractCompleted;
 }

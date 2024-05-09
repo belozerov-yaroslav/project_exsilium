@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameStateMachine : MonoBehaviour
 {
     [SerializeField] private List<GameState> _gameStates;
+    public static GameStateMachine Instance;
     private readonly Stack<GameState> _statesStack = new Stack<GameState>();
 
     public void Start()
@@ -17,6 +18,9 @@ public class GameStateMachine : MonoBehaviour
         _gameStates.ForEach(state => state.OnTransition += StateTransition);
         _statesStack.Push(_gameStates.Find(state => state is DefaultState));
         _statesStack.Peek().TurnOn();
+        if (Instance != null)
+            Debug.LogWarning("Found more than one stateMachine in the scene");
+        Instance = this;
     }
 
     public void StateTransition(GameState state)
