@@ -91,7 +91,7 @@ public class TargetCircle : MonoBehaviour
         transform.localPosition = _startPosition;
         GameStateMachine.Instance.StateTransition(null);
         PrayGameCanvas.enabled = false;
-        scorePercent = _score / _maxScore * 100f;
+        scorePercent = (float)_score / _maxScore * 100f;
         OnFinished?.Invoke(scorePercent,pray);
     }
 

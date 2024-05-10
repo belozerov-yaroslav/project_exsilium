@@ -46,16 +46,8 @@ namespace Inventory.Items_Classes
 
         private new BanishStep CollectInfo()
         {
-            return new BanishStep(Enum,
-                new[]
-                {
-                    ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
-                    ItemEnum.Knife, ItemEnum.PrayerBook
-                }, new[]
-                {
-                    ItemEnum.Candle, ItemEnum.Chalk, ItemEnum.Crucifix, ItemEnum.Herbs, ItemEnum.Icon, ItemEnum.Incense,
-                    ItemEnum.Knife, ItemEnum.PrayerBook
-                }, 100, _pray);
+            return new BanishStep(Enum, PlayerInteraction.instance.GetNearItems(), Inventory.Instance.GetItemsOnMap(), 
+                _percentageCorrectness, _pray);
         }
 
         public override event Action<BanishStep> WasInteracted;
