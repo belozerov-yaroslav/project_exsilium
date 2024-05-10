@@ -8,11 +8,12 @@ public class DoorInBasement : MonoBehaviour, InteractionAbstraction
     [SerializeField] private Transform _teleportPosition;
     [SerializeField] private Rigidbody2D _playerRigidbody2D;
     [SerializeField] private Light2D _globalLight;
+    [SerializeField] private Light2D _playerVision;
 
     public void Interact()
     {
         _playerRigidbody2D.position = _teleportPosition.position;
         _globalLight.intensity = 1;
-        Debug.Log("lol");
+        _playerVision.intensity = 0;
     }
 }

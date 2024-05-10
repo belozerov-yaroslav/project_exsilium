@@ -22,7 +22,7 @@ public class DoorInPub : MonoBehaviour, InteractionAbstraction
         }
         else
         {
-            _bubbleText.ShowMessage("Мне нужно поговорить с Марией");
+            _bubbleText.ShowMessage("У меня нет ключей от этой двери");
         }
         
     }

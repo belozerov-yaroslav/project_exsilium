@@ -20,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
-    private static DialogueManager instance;
+    public static DialogueManager instance { get; private set; }
 
     private DialogueVariables dialogueVariables;
     private void Awake()

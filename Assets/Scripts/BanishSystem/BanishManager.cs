@@ -37,8 +37,8 @@ namespace BanishSystem
             {
                 if (_index >= _steps.Length - 1)
                 {
-                    Debug.Log("ПРИЗРАК ИЗГНАН");
                     _bubbleText.ShowMessage("ПРИЗРАК ИЗГНАН");
+                    DialogueManager.instance.SetVariableState("liho_banished", new Ink.Runtime.BoolValue(true));
                         
                     _finished = true;
                     BanishFinished?.Invoke();

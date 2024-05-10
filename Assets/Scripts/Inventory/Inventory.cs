@@ -11,7 +11,7 @@ namespace Inventory
     {
         public GameObject inventoryPanel;
 
-        private static readonly List<ItemSlot> InventorySlots = new(9);
+        private readonly List<ItemSlot> InventorySlots = new(9);
         private int _indexCurrentItem = -1;
         private bool _isOpened;
 
