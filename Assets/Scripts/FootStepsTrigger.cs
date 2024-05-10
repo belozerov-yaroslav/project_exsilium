@@ -4,17 +4,19 @@ using Random = UnityEngine.Random;
 
 public class FootStepsTrigger : MonoBehaviour
 {
-    [FormerlySerializedAs("playerMovement")] [FormerlySerializedAs("Player")] public Player player;
     public float minPitch;
     public float maxPitch;
     
     private AudioSource _footstepSound ;
     private float _lastPlay;
+
+    private Player player;
     
     
     private void Start()
     {
         _footstepSound = GetComponent<AudioSource>();
+        player = Player.Instance.GetComponent<Player>();
     }
     
 

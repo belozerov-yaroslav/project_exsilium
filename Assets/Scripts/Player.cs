@@ -26,18 +26,10 @@ public class Player : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    private void Start()
     {
-        CustomInputInitializer.CustomInput.Enable();
         CustomInputInitializer.CustomInput.Player.Movement.performed += OnMovementPerformed;
         CustomInputInitializer.CustomInput.Player.Movement.canceled += OnMovementCanceled;
-    }
-    
-    private void OnDisable()
-    {
-        CustomInputInitializer.CustomInput.Disable();
-        CustomInputInitializer.CustomInput.Player.Movement.performed -= OnMovementPerformed;
-        CustomInputInitializer.CustomInput.Player.Movement.canceled -= OnMovementCanceled;
     }
 
     private void FixedUpdate()

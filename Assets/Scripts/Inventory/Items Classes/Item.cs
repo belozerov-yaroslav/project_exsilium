@@ -11,7 +11,7 @@ namespace Inventory.Items_Classes
         public abstract Sprite ItemIcon { get; set; }
         public bool IsDropable { get; protected set; }
 
-        [SerializeField] private Transform playerTransform;
+        [SerializeField] private Transform dropPlace;
         [SerializeField] private GameObject objectPrefab;
         public abstract void DoAction();
         
@@ -23,7 +23,7 @@ namespace Inventory.Items_Classes
         protected void DropItem()
         {
             if (objectPrefab == null) return;
-            var obj = Instantiate(objectPrefab, playerTransform.position, playerTransform.rotation);
+            var obj = Instantiate(objectPrefab, dropPlace.position, dropPlace.rotation);
             obj.GetComponent<ItemInteraction>().item = this;
             obj.SetActive(true);
         }
