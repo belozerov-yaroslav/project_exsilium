@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using GameStates;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class GameState : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public abstract class GameState : MonoBehaviour
     {
         //TurnOff();
         OnTransition?.Invoke(gameState);
+    }
+
+    protected void OnPausePressed(InputAction.CallbackContext callbackContext)
+    {
+        Transite(PauseState.Instance);
     }
     
 }

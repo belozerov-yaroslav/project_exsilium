@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace GameStates
 {
-    public class DefaultState : GameState
+    public class PauseState : GameState
     {
-        private CustomInput _customInput;
         public static GameState Instance { get; private set; }
+        [SerializeField] private Canvas _pauseCanvas;
+
         private void Awake()
         {
             if (Instance != null)
@@ -17,21 +19,21 @@ namespace GameStates
 
         public override void TurnOn()
         {
-            CustomInputInitializer.CustomInput.Player.Enable();
-            CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += HandleBestiary;
+            _pauseCanvas.enabled = true;
+            Time.timeScale = 0;
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
         }
 
         public override void TurnOff()
         {
-            CustomInputInitializer.CustomInput.Player.Disable();
-            CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= HandleBestiary;
+            Time.timeScale = 1;
+            _pauseCanvas.enabled = false;
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
         }
 
-        private void HandleBestiary(InputAction.CallbackContext callbackContext)
+        private new void OnPausePressed(InputAction.CallbackContext callbackContext)
         {
-            Transite(BestiaryState.Instance);
+            Transite(null);
         }
     }
 }

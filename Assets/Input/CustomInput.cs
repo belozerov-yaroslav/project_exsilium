@@ -449,6 +449,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""f448802b-5f12-4aab-9394-8fb0b034e9e0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -482,6 +491,17 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ClosePrayerBook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6370b1d7-517c-48e5-96c7-94f2e1492ab8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -645,6 +665,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
         m_Global_ClosePrayerBook = m_Global.FindAction("ClosePrayerBook", throwIfNotFound: true);
+        m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
         // Bestiary
         m_Bestiary = asset.FindActionMap("Bestiary", throwIfNotFound: true);
         m_Bestiary_BestiaryNavigation = m_Bestiary.FindAction("BestiaryNavigation", throwIfNotFound: true);
@@ -792,12 +813,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private List<IGlobalActions> m_GlobalActionsCallbackInterfaces = new List<IGlobalActions>();
     private readonly InputAction m_Global_OpenBestiary;
     private readonly InputAction m_Global_ClosePrayerBook;
+    private readonly InputAction m_Global_Pause;
     public struct GlobalActions
     {
         private @CustomInput m_Wrapper;
         public GlobalActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @OpenBestiary => m_Wrapper.m_Global_OpenBestiary;
         public InputAction @ClosePrayerBook => m_Wrapper.m_Global_ClosePrayerBook;
+        public InputAction @Pause => m_Wrapper.m_Global_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Global; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -813,6 +836,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ClosePrayerBook.started += instance.OnClosePrayerBook;
             @ClosePrayerBook.performed += instance.OnClosePrayerBook;
             @ClosePrayerBook.canceled += instance.OnClosePrayerBook;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IGlobalActions instance)
@@ -823,6 +849,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ClosePrayerBook.started -= instance.OnClosePrayerBook;
             @ClosePrayerBook.performed -= instance.OnClosePrayerBook;
             @ClosePrayerBook.canceled -= instance.OnClosePrayerBook;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IGlobalActions instance)
@@ -944,6 +973,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     {
         void OnOpenBestiary(InputAction.CallbackContext context);
         void OnClosePrayerBook(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IBestiaryActions
     {
