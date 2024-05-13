@@ -14,10 +14,14 @@ namespace GameStates
         public override void TurnOn()
         {
             CustomInputInitializer.CustomInput.Dialogue.Enable();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public override void TurnOff()
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             CustomInputInitializer.CustomInput.Dialogue.Disable();
         }
     }
