@@ -17,6 +17,7 @@ namespace InGameObjects.FirstLevel
         public void Interact()
         {
             doorSound.Play();
+            SaveSystem.SaveSceneState(pubLevelName);
             SceneManager.LoadScene(pubLevelName);
         }
     }
