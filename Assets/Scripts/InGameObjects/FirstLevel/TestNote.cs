@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InitCutSceneLoader : MonoBehaviour
+public class TestNote : MonoBehaviour, InteractionAbstraction
 {
     [SerializeField] private List<Slide> slides;
-    void Start()
+
+    public void Interact()
     {
         SlideManager.Instance.ShowSlideGroup(slides);
     }
