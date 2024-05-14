@@ -7,7 +7,7 @@ namespace InGameObjects.FirstLevel
     public class DoorToPub : MonoBehaviour, InteractionAbstraction
     {
         [SerializeField] private string pubLevelName;
-        [SerializeField] private AudioSource doorSound;
+        private AudioSource doorSound;
 
         public void Start()
         {
@@ -16,8 +16,14 @@ namespace InGameObjects.FirstLevel
 
         public void Interact()
         {
-            doorSound.Play();
-            SceneManager.LoadScene(pubLevelName);
+            if (Inventory.Inventory.Instance.IsFullInventory())
+            {
+                doorSound.Play();
+                SceneManager.LoadScene(pubLevelName);
+            }
+            else
+                BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
+            
         }
     }
 }

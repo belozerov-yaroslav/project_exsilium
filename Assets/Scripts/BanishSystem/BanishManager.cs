@@ -39,7 +39,7 @@ namespace BanishSystem
                 {
                     _bubbleText.ShowMessage("ПРИЗРАК ИЗГНАН");
                     DialogueManager.instance.SetVariableState("liho_banished", new Ink.Runtime.BoolValue(true));
-                        
+                    DoorEnter.IsBanishComplete = true;
                     _finished = true;
                     BanishFinished?.Invoke();
                 }
@@ -74,6 +74,6 @@ namespace BanishSystem
             _finished = true;
         }
 
-        public event Action BanishFinished;
+        public static event Action BanishFinished;
     }
 }

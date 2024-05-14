@@ -8,6 +8,7 @@ public class PrayerBookState : GameState
 {
     [SerializeField] private Canvas prayBookCanvas; 
     public static GameState Instance { get; private set; }
+    public static bool IsBlocked;
     private void Awake()
     {
         if (Instance != null)
@@ -27,8 +28,8 @@ public class PrayerBookState : GameState
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed -= ClosePrayerBook;
     }
 
-    private void ClosePrayerBook(InputAction.CallbackContext callbackContext)
+    public void ClosePrayerBook(InputAction.CallbackContext callbackContext)
     {
-        Transite(null);
+        if(!IsBlocked) Transite(null);
     }
 }

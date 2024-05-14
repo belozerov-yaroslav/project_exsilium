@@ -26,6 +26,7 @@ namespace Inventory.Items_Classes
             var obj = Instantiate(objectPrefab, dropPlace.position, dropPlace.rotation);
             obj.GetComponent<ItemInteraction>().item = this;
             obj.SetActive(true);
+            ExtinguishedScript.PlacedCandle = obj;
         }
 
         public abstract event Action<BanishStep> WasInteracted;

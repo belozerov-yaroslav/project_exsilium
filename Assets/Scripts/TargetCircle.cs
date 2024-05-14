@@ -60,13 +60,12 @@ public class TargetCircle : MonoBehaviour
     {
         _circleCenter = transform.position;
         if(!_isStarted || (_timeLeft + _appearanceScript.timeAppearance - Time.time > 0)) return;
-        if(!_waypointScript.IsStarted)
+        if( _isStarted && !_waypointScript.IsStarted)
             StartMove();
         if (_timeLeft + timeAim + _appearanceScript.timeAppearance - Time.time > 0)
             CheckAccuracy();
         else
-           FinishAim();
-
+            FinishAim();
     }
     
     public void StartAim()
@@ -87,8 +86,10 @@ public class TargetCircle : MonoBehaviour
         _isStarted = false;
         _waypointScript.StopWay();
         _backgroundImage.color = _defaultBackColor;
+        _currentColor = _defaultBackColor;
         _spriteRenderer.color = _defaultCircleColor;
         transform.localPosition = _startPosition;
+        PrayerBookState.IsBlocked = false;
         GameStateMachine.Instance.StateTransition(null);
         PrayGameCanvas.enabled = false;
         scorePercent = (float)_score / _maxScore * 100f;
