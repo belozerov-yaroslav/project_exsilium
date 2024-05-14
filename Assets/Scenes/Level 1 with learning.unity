@@ -14068,7 +14068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 7237908.5}
+  m_AnchoredPosition: {x: 0, y: 7260028}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &928371612
@@ -48238,6 +48238,7 @@ GameObject:
   - component: {fileID: 1651583635}
   - component: {fileID: 1651583640}
   - component: {fileID: 1651583639}
+  - component: {fileID: 1651583641}
   m_Layer: 5
   m_Name: Learning
   m_TagString: Untagged
@@ -48355,6 +48356,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _learningCanvas: {fileID: 1651583637}
+--- !u!114 &1651583641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651583634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec054f545bbc49dfaba803c36ac3fc09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  learningHint: {fileID: 46606873}
 --- !u!4 &1668954703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8519412372972040645, guid: ea141befba0d24c42ac937c9bac7f0a2, type: 3}

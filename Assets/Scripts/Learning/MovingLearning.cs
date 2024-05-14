@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class MovingLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
-    private HashSet<string> _neededKeys = new HashSet<string>() { "w", "a", "s", "d" }; 
+    private readonly HashSet<string> _neededKeys = new HashSet<string>() { "w", "a", "s", "d" }; 
 
     private void Start()
     {
