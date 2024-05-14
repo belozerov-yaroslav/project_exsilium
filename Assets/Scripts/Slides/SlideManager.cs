@@ -46,17 +46,11 @@ public class SlideManager : MonoBehaviour
         }
     }
 
-    private void ChangeGameState()
-    {
-        _currentSlides[_index - 1].TurnedOff -= ChangeGameState;
-        GameStateMachine.Instance.StateTransition(null);
-    }
-
     private void EndOfShow()
     {
         CustomInputInitializer.CustomInput.SlideShow.NextSlide.performed -= NextSlide;
-        _currentSlides[_index - 1].TurnedOff += ChangeGameState;
         _currentSlides[_index - 1].StopAllCoroutines();
         _currentSlides[_index - 1].TurnOff();
+        GameStateMachine.Instance.StateTransition(null);
     }
 }

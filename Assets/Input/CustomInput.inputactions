@@ -669,6 +669,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Note",
+            "id": "3de7b5ee-c7ea-4b65-9c0a-340c70422439",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "6d4306e9-c3e4-47fb-bf94-380687c5685f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1acebe0c-8173-49dc-be01-57a898a80d02",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

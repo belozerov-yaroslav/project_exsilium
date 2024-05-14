@@ -691,6 +691,34 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Note"",
+            ""id"": ""3de7b5ee-c7ea-4b65-9c0a-340c70422439"",
+            ""actions"": [
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d4306e9-c3e4-47fb-bf94-380687c5685f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1acebe0c-8173-49dc-be01-57a898a80d02"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -715,6 +743,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // SlideShow
         m_SlideShow = asset.FindActionMap("SlideShow", throwIfNotFound: true);
         m_SlideShow_NextSlide = m_SlideShow.FindAction("NextSlide", throwIfNotFound: true);
+        // Note
+        m_Note = asset.FindActionMap("Note", throwIfNotFound: true);
+        m_Note_Close = m_Note.FindAction("Close", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1042,6 +1073,52 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public SlideShowActions @SlideShow => new SlideShowActions(this);
+
+    // Note
+    private readonly InputActionMap m_Note;
+    private List<INoteActions> m_NoteActionsCallbackInterfaces = new List<INoteActions>();
+    private readonly InputAction m_Note_Close;
+    public struct NoteActions
+    {
+        private @CustomInput m_Wrapper;
+        public NoteActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Close => m_Wrapper.m_Note_Close;
+        public InputActionMap Get() { return m_Wrapper.m_Note; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(NoteActions set) { return set.Get(); }
+        public void AddCallbacks(INoteActions instance)
+        {
+            if (instance == null || m_Wrapper.m_NoteActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_NoteActionsCallbackInterfaces.Add(instance);
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
+        }
+
+        private void UnregisterCallbacks(INoteActions instance)
+        {
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
+        }
+
+        public void RemoveCallbacks(INoteActions instance)
+        {
+            if (m_Wrapper.m_NoteActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(INoteActions instance)
+        {
+            foreach (var item in m_Wrapper.m_NoteActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_NoteActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public NoteActions @Note => new NoteActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -1066,5 +1143,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface ISlideShowActions
     {
         void OnNextSlide(InputAction.CallbackContext context);
+    }
+    public interface INoteActions
+    {
+        void OnClose(InputAction.CallbackContext context);
     }
 }

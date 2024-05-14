@@ -49,9 +49,5 @@ public class Slide : MonoBehaviour
         
         previousImage.color = new Color(1, 1, 1, 0f);
         currentImage.color = new Color(1, 1, 1, 0f);
-        currentImage.transform.parent.gameObject.SetActive(false);
-        TurnedOff?.Invoke();
     }
-
-    public event Action TurnedOff;
 }
