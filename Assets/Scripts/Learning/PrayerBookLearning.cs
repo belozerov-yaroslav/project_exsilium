@@ -4,25 +4,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BestiaryCloseLearning : AbstractLearning
+public class PrayerBookLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
+    public static PrayerBookLearning Instance { get; private set; }
     private bool isEnabled;
-    public static BestiaryCloseLearning Instance { get; private set; }
 
     private void Awake()
     {
         if (Instance != null)
-            Debug.LogError("Two BestiaryCloseLearning in the scene");
+            Debug.LogError("Two PrayerBookLearning in the scene");
         Instance = this;
     }
     
     protected override void StartLearning()
     {
-        isEnabled = true;
         learningHint.SetActive(true);
-        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += ListenInput;
-        
+        isEnabled = true;
     }
 
     protected override void StopLearning()
@@ -30,11 +28,9 @@ public class BestiaryCloseLearning : AbstractLearning
         isEnabled = false;
         learningHint.SetActive(false);
         LearningManager.Instance.StopLearning();
-        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= ListenInput;
-        InventoryLearning.Instance?.TryStartLearning();
     }
 
-    private void ListenInput(InputAction.CallbackContext callbackContext)
+    public void OnBookClose()
     {
         if (!isEnabled) return;
         _wasCompleted = true;

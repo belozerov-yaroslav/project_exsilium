@@ -8,6 +8,7 @@ public class ItemActionLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
     public static ItemActionLearning Instance { get; private set; }
+    private bool isEnabled;
 
     private void Awake()
     {
@@ -18,12 +19,14 @@ public class ItemActionLearning : AbstractLearning
     
     protected override void StartLearning()
     {
+        isEnabled = true;
         learningHint.SetActive(true);
         CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnAction;
     }
 
     protected override void StopLearning()
     {
+        isEnabled = false;
         CustomInputInitializer.CustomInput.Player.ItemIteraction.performed -= OnAction;
         learningHint.SetActive(false);
         LearningManager.Instance.StopLearning();
@@ -31,6 +34,7 @@ public class ItemActionLearning : AbstractLearning
 
     public void OnAction(InputAction.CallbackContext callbackContext)
     {
+        if (!isEnabled) return;
         _wasCompleted = true;
         StopLearning();
     }

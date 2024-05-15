@@ -19,12 +19,14 @@ public class PrayerBookState : GameState
     {
         prayBookCanvas.enabled = true;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed += ClosePrayerBook;
+        PrayerBookLearning.Instance?.TryStartLearning();
     }
 
     public override void TurnOff()
     {
         prayBookCanvas.enabled = false;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed -= ClosePrayerBook;
+        PrayerBookLearning.Instance?.OnBookClose();
     }
 
     private void ClosePrayerBook(InputAction.CallbackContext callbackContext)

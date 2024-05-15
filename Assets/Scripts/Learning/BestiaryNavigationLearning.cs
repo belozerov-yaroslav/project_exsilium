@@ -9,6 +9,7 @@ public class BestiaryNavigationLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
     public static BestiaryNavigationLearning Instance { get; private set; }
+    private bool isEnabled;
 
     private void Awake()
     {
@@ -19,12 +20,14 @@ public class BestiaryNavigationLearning : AbstractLearning
 
     protected override void StartLearning()
     {
+        isEnabled = true;
         learningHint.SetActive(true);
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed += OnBestiaryInput;
     }
 
     protected override void StopLearning()
     {
+        isEnabled = false;
         learningHint.SetActive(false);
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed -= OnBestiaryInput;
         LearningManager.Instance.StopLearning();
@@ -33,6 +36,7 @@ public class BestiaryNavigationLearning : AbstractLearning
 
     private void OnBestiaryInput(InputAction.CallbackContext callbackContext)
     {
+        if (!isEnabled) return;
         _wasCompleted = true;
         StopLearning();
     }

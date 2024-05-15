@@ -8,6 +8,7 @@ public class InventoryLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
     public static InventoryLearning Instance { get; private set; }
+    private bool isEnabled;
 
     private void Awake()
     {
@@ -18,11 +19,13 @@ public class InventoryLearning : AbstractLearning
     
     protected override void StartLearning()
     {
+        isEnabled = true;
         learningHint.SetActive(true);
     }
 
     protected override void StopLearning()
     {
+        isEnabled = false;
         learningHint.SetActive(false);
         LearningManager.Instance.StopLearning();
         ItemActionLearning.Instance?.TryStartLearning();
@@ -30,6 +33,7 @@ public class InventoryLearning : AbstractLearning
 
     public void OnItemPicked()
     {
+        if (!isEnabled) return;
         _wasCompleted = true;
         StopLearning();
     }
