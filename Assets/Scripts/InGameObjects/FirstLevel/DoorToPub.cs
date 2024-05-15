@@ -13,11 +13,11 @@ namespace InGameObjects.FirstLevel
             if (Inventory.Inventory.Instance.IsFullInventory())
             {
                 InteractionSoundScript.Instance.openDoorSound.Play();
+                SaveSystem.SaveSceneState(pubLevelName);
                 SceneManager.LoadScene(pubLevelName);
             }
             else
                 BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
-            
         }
     }
 }

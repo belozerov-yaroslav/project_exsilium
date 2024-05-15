@@ -630,6 +630,95 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SlideShow"",
+            ""id"": ""1b363fc5-26fc-48ae-b0a2-fbeae23cdaa0"",
+            ""actions"": [
+                {
+                    ""name"": ""NextSlide"",
+                    ""type"": ""Button"",
+                    ""id"": ""e06dd5d3-cede-4d19-8c67-14f00600e846"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""24172b19-1663-4c11-907c-715d92586ab9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efe0cccd-8779-4a67-a0d9-fa7140287c1c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d70674b-e4d9-4527-992f-42c84f178344"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7202a455-94ed-4a9c-8eca-de0a4a7d6632"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSlide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Note"",
+            ""id"": ""3de7b5ee-c7ea-4b65-9c0a-340c70422439"",
+            ""actions"": [
+                {
+                    ""name"": ""Close"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d4306e9-c3e4-47fb-bf94-380687c5685f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1acebe0c-8173-49dc-be01-57a898a80d02"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -651,6 +740,12 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // Dialogue
         m_Dialogue = asset.FindActionMap("Dialogue", throwIfNotFound: true);
         m_Dialogue_NextPhrase = m_Dialogue.FindAction("NextPhrase", throwIfNotFound: true);
+        // SlideShow
+        m_SlideShow = asset.FindActionMap("SlideShow", throwIfNotFound: true);
+        m_SlideShow_NextSlide = m_SlideShow.FindAction("NextSlide", throwIfNotFound: true);
+        // Note
+        m_Note = asset.FindActionMap("Note", throwIfNotFound: true);
+        m_Note_Close = m_Note.FindAction("Close", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -932,6 +1027,98 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public DialogueActions @Dialogue => new DialogueActions(this);
+
+    // SlideShow
+    private readonly InputActionMap m_SlideShow;
+    private List<ISlideShowActions> m_SlideShowActionsCallbackInterfaces = new List<ISlideShowActions>();
+    private readonly InputAction m_SlideShow_NextSlide;
+    public struct SlideShowActions
+    {
+        private @CustomInput m_Wrapper;
+        public SlideShowActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @NextSlide => m_Wrapper.m_SlideShow_NextSlide;
+        public InputActionMap Get() { return m_Wrapper.m_SlideShow; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SlideShowActions set) { return set.Get(); }
+        public void AddCallbacks(ISlideShowActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SlideShowActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SlideShowActionsCallbackInterfaces.Add(instance);
+            @NextSlide.started += instance.OnNextSlide;
+            @NextSlide.performed += instance.OnNextSlide;
+            @NextSlide.canceled += instance.OnNextSlide;
+        }
+
+        private void UnregisterCallbacks(ISlideShowActions instance)
+        {
+            @NextSlide.started -= instance.OnNextSlide;
+            @NextSlide.performed -= instance.OnNextSlide;
+            @NextSlide.canceled -= instance.OnNextSlide;
+        }
+
+        public void RemoveCallbacks(ISlideShowActions instance)
+        {
+            if (m_Wrapper.m_SlideShowActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISlideShowActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SlideShowActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SlideShowActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SlideShowActions @SlideShow => new SlideShowActions(this);
+
+    // Note
+    private readonly InputActionMap m_Note;
+    private List<INoteActions> m_NoteActionsCallbackInterfaces = new List<INoteActions>();
+    private readonly InputAction m_Note_Close;
+    public struct NoteActions
+    {
+        private @CustomInput m_Wrapper;
+        public NoteActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Close => m_Wrapper.m_Note_Close;
+        public InputActionMap Get() { return m_Wrapper.m_Note; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(NoteActions set) { return set.Get(); }
+        public void AddCallbacks(INoteActions instance)
+        {
+            if (instance == null || m_Wrapper.m_NoteActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_NoteActionsCallbackInterfaces.Add(instance);
+            @Close.started += instance.OnClose;
+            @Close.performed += instance.OnClose;
+            @Close.canceled += instance.OnClose;
+        }
+
+        private void UnregisterCallbacks(INoteActions instance)
+        {
+            @Close.started -= instance.OnClose;
+            @Close.performed -= instance.OnClose;
+            @Close.canceled -= instance.OnClose;
+        }
+
+        public void RemoveCallbacks(INoteActions instance)
+        {
+            if (m_Wrapper.m_NoteActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(INoteActions instance)
+        {
+            foreach (var item in m_Wrapper.m_NoteActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_NoteActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public NoteActions @Note => new NoteActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -952,5 +1139,13 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface IDialogueActions
     {
         void OnNextPhrase(InputAction.CallbackContext context);
+    }
+    public interface ISlideShowActions
+    {
+        void OnNextSlide(InputAction.CallbackContext context);
+    }
+    public interface INoteActions
+    {
+        void OnClose(InputAction.CallbackContext context);
     }
 }
