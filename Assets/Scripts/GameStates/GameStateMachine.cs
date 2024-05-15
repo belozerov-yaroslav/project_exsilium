@@ -12,7 +12,6 @@ public class GameStateMachine : MonoBehaviour
     
     public void Start()
     {
-        
         CustomInputInitializer.CustomInput.Player.Disable();
         CustomInputInitializer.CustomInput.Bestiary.Disable();
         CustomInputInitializer.CustomInput.Dialogue.Disable();
