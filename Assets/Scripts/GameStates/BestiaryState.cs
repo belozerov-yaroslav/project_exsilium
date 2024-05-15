@@ -17,6 +17,7 @@ namespace GameStates
 
         public override void TurnOn()
         {
+            BestiaryNavigationLearning.Instance?.TryStartLearning();
             _bestiary.OpenBestiary();
             CustomInputInitializer.CustomInput.Bestiary.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += CloseBestiary;

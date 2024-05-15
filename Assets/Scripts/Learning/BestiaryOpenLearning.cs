@@ -4,30 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InteractionLearning : AbstractLearning
+public class BestiaryLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
-    public static InteractionLearning Instance { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
-        if (Instance != null)
-            Debug.LogError("Two Interaction learning in the scene");
-        Instance = this;
+        TryStartLearning();
     }
     
     protected override void StartLearning()
     {
         learningHint.SetActive(true);
+        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += ListenInput;
     }
 
     protected override void StopLearning()
     {
         learningHint.SetActive(false);
+        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= ListenInput;
         LearningManager.Instance.StopLearning();
     }
 
-    public void OnInteractionCompleted()
+    private void ListenInput(InputAction.CallbackContext callbackContext)
     {
         _wasCompleted = true;
         StopLearning();

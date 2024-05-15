@@ -24,7 +24,7 @@ public class InteractionManager : MonoBehaviour
     {
         if (!other.CompareTag("PlayerInteraction")) return;
         _ifPlayerInTrigger = true;
-        InteractionLearning.Instance.TryStartLearning();
+        InteractionLearning.Instance?.TryStartLearning();
         _outlineManager.TurnOnOutline();
     }
 
@@ -39,7 +39,7 @@ public class InteractionManager : MonoBehaviour
     {
         if (_ifPlayerInTrigger)
         {
-            InteractionLearning.Instance.OnInteractionCompleted();
+            InteractionLearning.Instance?.OnInteractionCompleted();
             (_action as InteractionAbstraction).Interact();
         }
     }
