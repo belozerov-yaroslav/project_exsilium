@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b1bd74b350f0d408e537ac609693c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSceneName: SlideTestScene
+  _startSceneName: Level 1
 --- !u!4 &1201194503
 Transform:
   m_ObjectHideFlags: 0

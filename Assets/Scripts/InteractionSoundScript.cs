@@ -11,7 +11,7 @@ public class InteractionSoundScript : MonoBehaviour
     private void Awake()
     {
         if (Instance != null)
-            Debug.LogError("Find another inventory on the scene");
+            Debug.LogError("Find another InteractionSoundScript on the scene");
         Instance = this;
     }
     

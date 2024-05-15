@@ -23,8 +23,7 @@ namespace BanishSystem
         private bool _finished;
         private const int GhostTolerance = 10;
         private int _currentMistakesCost;
-
-        [SerializeField] private BubbleText _bubbleText;
+        
         private static readonly int Dead = Animator.StringToHash("Dead");
 
         public void Awake()
@@ -45,21 +44,19 @@ namespace BanishSystem
             {
                 if (_index >= _steps.Length - 1)
                 {
-                    _bubbleText.ShowMessage("ПРИЗРАК ИЗГНАН");
-                    DialogueManager.instance.SetVariableState("liho_banished", new Ink.Runtime.BoolValue(true));
-                    DoorEnter.IsBanishComplete = true;
                     _finished = true;
                     BanishFinished?.Invoke();
                 }
                 else _index++;
+                return;
             }
-            else
-                for (var i = 0; i < _index; i++)
-                    if (_steps[i].EquivalentTo(step))
-                    {
-                        _index = i + 1;
-                        return;
-                    }
+
+            for (var i = 0; i < _index; i++)
+                if (_steps[i].EquivalentTo(step))
+                {
+                    _index = i + 1;
+                    return;
+                }
 
             HandleMistake(step);
         }
