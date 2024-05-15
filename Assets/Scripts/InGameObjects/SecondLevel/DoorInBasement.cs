@@ -12,6 +12,7 @@ public class DoorInBasement : MonoBehaviour, InteractionAbstraction
 
     public void Interact()
     {
+        InteractionSoundScript.Instance.openDoorSound.Play();
         _playerRigidbody2D.position = _teleportPosition.position;
         _globalLight.intensity = 1;
         _playerVision.intensity = 0;

@@ -12,18 +12,12 @@ public class DoorEnter : MonoBehaviour, InteractionAbstraction
     public static bool IsDialogComplete = true;
     
     [SerializeField] private string sceneName;
-    private AudioSource _doorSound;
-    private void Awake()
-    {
-        _doorSound = GetComponent<AudioSource>();
-    }
-
 
     public void Interact()
     {
         var message = "";
         if (!Inventory.Inventory.Instance.IsFullInventory())
-            message = "Мне надо собрать мои вещи";
+            message = "Я не могу оставить свои вещи";
         if (!IsDialogComplete)
             message = "Надо поговорить с Мари";
         if (!IsBanishComplete)
@@ -31,7 +25,7 @@ public class DoorEnter : MonoBehaviour, InteractionAbstraction
         if (Inventory.Inventory.Instance.IsFullInventory() && IsBanishComplete && IsDialogComplete)
         {
             SceneManager.LoadScene(sceneName);
-            _doorSound.Play();
+            InteractionSoundScript.Instance.openDoorSound.Play();
         }
         else
             BubbleText.Instance.ShowMessage(message);

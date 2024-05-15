@@ -43,7 +43,7 @@ namespace Inventory.Items_Classes
         {
             GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
             _animator.SetTrigger(InteractSalt);
-            ItemSoundsScript.ItemSounds[_itemEnum].Play();
+            InteractionSoundScript.Instance.ItemSounds[_itemEnum].Play();
         }
 
         private void CompleteAction()

@@ -9,11 +9,6 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
     private Rigidbody2D _playerRigidbody2D;
     [SerializeField] private Transform streetTeleport;
     [SerializeField] private Light2D globalLight2D;
-    private AudioSource _doorSound;
-    private void Awake()
-    {
-        _doorSound = GetComponent<AudioSource>();
-    }
 
     private void Start()
     {
@@ -26,7 +21,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
         if (Inventory.Inventory.Instance.IsFullInventory())
         {
             globalLight2D.intensity = 0.15f;
-            _doorSound.Play();
+            InteractionSoundScript.Instance.openDoorSound.Play();
             _playerRigidbody2D.position = streetTeleport.position;
         }
         else

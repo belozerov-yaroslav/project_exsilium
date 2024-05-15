@@ -7,18 +7,12 @@ namespace InGameObjects.FirstLevel
     public class DoorToPub : MonoBehaviour, InteractionAbstraction
     {
         [SerializeField] private string pubLevelName;
-        private AudioSource doorSound;
-
-        public void Start()
-        {
-            doorSound = GetComponent<AudioSource>();
-        }
 
         public void Interact()
         {
             if (Inventory.Inventory.Instance.IsFullInventory())
             {
-                doorSound.Play();
+                InteractionSoundScript.Instance.openDoorSound.Play();
                 SceneManager.LoadScene(pubLevelName);
             }
             else
