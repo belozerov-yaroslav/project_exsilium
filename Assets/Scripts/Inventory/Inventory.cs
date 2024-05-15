@@ -9,8 +9,9 @@ namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        private readonly List<ItemSlot> _inventorySlots = new();
+        private readonly List<ItemSlot> _inventorySlots = new(9);
         private int _indexCurrentItem = -1;
+        private bool _isOpened;
 
         private readonly HashSet<ItemEnum> _itemsOnMap = new(); 
 
@@ -48,6 +49,7 @@ namespace Inventory
         {
             var keyNumber = int.Parse(context.control.name);
             if (_inventorySlots[keyNumber - 1].IsEmpty()) return;
+            InventoryLearning.Instance?.OnItemPicked();
             if (_indexCurrentItem == keyNumber - 1)
             {
                 _inventorySlots[_indexCurrentItem].TurnItem(false);
