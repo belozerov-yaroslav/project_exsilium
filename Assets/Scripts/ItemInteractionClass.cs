@@ -11,7 +11,7 @@ public class ItemInteractionClass : MonoBehaviour
 
     public AudioSource itemInteractionSound;
 
-    private void Start()
+    private void Awake()
     {
         itemInteractionSound = GetComponent<AudioSource>();
     }
