@@ -8,6 +8,6 @@ public class LoadSceneManager : MonoBehaviour
     {
         if (SaveSystem.LoadSceneState() == "")
             SaveSystem.SaveSceneState(_startSceneName);
-        SceneManager.LoadScene(SaveSystem.LoadSceneState());
+        LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
     }
 }
