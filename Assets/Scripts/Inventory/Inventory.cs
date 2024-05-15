@@ -52,6 +52,7 @@ namespace Inventory
         {
             var keyNumber = int.Parse(context.control.name);
             if (InventorySlots[keyNumber - 1].IsEmpty()) return;
+            InventoryLearning.Instance?.OnItemPicked();
             if (_indexCurrentItem == keyNumber - 1)
             {
                 InventorySlots[_indexCurrentItem].TurnItem(false);

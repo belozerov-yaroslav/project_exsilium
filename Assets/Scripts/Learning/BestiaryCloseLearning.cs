@@ -4,34 +4,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-public class BestiaryNavigationLearning : AbstractLearning
+public class BestiaryCloseLearning : AbstractLearning
 {
     [SerializeField] private GameObject learningHint;
-    public static BestiaryNavigationLearning Instance { get; private set; }
+    public static BestiaryCloseLearning Instance { get; private set; }
 
     private void Awake()
     {
         if (Instance != null)
-            Debug.LogError("Two BestiaryNavigationLearning in the scene!");
+            Debug.LogError("Two BestiaryCloseLearning in the scene");
         Instance = this;
     }
-
+    
     protected override void StartLearning()
     {
         learningHint.SetActive(true);
-        CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed += OnBestiaryInput;
+        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += ListenInput;
     }
 
     protected override void StopLearning()
     {
         learningHint.SetActive(false);
-        CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed -= OnBestiaryInput;
         LearningManager.Instance.StopLearning();
-        BestiaryCloseLearning.Instance?.TryStartLearning();
+        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= ListenInput;
+        InventoryLearning.Instance?.TryStartLearning();
     }
 
-    private void OnBestiaryInput(InputAction.CallbackContext callbackContext)
+    private void ListenInput(InputAction.CallbackContext callbackContext)
     {
         _wasCompleted = true;
         StopLearning();
