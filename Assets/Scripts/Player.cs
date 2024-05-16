@@ -41,14 +41,15 @@ public class Player : MonoBehaviour
             _animator.SetFloat(LastHorizontal1, _moveVector.x);
             _animator.SetFloat(LastVertical1, _moveVector.y);
         }
+
         _rb.velocity = _moveVector * moveSpeed;
     }
 
     private void OnMovementPerformed(InputAction.CallbackContext value)
     {
         _moveVector = value.ReadValue<Vector2>();
-    }   
-    
+    }
+
     private void OnMovementCanceled(InputAction.CallbackContext value)
     {
         _moveVector = Vector2.zero;
@@ -66,9 +67,34 @@ public class Player : MonoBehaviour
             case "salt":
                 SaltInteractCompleted?.Invoke();
                 break;
+            case "knife":
+                KnifeInteractCompleted?.Invoke();
+                break;
+            case "crucifix":
+                CrucifixInteractCompleted?.Invoke();
+                break;
+            case "icon":
+                IconInteractCompleted?.Invoke();
+                break;
+            case "chalk":
+                ChalkInteractCompleted?.Invoke();
+                break;
+            case "incense":
+                IncenseInteractCompleted?.Invoke();
+                break;
+            case "herbs":
+                HerbsInteractCompleted?.Invoke();
+                break;
         }
     }
-    
+
     public event Action CandleInteractCompleted;
     public event Action SaltInteractCompleted;
+
+    public event Action KnifeInteractCompleted;
+    public event Action CrucifixInteractCompleted;
+    public event Action IconInteractCompleted;
+    public event Action ChalkInteractCompleted;
+    public event Action HerbsInteractCompleted;
+    public event Action IncenseInteractCompleted;
 }

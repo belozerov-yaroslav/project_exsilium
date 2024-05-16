@@ -6,17 +6,11 @@ namespace Inventory.Items_Classes
 {
     public class PrayerBook : Item
     {
-        private ItemEnum _itemEnum;
+        [SerializeField] private Sprite itemIcon;
         public Canvas prayCanvas;
         private PrayEnum _pray;
         private float _percentageCorrectness;
         
-        public override ItemEnum Enum
-        {
-            get => _itemEnum;
-            set { }
-        }
-
         private Sprite _itemIcon;
 
         public override Sprite ItemIcon
@@ -28,8 +22,13 @@ namespace Inventory.Items_Classes
         private void Awake()
         {
             _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemEnum = ItemEnum.PrayerBook;
+            ItemEnum = ItemEnum.PrayerBook;
             TargetCircle.OnFinished += GetPrayResults;
+        }
+        private void Start()
+        {
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
         }
 
         private void GetPrayResults(float percent, PrayEnum pray)
@@ -44,10 +43,15 @@ namespace Inventory.Items_Classes
             GameStateMachine.Instance.StateTransition(PrayerBookState.Instance); 
         }
 
-        private new BanishStep CollectInfo()
+        protected override BanishStep CollectInfo()
         {
-            return new BanishStep(Enum, PlayerInteraction.instance.GetNearItems(), Inventory.Instance.GetItemsOnMap(), 
+            return new BanishStep(ItemEnum, PlayerInteraction.instance.GetNearItems(), Inventory.Instance.GetItemsOnMap(), 
                 _percentageCorrectness, _pray);
+        }
+
+        protected override void ReportCompleted()
+        {
+            throw new NotImplementedException();
         }
 
         public override event Action<BanishStep> WasInteracted;

@@ -6,30 +6,30 @@ namespace Inventory.Items_Classes
 {
     public class Chalk : Item
     {
-        private ItemEnum _itemEnum;
-        public override ItemEnum Enum
-        {
-            get => _itemEnum;
-            set {}
-        }
-
-        private Sprite _itemIcon;
+        [SerializeField] private Sprite itemIcon;
 
         public override Sprite ItemIcon
         {
-            get => _itemIcon;
+            get => itemIcon;
             set { }
         }
 
         private void Awake()
         {
-            _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemEnum = ItemEnum.Chalk;
+            IsDropable = false;
+            ItemEnum = ItemEnum.Chalk;
         }
 
-        public override void DoAction()
+        private void Start()
         {
-            Debug.Log("МЕЛ");
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
+            _player.ChalkInteractCompleted += CompleteAction;
+            Id = Animator.StringToHash("InteractChalk");
+        }
+
+        protected override void ReportCompleted()
+        {
             WasInteracted?.Invoke(CollectInfo());
         }
 

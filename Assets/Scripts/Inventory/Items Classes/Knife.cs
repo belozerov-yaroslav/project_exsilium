@@ -1,35 +1,36 @@
 using System;
 using BanishSystem;
+using GameStates;
 using UnityEngine;
 
 namespace Inventory.Items_Classes
 {
     public class Knife : Item
     {
-        private ItemEnum _itemEnum;
-        public override ItemEnum Enum
-        {
-            get => _itemEnum;
-            set {}
-        }
-
-        private Sprite _itemIcon;
+        [SerializeField] private Sprite itemIcon;
 
         public override Sprite ItemIcon
         {
-            get => _itemIcon;
-            set{}
+            get => itemIcon;
+            set { }
         }
 
         private void Awake()
         {
-            _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemEnum = ItemEnum.Knife;
+            IsDropable = false;
+            ItemEnum = ItemEnum.Knife;
         }
-        
-        public override void DoAction()
+
+        private void Start()
         {
-            Debug.Log("Н О Ж");
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
+            _player.KnifeInteractCompleted += CompleteAction;
+            Id = Animator.StringToHash("InteractKnife");
+        }
+
+        protected override void ReportCompleted()
+        {
             WasInteracted?.Invoke(CollectInfo());
         }
 

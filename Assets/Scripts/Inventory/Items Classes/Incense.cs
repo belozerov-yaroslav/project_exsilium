@@ -6,33 +6,32 @@ namespace Inventory.Items_Classes
 {
     public class Incense : Item
     {
-        private ItemEnum _itemEnum;
-        public override ItemEnum Enum
-        {
-            get => _itemEnum;
-            set {}
-        }
-
-        private Sprite _itemIcon;
+        [SerializeField] private Sprite itemIcon;
 
         public override Sprite ItemIcon
         {
-            get => _itemIcon;
-            set{}
+            get => itemIcon;
+            set { }
         }
 
         private void Awake()
         {
             IsDropable = true;
-            _itemIcon = GetComponent<SpriteRenderer>().sprite;
-            _itemEnum = ItemEnum.Incense;
+            ItemEnum = ItemEnum.Incense;
         }
-        
-        public override void DoAction()
+
+        private void Start()
         {
-            Debug.Log("БЛАГОВОНИЯ");
-            WasInteracted?.Invoke(CollectInfo());
+            _animator = Player.Instance.GetComponent<Animator>();
+            _player = Player.Instance.GetComponent<Player>();
+            _player.IncenseInteractCompleted += CompleteAction;
+            Id = Animator.StringToHash("InteractIncense");
+        }
+
+        protected override void ReportCompleted()
+        {
             DropItem();
+            WasInteracted?.Invoke(CollectInfo());
         }
 
         public override event Action<BanishStep> WasInteracted;

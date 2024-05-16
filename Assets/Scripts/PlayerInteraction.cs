@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public ItemEnum[] GetNearItems()
     {
-        return _itemsInCollider.Select(item => item.Enum).ToArray();
+        return _itemsInCollider.Select(item => item.ItemEnum).ToArray();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

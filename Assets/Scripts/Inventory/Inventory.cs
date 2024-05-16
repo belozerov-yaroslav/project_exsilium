@@ -39,9 +39,9 @@ namespace Inventory
 
         public void AddItem(Item newItem)
         {
-            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.Enum))
-                _itemsOnMap.Remove(newItem.Enum);
-            _inventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
+            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.ItemEnum))
+                _itemsOnMap.Remove(newItem.ItemEnum);
+            _inventorySlots[(int)(newItem.ItemEnum - 1)].InsertItem(newItem);
         }
         
 
@@ -70,7 +70,7 @@ namespace Inventory
             if (_indexCurrentItem == -1) return;
             _inventorySlots[_indexCurrentItem].Item.DoAction();
             if (!_inventorySlots[_indexCurrentItem].Item.IsDropable) return;
-            _itemsOnMap.Add(_inventorySlots[_indexCurrentItem].Item.Enum);
+            _itemsOnMap.Add(_inventorySlots[_indexCurrentItem].Item.ItemEnum);
             _inventorySlots[_indexCurrentItem].DeleteItem();
             _indexCurrentItem = -1;
         }
