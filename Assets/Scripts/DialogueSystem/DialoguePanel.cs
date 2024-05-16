@@ -16,6 +16,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private float spaceBetweenMessages = 15f;
     [SerializeField] private float btnTextMargin = 10f;
     [SerializeField] private float startSpace = 15f;
+    [SerializeField]private AudioSource buttonSound;
     private readonly List<GameObject> currentMessages = new();
     private readonly List<GameObject> currentChoiceButtons = new();
     private Stack<float> lastMessagePos = new(new float[] { 0 });
@@ -143,6 +144,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void ButtonClicked(int index)
     {
+        buttonSound.Play();
         DeleteChoiceButtons();
         DialogueManager.GetInstance().MakeChoice(index);
     }

@@ -27,7 +27,7 @@ public class FootStepsTrigger : MonoBehaviour
             {
                 _lastPlay = Time.time;
                 randomSound.Play();
-                _lengthLastPlay = randomSound.clip.length;
+                _lengthLastPlay = randomSound.clip.length + 0.2f;
             }
         }
     }

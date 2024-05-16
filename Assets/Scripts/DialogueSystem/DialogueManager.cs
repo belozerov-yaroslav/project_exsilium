@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using Ink.Runtime;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextAsset loadGlobalsJSON;
 
     [SerializeField] private DialogueParser _dialogueParser;
-    
+    [SerializeField]private AudioSource dialogSound;
     [SerializeField] private GameStateMachine _stateManager;
 
     private Story currentStory;
@@ -56,6 +57,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        dialogSound.Play();
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.Show();
@@ -66,6 +68,7 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogueMode()
     {
+        dialogSound.Play();
         _stateManager.StateTransition(null);
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
