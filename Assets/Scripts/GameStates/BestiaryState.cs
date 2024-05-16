@@ -20,17 +20,19 @@ namespace GameStates
             _bestiary.OpenBestiary();
             CustomInputInitializer.CustomInput.Bestiary.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += CloseBestiary;
+            CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
         }
 
         public override void TurnOff()
         {
-            _bestiary.CloseBestiary();
+            CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
             CustomInputInitializer.CustomInput.Bestiary.Disable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= CloseBestiary;
         }
 
         private void CloseBestiary(InputAction.CallbackContext callbackContext)
         {
+            _bestiary.CloseBestiary();
             Transite(null);
         }
     }

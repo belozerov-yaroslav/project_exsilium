@@ -21,6 +21,7 @@ public class PrayerBookState : GameState
         prayBookCanvas.enabled = true;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed += ClosePrayerBook;
         PrayerBookLearning.Instance?.TryStartLearning();
+        CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
     }
 
     public override void TurnOff()
@@ -28,6 +29,7 @@ public class PrayerBookState : GameState
         prayBookCanvas.enabled = false;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed -= ClosePrayerBook;
         PrayerBookLearning.Instance?.OnBookClose();
+        CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
     }
 
     public void ClosePrayerBook(InputAction.CallbackContext callbackContext)

@@ -17,10 +17,12 @@ namespace GameStates
 
         public override void TurnOn()
         {
+            CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
         }
 
         public override void TurnOff()
         {
+            CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
         }
     }
 }
