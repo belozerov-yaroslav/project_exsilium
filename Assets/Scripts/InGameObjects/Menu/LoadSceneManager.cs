@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class LoadSceneManager : MonoBehaviour
 {
-    [SerializeField] private string _startSceneName;
-    public void LoadSampleScene()
+    [SerializeField] private string startSceneName;
+    public void LoadScene()
     {
         if (SaveSystem.LoadSceneState() == "")
-            SaveSystem.SaveSceneState(_startSceneName);
+            SaveSystem.SaveSceneState(startSceneName);
+        LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
+    }
+    
+    public void NewGame()
+    {
+        SaveSystem.ResetGlobals();
+        SaveSystem.SaveSceneState(startSceneName);
         LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
     }
 }

@@ -6,6 +6,7 @@ namespace Inventory.Items_Classes
 {
     public class Chalk : Item
     {
+
         [SerializeField] private Sprite itemIcon;
 
         public override Sprite ItemIcon

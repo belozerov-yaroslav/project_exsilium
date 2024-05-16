@@ -13,6 +13,11 @@ public static class SaveSystem
         PlayerPrefs.SetInt(name, state ? 1 : 0);
     }
 
+    public static void ResetGlobals()
+    {
+        GlobalVariables.LihoBanished = false;
+    }
+
     public static void SaveSceneState(string sceneName)
     {
         PlayerPrefs.SetString("sceneState", sceneName);
