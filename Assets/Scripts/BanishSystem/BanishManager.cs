@@ -13,6 +13,7 @@ namespace BanishSystem
         [SerializeField] private Item[] items;
         [SerializeField] private AudioSource heartBeat;
         [SerializeField] private AudioSource deathSound;
+        [SerializeField] private AudioSource banishSound;
         [SerializeField] private CanvasGroup screenEffect;
         [SerializeField] private float volumeStep = 0.1f;
         [SerializeField] private float transparencyStep = 0.1f;
@@ -45,6 +46,9 @@ namespace BanishSystem
                 if (_index >= _steps.Length - 1)
                 {
                     _finished = true;
+                    banishSound.Play();
+                    canvas.gameObject.SetActive(false);
+                    heartBeat.Stop();
                     BanishFinished?.Invoke();
                 }
                 else _index++;
@@ -67,6 +71,7 @@ namespace BanishSystem
             {
                 canvas.gameObject.SetActive(true);
                 heartBeat.Play();
+                BubbleText.Instance.ShowMessage("Что-то не так");
             }
             _currentMistakesCost += 2;
             heartBeat.volume = _currentMistakesCost * volumeStep;
