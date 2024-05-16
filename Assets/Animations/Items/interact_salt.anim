@@ -121,7 +121,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 2.125
+  - time: 2.25
     functionName: InteractCompleted
     data: salt
     objectReferenceParameter: {fileID: 0}
