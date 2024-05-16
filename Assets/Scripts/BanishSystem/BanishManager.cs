@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using GameStates;
 using Inventory.Items_Classes;
 using UnityEngine;
 
@@ -9,19 +11,24 @@ namespace BanishSystem
         [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private int level;
         [SerializeField] private Item[] items;
+        [SerializeField] private AudioSource heartBeat;
+        [SerializeField] private AudioSource deathSound;
+        [SerializeField] private CanvasGroup screenEffect;
+        [SerializeField] private float volumeStep = 0.1f;
+        [SerializeField] private float transparencyStep = 0.1f;
+        [SerializeField] private Canvas canvas;
         private BanishStep[] _steps;
         private BanishStep[] _crushingFactors;
         private int _index;
         private bool _finished;
         private const int GhostTolerance = 10;
         private int _currentMistakesCost;
-
-        [SerializeField] private BubbleText _bubbleText;
+        
+        private static readonly int Dead = Animator.StringToHash("Dead");
 
         public void Awake()
         {
             _steps = BanishStepsCompiler.BuildSteps(level);
-            _crushingFactors = BanishStepsCompiler.BuildFactors(level);
             if (_steps.Length == 0) _finished = true;
         }
 
@@ -37,43 +44,46 @@ namespace BanishSystem
             {
                 if (_index >= _steps.Length - 1)
                 {
-                    _bubbleText.ShowMessage("ПРИЗРАК ИЗГНАН");
-                    DialogueManager.instance.SetVariableState("liho_banished", new Ink.Runtime.BoolValue(true));
-                        
                     _finished = true;
                     BanishFinished?.Invoke();
                 }
                 else _index++;
+                return;
             }
-            else
-                for (var i = 0; i < _index; i++)
-                    if (_steps[i].EquivalentTo(step))
-                    {
-                        _index = i + 1;
-                        return;
-                    }
+
+            for (var i = 0; i < _index; i++)
+                if (_steps[i].EquivalentTo(step))
+                {
+                    _index = i + 1;
+                    return;
+                }
 
             HandleMistake(step);
         }
 
         private void HandleMistake(BanishStep step)
         {
-            foreach (var factor in _crushingFactors)
+            if (_currentMistakesCost == 0)
             {
-                if (factor.EquivalentTo(step)) _currentMistakesCost += 2;
-                break;
+                canvas.gameObject.SetActive(true);
+                heartBeat.Play();
             }
-
             _currentMistakesCost += 2;
+            heartBeat.volume = _currentMistakesCost * volumeStep;
+            screenEffect.alpha = _currentMistakesCost * transparencyStep;
             if (_currentMistakesCost >= GhostTolerance) HandleBanishFailure();
         }
 
         private void HandleBanishFailure()
         {
-            Debug.Log("ИЗГНАНИЕ ПРОВАЛИЛОСЬ");
+            deathSound.Play();
+            heartBeat.Stop();
             _finished = true;
+            GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
+            Player.Instance.gameObject.GetComponent<Animator>().SetTrigger(Dead);
+            LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
         }
 
-        public event Action BanishFinished;
+        public static event Action BanishFinished;
     }
 }

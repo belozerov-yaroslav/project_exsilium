@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/tilemap street.unity
     guid: 0d8cb62588c0392418518d87ae10acdf
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 99c7ac8eaa2b01442ab5f75f3b36ad62
   m_configObjects: {}

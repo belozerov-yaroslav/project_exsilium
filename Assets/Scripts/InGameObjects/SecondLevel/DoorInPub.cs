@@ -19,9 +19,12 @@ public class DoorInPub : MonoBehaviour, InteractionAbstraction
             _playerTransform.position = _teleportPosition.position;
             _globalLight.intensity = 0f;
             _playerVision.intensity = 0.5f;
+            InteractionSoundScript.Instance.openDoorSound.Play();
         }
         else
         {
+            if (!InteractionSoundScript.Instance.closedDoorSound.isPlaying)
+                InteractionSoundScript.Instance.closedDoorSound.Play();
             _bubbleText.ShowMessage("У меня нет ключей от этой двери");
         }
         

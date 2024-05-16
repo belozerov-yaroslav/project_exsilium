@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BanishSystem;
+using GameStates;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +15,10 @@ public class PrayManager : MonoBehaviour
     
     private static Dictionary<PrayEnum, float> _velocityDict = new Dictionary<PrayEnum, float>
     {
-        {PrayEnum.PrayHolySpirit,0.005f},
+        {PrayEnum.PrayHolySpirit,0.007f},
         {PrayEnum.PrayAgainstDemonsMachinations,0.01f},
         {PrayEnum.PrayArchangelMichael , 0.015f},
-        {PrayEnum.PrayFairCross, 0.012f}
+        {PrayEnum.PrayFairCross, 0.020f}
     };
 
     public void FirstButtonAction()
@@ -48,6 +49,7 @@ public class PrayManager : MonoBehaviour
 
     public void StartCircle()
     {
+        PrayerBookState.IsBlocked = true;
         PrayGameCanvas.enabled = true;
         SetWaypoint();
         targetCircle.StartAim();

@@ -14,11 +14,11 @@ public class SoundCollider : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("PlayerInteraction"))
-            _audioSource.mute = false;
+            _audioSource.Play();
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("PlayerInteraction"))
-            _audioSource.mute = true;
+            _audioSource.Stop();
     }
 }

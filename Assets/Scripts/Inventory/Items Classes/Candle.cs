@@ -7,21 +7,7 @@ namespace Inventory.Items_Classes
 {
     public class Candle : Item
     {
-        private Animator _animator;
-        private Player _player;
-        private ItemEnum _itemEnum;
-
-        public override ItemEnum Enum
-        {
-            get => _itemEnum;
-            set { }
-        }
-
-
         [SerializeField] private Sprite itemIcon;
-        private static readonly int InteractCandle = Animator.StringToHash("InteractCandle");
-        private static readonly int LastHorizontal = Animator.StringToHash("LastHorizontal");
-        private static readonly int LastVertical = Animator.StringToHash("LastVertical");
 
         public override Sprite ItemIcon
         {
@@ -32,7 +18,7 @@ namespace Inventory.Items_Classes
         private void Awake()
         {
             IsDropable = true;
-            _itemEnum = ItemEnum.Candle;
+            ItemEnum = ItemEnum.Candle;
         }
 
         private void Start()
@@ -40,22 +26,13 @@ namespace Inventory.Items_Classes
             _animator = Player.Instance.GetComponent<Animator>();
             _player = Player.Instance.GetComponent<Player>();
             _player.CandleInteractCompleted += CompleteAction;
+            Id = Animator.StringToHash("InteractCandle");
         }
 
-        public override void DoAction()
+        protected override void ReportCompleted()
         {
-            GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
-            _animator.SetTrigger(InteractCandle);
-            ItemSoundsScript.ItemSounds[_itemEnum].Play();
-        }
-
-        private void CompleteAction()
-        {
-            _animator.SetFloat(LastVertical, -1);
-            _animator.SetFloat(LastHorizontal, 0);
-            WasInteracted?.Invoke(CollectInfo());
             DropItem();
-            GameStateMachine.Instance.StateTransition(null);
+            WasInteracted?.Invoke(CollectInfo());
         }
 
         public override event Action<BanishStep> WasInteracted;

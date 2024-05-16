@@ -628,6 +628,95 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "SlideShow",
+            "id": "1b363fc5-26fc-48ae-b0a2-fbeae23cdaa0",
+            "actions": [
+                {
+                    "name": "NextSlide",
+                    "type": "Button",
+                    "id": "e06dd5d3-cede-4d19-8c67-14f00600e846",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "24172b19-1663-4c11-907c-715d92586ab9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efe0cccd-8779-4a67-a0d9-fa7140287c1c",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d70674b-e4d9-4527-992f-42c84f178344",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7202a455-94ed-4a9c-8eca-de0a4a7d6632",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextSlide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Note",
+            "id": "3de7b5ee-c7ea-4b65-9c0a-340c70422439",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "6d4306e9-c3e4-47fb-bf94-380687c5685f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1acebe0c-8173-49dc-be01-57a898a80d02",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

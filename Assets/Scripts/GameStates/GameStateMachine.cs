@@ -12,10 +12,11 @@ public class GameStateMachine : MonoBehaviour
     
     public void Start()
     {
-        
         CustomInputInitializer.CustomInput.Player.Disable();
+        CustomInputInitializer.CustomInput.Note.Disable();
         CustomInputInitializer.CustomInput.Bestiary.Disable();
         CustomInputInitializer.CustomInput.Dialogue.Disable();
+        CustomInputInitializer.CustomInput.SlideShow.Disable();
         CustomInputInitializer.CustomInput.Global.Enable();
         _gameStates.ForEach(state => state.OnTransition += StateTransition);
         _statesStack.Push(_gameStates.Find(state => state is DefaultState));

@@ -9,9 +9,7 @@ namespace Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        public GameObject inventoryPanel;
-
-        private readonly List<ItemSlot> InventorySlots = new(9);
+        private readonly List<ItemSlot> _inventorySlots = new(9);
         private int _indexCurrentItem = -1;
         private bool _isOpened;
 
@@ -30,7 +28,7 @@ namespace Inventory
         {
             for (var i = 0; i < transform.childCount; i++)
             {
-                InventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
+                _inventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
             }
             
             CustomInputInitializer.CustomInput.Player.ItemChange.performed += ChangeCurrentItem;
@@ -41,42 +39,47 @@ namespace Inventory
 
         public void AddItem(Item newItem)
         {
-            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.Enum))
-                _itemsOnMap.Remove(newItem.Enum);
-            InventorySlots[(int)(newItem.Enum - 1)].InsertItem(newItem);
-            if (InventorySlots.Select(x => x.Item).All(x => x != null)) InventoryFilled?.Invoke();
+            if (newItem.IsDropable && _itemsOnMap.Contains(newItem.ItemEnum))
+                _itemsOnMap.Remove(newItem.ItemEnum);
+            _inventorySlots[(int)(newItem.ItemEnum - 1)].InsertItem(newItem);
         }
         
 
         private void ChangeCurrentItem(InputAction.CallbackContext context)
         {
             var keyNumber = int.Parse(context.control.name);
-            if (InventorySlots[keyNumber - 1].IsEmpty()) return;
+            if (_inventorySlots[keyNumber - 1].IsEmpty()) return;
+            InventoryLearning.Instance?.OnItemPicked();
             if (_indexCurrentItem == keyNumber - 1)
             {
-                InventorySlots[_indexCurrentItem].TurnItem(false);
+                _inventorySlots[_indexCurrentItem].TurnItem(false);
                 _indexCurrentItem = -1;
             }
             else
             {
                 if (_indexCurrentItem != -1)
-                    InventorySlots[_indexCurrentItem].TurnItem(false);
+                    _inventorySlots[_indexCurrentItem].TurnItem(false);
                 
                 _indexCurrentItem = keyNumber - 1;
-                InventorySlots[_indexCurrentItem].TurnItem(true);
+                _inventorySlots[_indexCurrentItem].TurnItem(true);
             }
         }
         
         private void OnItemInteraction(InputAction.CallbackContext obj)
         {
             if (_indexCurrentItem == -1) return;
-            InventorySlots[_indexCurrentItem].Item.DoAction();
-            if (!InventorySlots[_indexCurrentItem].Item.IsDropable) return;
-            _itemsOnMap.Add(InventorySlots[_indexCurrentItem].Item.Enum);
-            InventorySlots[_indexCurrentItem].DeleteItem();
+            _inventorySlots[_indexCurrentItem].Item.DoAction();
+            if (!_inventorySlots[_indexCurrentItem].Item.IsDropable) return;
+            _itemsOnMap.Add(_inventorySlots[_indexCurrentItem].Item.ItemEnum);
+            _inventorySlots[_indexCurrentItem].DeleteItem();
             _indexCurrentItem = -1;
         }
-        public event Action InventoryFilled;
+
+        public bool IsFullInventory()
+        {
+            return !_inventorySlots.Any(slot => slot.IsEmpty());
+        }
+        
 
         public ItemEnum[] GetItemsOnMap()
         {

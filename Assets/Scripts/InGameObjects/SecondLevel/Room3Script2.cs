@@ -10,10 +10,11 @@ public class Room3Script2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerInteraction"))
+        if (other.CompareTag("PlayerInteraction") && _fedor2 != null && _fedor2.enabled)
         {
             _fedor2.enabled = false;
             _fedor2Light.enabled = false;
+            Destroy(_fedor2);
         }
     }
 }

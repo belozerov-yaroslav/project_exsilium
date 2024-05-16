@@ -15,15 +15,11 @@ public class InteractionManager : MonoBehaviour
         CustomInputInitializer.CustomInput.Player.Interaction.performed += OnInteractionPerformed;
     }
 
-    private void OnDisable()
-    {
-        CustomInputInitializer.CustomInput.Player.Interaction.performed -= OnInteractionPerformed;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("PlayerInteraction")) return;
         _ifPlayerInTrigger = true;
+        InteractionLearning.Instance?.TryStartLearning();
         _outlineManager.TurnOnOutline();
     }
 
@@ -36,6 +32,10 @@ public class InteractionManager : MonoBehaviour
 
     private void OnInteractionPerformed(InputAction.CallbackContext obj)
     {
-        if (_ifPlayerInTrigger) (_action as InteractionAbstraction).Interact();
+        if (_ifPlayerInTrigger)
+        {
+            InteractionLearning.Instance?.OnInteractionCompleted();
+            (_action as InteractionAbstraction).Interact();
+        }
     }
 }
