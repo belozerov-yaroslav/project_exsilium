@@ -35,6 +35,12 @@ namespace Inventory.Items_Classes
             WasInteracted?.Invoke(CollectInfo());
         }
 
+        protected override void DropEffect(GameObject obj)
+        {
+            ExtinguishedScript.PlacedCandle = obj;
+        }
+
+
         public override event Action<BanishStep> WasInteracted;
     }
 }

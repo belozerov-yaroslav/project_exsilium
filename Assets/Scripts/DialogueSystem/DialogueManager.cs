@@ -16,7 +16,6 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField] private DialogueParser _dialogueParser;
     [SerializeField]private AudioSource dialogSound;
-    [SerializeField] private GameStateMachine _stateManager;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -62,14 +61,14 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = true;
         dialoguePanel.Show();
         dialogueVariables.StartListening(currentStory);
-        _stateManager.StateTransition(DialogueState.Instance);
+        GameStateMachine.Instance.StateTransition(DialogueState.Instance);
         ContinueStory();
     }
 
     private void ExitDialogueMode()
     {
         dialogSound.Play();
-        _stateManager.StateTransition(null);
+        GameStateMachine.Instance.StateTransition(null);
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         dialoguePanel.Hide();

@@ -23,7 +23,7 @@ namespace Inventory.Items_Classes
         public virtual void DoAction()
         {
             GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
-            _animator.SetTrigger(Id);
+            _animator.SetTrigger(Id); 
             InteractionSoundScript.Instance.ItemSounds[ItemEnum].Play();
         }
         
@@ -34,13 +34,18 @@ namespace Inventory.Items_Classes
 
         protected abstract void ReportCompleted();
 
-        protected void DropItem()
+        protected virtual void DropItem()
         {
             if (objectPrefab == null) return;
             var obj = Instantiate(objectPrefab, dropPlace.position, dropPlace.rotation);
             obj.GetComponent<ItemInteraction>().item = this;
             obj.SetActive(true);
-            ExtinguishedScript.PlacedCandle = obj;
+            DropEffect(obj);
+        }
+
+        protected virtual void DropEffect(GameObject gameObject)
+        {
+            
         }
         protected void CompleteAction()
         {
