@@ -21,6 +21,7 @@ public class DialoguePanel : MonoBehaviour
     private Stack<float> lastMessagePos = new(new float[] { 0 });
 
     private float contentHeight = 0;
+    private DialoguePanelAnimation _dialoguePanelAnimation;
 
     private void Awake()
     {
@@ -31,6 +32,12 @@ public class DialoguePanel : MonoBehaviour
         lastMessagePos.Push(-startSpace);
         instance = this;
     }
+
+    private void Start()
+    {
+        _dialoguePanelAnimation = GetComponentInChildren<DialoguePanelAnimation>();
+    }
+
     public static DialoguePanel GetInstance()
     {
         return instance;
@@ -38,6 +45,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void Show()
     {
+        _dialoguePanelAnimation.TurnOn();
         dialogueCanvas.enabled = true;
     }
 
