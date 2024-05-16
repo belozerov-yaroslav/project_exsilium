@@ -83,6 +83,7 @@ public class DialoguePanel : MonoBehaviour
         var authorText = authorTextElement.GetComponent<TextMeshProUGUI>();
         authorText.text = dialogueLine.Author.authorName + ':';
         authorText.color = dialogueLine.Author.Color;
+        authorText.fontStyle = FontStyles.Bold;
         authorTextElement.SetActive(true);
         return authorTextElement;
     }
