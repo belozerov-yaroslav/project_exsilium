@@ -16,11 +16,13 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private float spaceBetweenMessages = 15f;
     [SerializeField] private float btnTextMargin = 10f;
     [SerializeField] private float startSpace = 15f;
+    [SerializeField]private AudioSource buttonSound;
     private readonly List<GameObject> currentMessages = new();
     private readonly List<GameObject> currentChoiceButtons = new();
     private Stack<float> lastMessagePos = new(new float[] { 0 });
 
     private float contentHeight = 0;
+    private DialoguePanelAnimation _dialoguePanelAnimation;
 
     private void Awake()
     {
@@ -31,6 +33,12 @@ public class DialoguePanel : MonoBehaviour
         lastMessagePos.Push(-startSpace);
         instance = this;
     }
+
+    private void Start()
+    {
+        _dialoguePanelAnimation = GetComponentInChildren<DialoguePanelAnimation>();
+    }
+
     public static DialoguePanel GetInstance()
     {
         return instance;
@@ -38,6 +46,7 @@ public class DialoguePanel : MonoBehaviour
 
     public void Show()
     {
+        _dialoguePanelAnimation.TurnOn();
         dialogueCanvas.enabled = true;
     }
 
@@ -83,6 +92,7 @@ public class DialoguePanel : MonoBehaviour
         var authorText = authorTextElement.GetComponent<TextMeshProUGUI>();
         authorText.text = dialogueLine.Author.authorName + ':';
         authorText.color = dialogueLine.Author.Color;
+        authorText.fontStyle = FontStyles.Bold;
         authorTextElement.SetActive(true);
         return authorTextElement;
     }
@@ -134,6 +144,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void ButtonClicked(int index)
     {
+        buttonSound.Play();
         DeleteChoiceButtons();
         DialogueManager.GetInstance().MakeChoice(index);
     }

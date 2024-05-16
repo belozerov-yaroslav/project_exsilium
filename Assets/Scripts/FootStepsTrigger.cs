@@ -1,37 +1,35 @@
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 public class FootStepsTrigger : MonoBehaviour
 {
-    public float minPitch;
-    public float maxPitch;
-    
-    private AudioSource _footstepSound ;
+    [SerializeField]private List<AudioSource> footstepsSound = new List<AudioSource>() ;
     private float _lastPlay;
+    private float _lengthLastPlay;
 
     private Player player;
     
     
     private void Start()
     {
-        _footstepSound = GetComponent<AudioSource>();
         player = Player.Instance.GetComponent<Player>();
     }
     
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && player.CheckVelocity() && Time.time - _lastPlay > _footstepSound.clip.length)
+        if (other.CompareTag("Player") && player.CheckVelocity())
         {
-            _lastPlay = Time.time;
-            _footstepSound.Play();
-            _footstepSound.pitch = Random.Range(minPitch, maxPitch);
+            var randomSound = footstepsSound[RandomNumberGenerator.GetInt32(footstepsSound.Count)];
+            if (Time.time - _lastPlay - _lengthLastPlay> 0)
+            {
+                _lastPlay = Time.time;
+                randomSound.Play();
+                _lengthLastPlay = randomSound.clip.length + 0.2f;
+            }
         }
     }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        _footstepSound.Stop();
-    }
+    
 }
