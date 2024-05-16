@@ -11,8 +11,11 @@ public class InteractionSoundScript : MonoBehaviour
     private void Awake()
     {
         if (Instance != null)
+        {
             Debug.LogError("Find another InteractionSoundScript on the scene");
-        Instance = this;
+        }
+        else
+            Instance = this;
     }
     
     public Dictionary<ItemEnum, AudioSource> ItemSounds = new Dictionary<ItemEnum, AudioSource>();

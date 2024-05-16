@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class DontDestoySoundsScript : MonoBehaviour
 {
-    private void Start()
+    private static bool _isExist;
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (!_isExist)
+        {
+            _isExist = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }     
+       
     }
 
 }
