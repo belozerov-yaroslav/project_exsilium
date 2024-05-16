@@ -10,6 +10,7 @@ namespace GameStates
         public static GameState Instance { get; private set; }
         [SerializeField] private Canvas _pauseCanvas;
         [SerializeField] private AudioSettings _audioSettnigs;
+        [SerializeField] private NewGameConfirmation _exitConfirmation;
 
         private void Awake()
         {
@@ -30,6 +31,7 @@ namespace GameStates
             Time.timeScale = 1;
             _pauseCanvas.enabled = false;
             _audioSettnigs.TurnOff();
+            _exitConfirmation.CloseConfirmation();
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
         }
 
