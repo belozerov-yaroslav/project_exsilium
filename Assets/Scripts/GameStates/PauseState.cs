@@ -9,6 +9,7 @@ namespace GameStates
     {
         public static GameState Instance { get; private set; }
         [SerializeField] private Canvas _pauseCanvas;
+        [SerializeField] private AudioSettings _audioSettnigs;
 
         private void Awake()
         {
@@ -28,7 +29,13 @@ namespace GameStates
         {
             Time.timeScale = 1;
             _pauseCanvas.enabled = false;
+            _audioSettnigs.TurnOff();
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
+        }
+
+        public void OnUIButtonPressed()
+        {
+            Transite(null);
         }
 
         private new void OnPausePressed(InputAction.CallbackContext callbackContext)
