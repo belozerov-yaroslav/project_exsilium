@@ -15,7 +15,7 @@ public class ItemSlot : MonoBehaviour
     public Item Item { get; private set; }
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         _itemImage = transform.GetChild(1).GetComponent<Image>();
         _outlineImage = GetComponent<Image>();
