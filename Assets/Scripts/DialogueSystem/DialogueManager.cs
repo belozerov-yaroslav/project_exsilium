@@ -23,6 +23,9 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance { get; private set; }
 
     private DialogueVariables dialogueVariables;
+
+    private List<string> currentTextChoices = new();
+    private DialoguePanelAnimation _dialoguePanelAnimation;
     private void Awake()
     {
         if (instance != null)
@@ -47,6 +50,8 @@ public class DialogueManager : MonoBehaviour
         };
         dialogueIsPlaying = false;
         dialoguePanel.Hide();
+        _dialoguePanelAnimation = GetComponentInChildren<DialoguePanelAnimation>();
+        _dialoguePanelAnimation.OnTurnOff += ExitDialogueMode;
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -59,10 +64,8 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
-    private IEnumerator ExitDialogueMode()
+    private void ExitDialogueMode()
     {
-        yield return new WaitForSeconds(0.2f);
-
         _stateManager.StateTransition(null);
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
@@ -75,30 +78,37 @@ public class DialogueManager : MonoBehaviour
         {
             
             dialoguePanel.DisplayMessage(_dialogueParser.ParseLine(currentStory.Continue(), currentStory.currentTags));
-            // HandleTags(currentStory.currentTags);
             DisplayChoices();
         }
         else
         {
-            StartCoroutine(ExitDialogueMode());
+            _dialoguePanelAnimation.TurnOff();
         }
     }
 
     private void DisplayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
-        List<string> strChoices = new List<string>();
         foreach (Choice choice in currentChoices)
         {
-            strChoices.Add(choice.text);
+            currentTextChoices.Add(choice.text);
         }
-        dialoguePanel.DisplayChoices(strChoices);
+        dialoguePanel.DisplayChoices(currentTextChoices);
     }
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
-        ContinueStory();
-        ContinueStory();
+        if (currentTextChoices[choiceIndex].StartsWith('*'))
+        {
+            currentTextChoices.Clear();
+            ContinueStory();
+        }
+        else
+        {
+            currentTextChoices.Clear();
+            ContinueStory();
+            ContinueStory();
+        }
     }
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
@@ -126,6 +136,6 @@ public class DialogueManager : MonoBehaviour
     // Depending on your game, you may want to save variable state in other places.
     public void OnApplicationQuit()
     {
-        dialogueVariables.SaveVariables();
+        //dialogueVariables.SaveVariables();
     }
 }

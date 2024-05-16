@@ -7,7 +7,7 @@ namespace DialogueSystem
 
         public override string ToString()
         {
-            return Author != null ? $"{"".PadLeft(Author.authorName.Length * 2 + 2, ' ')} {Text}" : Text;
+            return Author != null ? $"{"".PadLeft(Author.authorName.Length * 3 + 5, ' ')} {Text}" : Text;
         }
     }
 }

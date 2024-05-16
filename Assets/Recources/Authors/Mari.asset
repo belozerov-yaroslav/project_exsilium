@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Mari
   m_EditorClassIdentifier: 
   Color: {r: 1, g: 0.1745283, b: 0.1745283, a: 1}
-  authorName: "\u043C\u0430\u0440\u0438\u044F"
+  authorName: "\u041C\u0430\u0440\u0438\u044F"
   tag: mari
