@@ -19,6 +19,8 @@ public class PrayerBookState : GameState
     public override void TurnOn()
     {
         prayBookCanvas.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed += ClosePrayerBook;
         CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
         PrayerBookLearning.Instance?.TryStartLearning();
@@ -26,6 +28,8 @@ public class PrayerBookState : GameState
 
     public override void TurnOff()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         prayBookCanvas.enabled = false;
         CustomInputInitializer.CustomInput.Global.ClosePrayerBook.performed -= ClosePrayerBook;
         CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;

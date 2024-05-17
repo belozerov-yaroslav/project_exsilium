@@ -15,11 +15,15 @@ namespace GameStates
         {
             CustomInputInitializer.CustomInput.Dialogue.Enable();
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public override void TurnOff()
         {
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             CustomInputInitializer.CustomInput.Dialogue.Disable();
         }
     }

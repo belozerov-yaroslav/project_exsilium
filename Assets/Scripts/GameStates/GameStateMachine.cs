@@ -18,6 +18,8 @@ public class GameStateMachine : MonoBehaviour
         CustomInputInitializer.CustomInput.Dialogue.Disable();
         CustomInputInitializer.CustomInput.SlideShow.Disable();
         CustomInputInitializer.CustomInput.Global.Enable();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         _gameStates.ForEach(state => state.OnTransition += StateTransition);
         _statesStack.Push(_gameStates.Find(state => state is DefaultState));
         _statesStack.Peek().TurnOn();
