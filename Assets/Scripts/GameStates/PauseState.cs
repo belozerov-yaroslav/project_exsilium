@@ -24,6 +24,8 @@ namespace GameStates
             _pauseCanvas.enabled = true;
             Time.timeScale = 0;
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public override void TurnOff()
@@ -33,6 +35,8 @@ namespace GameStates
             _audioSettnigs.TurnOff();
             _exitConfirmation.CloseConfirmation();
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         public void OnUIButtonPressed()
