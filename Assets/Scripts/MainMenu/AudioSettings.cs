@@ -8,7 +8,7 @@ public class AudioSettings : MonoBehaviour
     [SerializeField] private Scrollbar scrollbarMaster;
     [SerializeField] private Scrollbar scrollbarMusic;
     [SerializeField] private Scrollbar scrollbarEffects;
-    [SerializeField] private float masterVolumeDefault = 0.5f;
+    [SerializeField] private float masterVolumeDefault = 0.91f;
     [SerializeField] private float musicVolumeDefault = 1f;
     [SerializeField] private float effectsVolumeDefault = 1f;
     [SerializeField] private AudioMixerGroup master;
@@ -38,17 +38,17 @@ public class AudioSettings : MonoBehaviour
 
     private void MasterChanged(float value)
     {
-        master.audioMixer.SetFloat("MasterVolume", Mathf.Lerp(-80, 0, value));
+        master.audioMixer.SetFloat("MasterVolume", Mathf.Lerp(-80, 10, value));
         PlayerPrefs.SetFloat("MasterVolume", value);
     }
     private void MusicChanged(float value)
     {
-        music.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 0, value));
+        music.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 10, value));
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
     private void EffectsChanged(float value)
     {
-        effects.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 0, value));
+        effects.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 10, value));
         PlayerPrefs.SetFloat("EffectsVolume", value);
     }
 

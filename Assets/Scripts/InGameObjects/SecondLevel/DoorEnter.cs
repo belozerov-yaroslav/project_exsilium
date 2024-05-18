@@ -24,6 +24,7 @@ public class DoorEnter : MonoBehaviour, InteractionAbstraction
             message = "Я еще не изгнал демона";
         if (Inventory.Inventory.Instance.IsFullInventory() && IsBanishComplete && IsDialogComplete)
         {
+            SaveSystem.SaveSceneState(sceneName);
             SceneManager.LoadScene(sceneName);
             InteractionSoundScript.Instance.openDoorSound.Play();
         }
