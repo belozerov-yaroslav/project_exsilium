@@ -11,21 +11,10 @@ namespace BanishSystem
         [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private int level;
         [SerializeField] private Item[] items;
-        [SerializeField] private AudioSource heartBeat;
-        [SerializeField] private AudioSource deathSound;
         [SerializeField] private AudioSource banishSound;
-        [SerializeField] private CanvasGroup screenEffect;
-        [SerializeField] private float volumeStep = 0.1f;
-        [SerializeField] private float transparencyStep = 0.1f;
-        [SerializeField] private Canvas canvas;
         private BanishStep[] _steps;
-        private BanishStep[] _crushingFactors;
         private int _index;
         private bool _finished;
-        private const int GhostTolerance = 10;
-        private int _currentMistakesCost;
-        
-        private static readonly int Dead = Animator.StringToHash("Dead");
 
         public void Awake()
         {
@@ -47,8 +36,6 @@ namespace BanishSystem
                 {
                     _finished = true;
                     banishSound.Play();
-                    canvas.gameObject.SetActive(false);
-                    heartBeat.Stop();
                     BanishFinished?.Invoke();
                 }
                 else _index++;
@@ -61,33 +48,8 @@ namespace BanishSystem
                     _index = i + 1;
                     return;
                 }
-
-            HandleMistake(step);
         }
-
-        private void HandleMistake(BanishStep step)
-        {
-            if (_currentMistakesCost == 0)
-            {
-                canvas.gameObject.SetActive(true);
-                heartBeat.Play();
-                Player.BubbleText.ShowMessage("Что-то не так");
-            }
-            _currentMistakesCost += 2;
-            heartBeat.volume = _currentMistakesCost * volumeStep;
-            screenEffect.alpha = _currentMistakesCost * transparencyStep;
-            if (_currentMistakesCost >= GhostTolerance) HandleBanishFailure();
-        }
-
-        private void HandleBanishFailure()
-        {
-            deathSound.Play();
-            heartBeat.Stop();
-            _finished = true;
-            GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
-            Player.Instance.gameObject.GetComponent<Animator>().SetTrigger(Dead);
-            LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
-        }
+        
 
         public static event Action BanishFinished;
     }

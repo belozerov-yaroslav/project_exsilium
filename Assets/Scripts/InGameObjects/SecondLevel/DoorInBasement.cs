@@ -12,9 +12,13 @@ public class DoorInBasement : MonoBehaviour, InteractionAbstraction
 
     public void Interact()
     {
-        InteractionSoundScript.Instance.openDoorSound.Play();
-        _playerRigidbody2D.position = _teleportPosition.position;
-        _globalLight.intensity = 1;
-        _playerVision.intensity = 0;
+        if (Inventory.Inventory.Instance.IsFullInventory())
+        {
+            InteractionSoundScript.Instance.openDoorSound.Play();
+            _playerRigidbody2D.position = _teleportPosition.position;
+            _globalLight.intensity = 1;
+            _playerVision.intensity = 0;
+        }
+        else BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
     }
 }

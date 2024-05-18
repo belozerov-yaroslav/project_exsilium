@@ -7,7 +7,6 @@ using UnityEngine.Rendering.Universal;
 
 public class DoorInPub : MonoBehaviour, InteractionAbstraction
 {
-    [SerializeField] private BubbleText _bubbleText;
     [SerializeField] private Transform _teleportPosition;
     [SerializeField] private Rigidbody2D _playerTransform;
     [SerializeField] private Light2D _globalLight;
@@ -16,16 +15,20 @@ public class DoorInPub : MonoBehaviour, InteractionAbstraction
     {
         if (((BoolValue)DialogueManager.GetInstance().GetVariableState("take_keys")).value)
         {
-            _playerTransform.position = _teleportPosition.position;
-            _globalLight.intensity = 0f;
-            _playerVision.intensity = 0.5f;
-            InteractionSoundScript.Instance.openDoorSound.Play();
+            if (Inventory.Inventory.Instance.IsFullInventory())
+            {
+                _playerTransform.position = _teleportPosition.position;
+                _globalLight.intensity = 0f;
+                _playerVision.intensity = 0.5f;
+                InteractionSoundScript.Instance.openDoorSound.Play();
+            }
+            else BubbleText.Instance.ShowMessage("Там мне понадобятся мои вещи");
         }
         else
         {
             if (!InteractionSoundScript.Instance.closedDoorSound.isPlaying)
                 InteractionSoundScript.Instance.closedDoorSound.Play();
-            _bubbleText.ShowMessage("У меня нет ключей от этой двери");
+            BubbleText.Instance.ShowMessage("У меня нет ключей от этой двери");
         }
         
     }

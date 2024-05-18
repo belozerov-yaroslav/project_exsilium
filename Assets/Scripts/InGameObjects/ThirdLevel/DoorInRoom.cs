@@ -13,7 +13,6 @@ public class DoorInRoom : MonoBehaviour, InteractionAbstraction
     private AudioSource _doorSound;
     void Start()
     {
-        _doorSound = GetComponent<AudioSource>();
         _playerRigidbody2D = Player.Instance.GetComponent<Rigidbody2D>();
     }
 
@@ -22,7 +21,7 @@ public class DoorInRoom : MonoBehaviour, InteractionAbstraction
         if (Inventory.Inventory.Instance.IsFullInventory())
         {
             globalLight2D.intensity = 0.5f;
-            _doorSound.Play();
+            InteractionSoundScript.Instance.openDoorSound.Play();
             _playerRigidbody2D.position = roomTeleport.position;
         }
         else
