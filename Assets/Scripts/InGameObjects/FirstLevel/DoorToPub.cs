@@ -17,7 +17,7 @@ namespace InGameObjects.FirstLevel
                 SceneManager.LoadScene(pubLevelName);
             }
             else
-                BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
+                Player.BubbleText.ShowMessage("Я не могу оставить свои вещи");
         }
     }
 }

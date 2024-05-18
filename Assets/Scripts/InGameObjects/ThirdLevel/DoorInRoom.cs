@@ -26,6 +26,6 @@ public class DoorInRoom : MonoBehaviour, InteractionAbstraction
             _playerRigidbody2D.position = roomTeleport.position;
         }
         else
-            BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
+            Player.BubbleText.ShowMessage("Я не могу оставить свои вещи");
     }
 }

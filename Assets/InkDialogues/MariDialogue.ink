@@ -22,7 +22,6 @@ INCLUDE globals.ink
 -> END
 
 
-
 === meet ===
 Ну что, получилось избавиться от демона?#author:mari
 +{ not liho_banished } { know_thing } Расскажите, пожалуйста, ещё раз: что говорят кухарки? #author:fedor
@@ -31,7 +30,6 @@ INCLUDE globals.ink
 -> details
 +{ liho_banished }  Да, я закончил. #author:fedor
 -> END
-
 
 
 === details ===
@@ -46,10 +44,16 @@ INCLUDE globals.ink
 + Я постараюсь сделать всё возможное -> END
 
 
+=== beer ===
+Идите спать, Фёдор. Кабак закрывается.#author:mari
++ [Уйти] -> END
+
 === end_dialogue ===
 Ну что, получилось избавиться от демона?#author:mari
 + Да, это было Лихо, я его изгнал.#author:fedor
 - Спасибо за помощь! Вот ваши пять рублей. #author:mari
 + [* Взять деньги *]
++ Раз уж работа сделана, то можно и выпить пива. Налейте мне кружку. #author:fedor
+-> beer
 - Теперь мне надо идти домой#author:fedor
 + [Уйти] -> END

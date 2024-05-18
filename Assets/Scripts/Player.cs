@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     public static GameObject Instance;
     [SerializeField] private float moveSpeed = 5f;
     private Animator _animator;
+    public static BubbleText BubbleText { get; private set;  }
     private static readonly int Horizontal1 = Animator.StringToHash("Horizontal");
     private static readonly int Vertical1 = Animator.StringToHash("Vertical");
     private static readonly int LastHorizontal1 = Animator.StringToHash("LastHorizontal");
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        BubbleText = GetComponentInChildren<BubbleText>();
         CustomInputInitializer.CustomInput.Player.Movement.performed += OnMovementPerformed;
         CustomInputInitializer.CustomInput.Player.Movement.canceled += OnMovementCanceled;
     }

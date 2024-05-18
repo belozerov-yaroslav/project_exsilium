@@ -71,7 +71,7 @@ namespace BanishSystem
             {
                 canvas.gameObject.SetActive(true);
                 heartBeat.Play();
-                BubbleText.Instance.ShowMessage("Что-то не так");
+                Player.BubbleText.ShowMessage("Что-то не так");
             }
             _currentMistakesCost += 2;
             heartBeat.volume = _currentMistakesCost * volumeStep;

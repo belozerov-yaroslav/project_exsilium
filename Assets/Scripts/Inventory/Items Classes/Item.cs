@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using BanishSystem;
 using GameStates;
 using UnityEngine;
@@ -19,6 +20,19 @@ namespace Inventory.Items_Classes
 
         [SerializeField] private Transform dropPlace;
         [SerializeField] private GameObject objectPrefab;
+
+        public static readonly Dictionary<ItemEnum, string> EnumToName = new()
+        {
+            { ItemEnum.Candle, "Свеча" },
+            { ItemEnum.Knife, "Нож" },
+            { ItemEnum.Crucifix, "Распятие" },
+            { ItemEnum.Chalk, "Мел" },
+            { ItemEnum.Incense, "Благовония" },
+            { ItemEnum.Herbs, "Травы" },
+            { ItemEnum.PrayerBook, "Молитвенник" },
+            { ItemEnum.Icon, "Икона" },
+            { ItemEnum.Salt, "Соль" }
+        };
 
         public virtual void DoAction()
         {

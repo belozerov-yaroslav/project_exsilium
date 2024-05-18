@@ -28,7 +28,7 @@ public class DoorEnter : MonoBehaviour, InteractionAbstraction
             InteractionSoundScript.Instance.openDoorSound.Play();
         }
         else
-            BubbleText.Instance.ShowMessage(message);
+            Player.BubbleText.ShowMessage(message);
         
     }
 }

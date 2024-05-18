@@ -9,6 +9,6 @@ public class InvisibleWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        BubbleText.Instance.ShowMessage(message);
+        Player.BubbleText.ShowMessage(message);
     }
 }

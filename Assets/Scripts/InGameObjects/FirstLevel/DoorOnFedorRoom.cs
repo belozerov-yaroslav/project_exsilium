@@ -25,7 +25,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
             _playerRigidbody2D.position = streetTeleport.position;
         }
         else
-            BubbleText.Instance.ShowMessage("Мне надо собрать мои вещи");
+            Player.BubbleText.ShowMessage("Мне надо собрать мои вещи");
         
     }
 }
