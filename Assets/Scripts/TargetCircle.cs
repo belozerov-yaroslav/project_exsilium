@@ -84,7 +84,7 @@ public class TargetCircle : MonoBehaviour
     public void FinishAim()
     {
         _isStarted = false;
-        _waypointScript.StopWay();
+        _waypointScript.FinishWay();
         _backgroundImage.color = _defaultBackColor;
         _currentColor = _defaultBackColor;
         _spriteRenderer.color = _defaultCircleColor;
