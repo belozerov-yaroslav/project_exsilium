@@ -46,7 +46,8 @@ namespace GameStates
 
         private new void OnPausePressed(InputAction.CallbackContext callbackContext)
         {
-            Transite(null);
+            if (!LevelLoader.Instance.IsLoad())
+                Transite(null);
         }
     }
 }

@@ -34,6 +34,8 @@ public class GameStateMachine : MonoBehaviour
 
     public void StateTransition(GameState state)
     {
+        if (state is PauseState && LevelLoader.Instance.IsLoad())
+            return;
         if (state == null)
         {
             _statesStack.Pop().TurnOff();

@@ -9,6 +9,7 @@ public class LevelLoader : MonoBehaviour
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private float transitionTime = 1;
     [SerializeField] private Canvas crossFade;
+    [SerializeField] private GameObject clickBlocker;
     public static LevelLoader Instance;
     public static bool _transitionWithLoadingScreen;
     private static readonly int Start1 = Animator.StringToHash("Start");
@@ -28,6 +29,10 @@ public class LevelLoader : MonoBehaviour
         _transitionWithLoadingScreen = false;
     }
 
+    public bool IsLoad()
+    {
+        return crossFade.gameObject.activeSelf;
+    }
     public void LoadLevelWithLoadingScreen(string levelName)
     {
         StartCoroutine(LoadLevel(levelName));
@@ -37,6 +42,7 @@ public class LevelLoader : MonoBehaviour
     {
         crossFade.gameObject.SetActive(true);
         transitionAnimator.SetTrigger(End);
+        clickBlocker.SetActive(false);
 
         yield return new WaitForSeconds(transitionTime);
 
@@ -48,6 +54,7 @@ public class LevelLoader : MonoBehaviour
         _transitionWithLoadingScreen = true;
         crossFade.gameObject.SetActive(true);
         transitionAnimator.SetTrigger(Start1);
+        clickBlocker.SetActive(true);
 
         yield return new WaitForSeconds(transitionTime);
 
