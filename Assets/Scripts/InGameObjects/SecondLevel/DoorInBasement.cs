@@ -19,6 +19,6 @@ public class DoorInBasement : MonoBehaviour, InteractionAbstraction
             _globalLight.intensity = 1;
             _playerVision.intensity = 0;
         }
-        else BubbleText.Instance.ShowMessage("Я не могу оставить свои вещи");
+        else Player.BubbleText.ShowMessage("Я не могу оставить свои вещи");
     }
 }

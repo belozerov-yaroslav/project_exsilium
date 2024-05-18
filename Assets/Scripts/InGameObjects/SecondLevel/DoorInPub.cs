@@ -22,13 +22,13 @@ public class DoorInPub : MonoBehaviour, InteractionAbstraction
                 _playerVision.intensity = 0.5f;
                 InteractionSoundScript.Instance.openDoorSound.Play();
             }
-            else BubbleText.Instance.ShowMessage("Там мне понадобятся мои вещи");
+            else Player.BubbleText.ShowMessage("Там мне понадобятся мои вещи");
         }
         else
         {
             if (!InteractionSoundScript.Instance.closedDoorSound.isPlaying)
                 InteractionSoundScript.Instance.closedDoorSound.Play();
-            BubbleText.Instance.ShowMessage("У меня нет ключей от этой двери");
+            Player.BubbleText.ShowMessage("У меня нет ключей от этой двери");
         }
         
     }
