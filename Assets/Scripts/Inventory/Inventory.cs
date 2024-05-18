@@ -68,6 +68,7 @@ namespace Inventory
         private void OnItemInteraction(InputAction.CallbackContext obj)
         {
             if (_indexCurrentItem == -1) return;
+            ItemActionLearning.Instance?.OnItemAction();
             _inventorySlots[_indexCurrentItem].Item.DoAction();
             if (!_inventorySlots[_indexCurrentItem].Item.IsDropable) return;
             _itemsOnMap.Add(_inventorySlots[_indexCurrentItem].Item.ItemEnum);

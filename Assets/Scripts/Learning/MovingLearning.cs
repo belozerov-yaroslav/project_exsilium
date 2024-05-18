@@ -15,19 +15,18 @@ public class MovingLearning : AbstractLearning
         TryStartLearning();
     }
     
-    protected override void StartLearning()
+    public override void StartLearning()
     {
         isEnabled = true;
         learningHint.SetActive(true);
         CustomInputInitializer.CustomInput.Player.Movement.performed += ListenInput;
     }
 
-    protected override void StopLearning()
+    public override void StopLearning()
     {
         isEnabled = false;
         learningHint.SetActive(false);
         CustomInputInitializer.CustomInput.Player.Movement.performed -= ListenInput;
-        LearningManager.Instance.StopLearning();
     }
 
     private void ListenInput(InputAction.CallbackContext callbackContext)
@@ -38,6 +37,7 @@ public class MovingLearning : AbstractLearning
         if (_neededKeys.Count == 2)
         {
             _wasCompleted = true;
+            LearningManager.Instance.StopLearning();
             StopLearning();
         }
     }

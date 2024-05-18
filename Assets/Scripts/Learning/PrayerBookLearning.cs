@@ -9,6 +9,7 @@ public class PrayerBookLearning : AbstractLearning
     [SerializeField] private GameObject learningHint;
     public static PrayerBookLearning Instance { get; private set; }
     private bool isEnabled;
+    public override bool OverrideStack => true;
 
     private void Awake()
     {
@@ -17,23 +18,23 @@ public class PrayerBookLearning : AbstractLearning
         Instance = this;
     }
     
-    protected override void StartLearning()
+    public override void StartLearning()
     {
         learningHint.SetActive(true);
         isEnabled = true;
     }
 
-    protected override void StopLearning()
+    public override void StopLearning()
     {
         isEnabled = false;
         learningHint.SetActive(false);
-        LearningManager.Instance.StopLearning();
     }
 
     public void OnBookClose()
     {
         if (!isEnabled) return;
         _wasCompleted = true;
+        LearningManager.Instance.StopLearning();
         StopLearning();
     }
 }

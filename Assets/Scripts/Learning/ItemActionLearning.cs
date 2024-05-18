@@ -17,25 +17,23 @@ public class ItemActionLearning : AbstractLearning
         Instance = this;
     }
     
-    protected override void StartLearning()
+    public override void StartLearning()
     {
         isEnabled = true;
         learningHint.SetActive(true);
-        CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnAction;
     }
 
-    protected override void StopLearning()
+    public override void StopLearning()
     {
         isEnabled = false;
-        CustomInputInitializer.CustomInput.Player.ItemIteraction.performed -= OnAction;
         learningHint.SetActive(false);
-        LearningManager.Instance.StopLearning();
     }
 
-    public void OnAction(InputAction.CallbackContext callbackContext)
+    public void OnItemAction()
     {
         if (!isEnabled) return;
         _wasCompleted = true;
+        LearningManager.Instance.StopLearning();
         StopLearning();
     }
 }

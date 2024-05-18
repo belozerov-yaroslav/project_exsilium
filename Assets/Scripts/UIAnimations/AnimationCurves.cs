@@ -11,8 +11,8 @@ public static class AnimationCurves
     {
         return value * value;
     }
-    public static float SeventhGrade(float value)
+    public static float ThirdGrade(float value)
     {
-        return (float)Math.Pow(value, 7);
+        return (float)Math.Pow(value, 3);
     }
 }

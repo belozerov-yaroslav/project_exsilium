@@ -17,23 +17,23 @@ public class InteractionLearning : AbstractLearning
         Instance = this;
     }
     
-    protected override void StartLearning()
+    public override void StartLearning()
     {
         isEnabled = true;
         learningHint.SetActive(true);
     }
 
-    protected override void StopLearning()
+    public override void StopLearning()
     {
         isEnabled = false;
         learningHint.SetActive(false);
-        LearningManager.Instance.StopLearning();
     }
 
     public void OnInteractionCompleted()
     {
         if (!isEnabled) return;
         _wasCompleted = true;
+        LearningManager.Instance.StopLearning();
         StopLearning();
     }
 }

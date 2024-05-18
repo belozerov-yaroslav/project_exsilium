@@ -6,8 +6,7 @@ using UnityEngine;
 public class LearningManager : MonoBehaviour
 {
     public static LearningManager Instance { get; private set; }
-    private AbstractLearning _currentLearning;
-    [SerializeField] private Canvas _learningCanvas;
+    private Stack<AbstractLearning> _currentLearningStack = new();
 
     private void Awake()
     {
@@ -18,15 +17,17 @@ public class LearningManager : MonoBehaviour
 
     public bool TryStartLearning(AbstractLearning learning)
     {
-        if (_currentLearning is not null) return false;
-        _currentLearning = learning;
-        _learningCanvas.enabled = true;
+        if (_currentLearningStack.Count != 0 && !learning.OverrideStack) return false;
+        if (_currentLearningStack.Count != 0)
+            _currentLearningStack.Peek().StopLearning();
+        _currentLearningStack.Push(learning);
         return true;
     }
 
     public void StopLearning()
     {
-        _currentLearning = null;
-        _learningCanvas.enabled = false;
+        _currentLearningStack.Pop();
+        if (_currentLearningStack.Count != 0)
+            _currentLearningStack.Peek().StartLearning();
     }
 }

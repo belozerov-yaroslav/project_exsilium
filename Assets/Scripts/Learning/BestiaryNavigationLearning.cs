@@ -18,19 +18,18 @@ public class BestiaryNavigationLearning : AbstractLearning
         Instance = this;
     }
 
-    protected override void StartLearning()
+    public override void StartLearning()
     {
         isEnabled = true;
         learningHint.SetActive(true);
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed += OnBestiaryInput;
     }
 
-    protected override void StopLearning()
+    public override void StopLearning()
     {
         isEnabled = false;
         learningHint.SetActive(false);
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed -= OnBestiaryInput;
-        LearningManager.Instance.StopLearning();
         BestiaryCloseLearning.Instance?.TryStartLearning();
     }
 
@@ -38,6 +37,7 @@ public class BestiaryNavigationLearning : AbstractLearning
     {
         if (!isEnabled) return;
         _wasCompleted = true;
+        LearningManager.Instance.StopLearning();
         StopLearning();
     }
 }

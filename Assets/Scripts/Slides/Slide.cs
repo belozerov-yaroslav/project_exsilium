@@ -25,7 +25,7 @@ public class Slide : MonoBehaviour
     {
         currentImage.sprite = image;
         yield return StartCoroutine(ChangeValueSmooth.Change(0f, 1f,
-            value => currentImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.SeventhGrade));
+            value => currentImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.ThirdGrade));
         previousImage.color = new Color(1, 1, 1, 1f);
         previousImage.sprite = image;
         currentImage.color = new Color(1, 1, 1, 0f);
@@ -35,7 +35,7 @@ public class Slide : MonoBehaviour
     {
         previousImage.sprite = image;
         yield return StartCoroutine(ChangeValueSmooth.Change(1f, 0f,
-            value => previousImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.SeventhGrade));
+            value => previousImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.ThirdGrade));
         currentImage.color = new Color(1, 1, 1, 0f);
     }
 }
