@@ -8,14 +8,15 @@ public class ChangeValueSmooth
     {
         curve ??= AnimationCurves.Linear;
         var time = 0f;
+        var segmentSize = Math.Abs(endValue - startValue);
         valueSetter(startValue);
         while (time < appearanceTime)
         {
             time += Time.deltaTime;
             if (startValue < endValue)
-                valueSetter(curve(time / appearanceTime));
+                valueSetter(curve(startValue + segmentSize * time / appearanceTime));
             else
-                valueSetter(curve(startValue - time / appearanceTime));
+                valueSetter(curve(startValue - segmentSize * time / appearanceTime));
             yield return null;
         }
 
