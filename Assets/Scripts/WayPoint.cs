@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameStates;
 using UnityEngine;
 
 public class WayPoint : MonoBehaviour
@@ -34,7 +35,7 @@ public class WayPoint : MonoBehaviour
     }
     
     
-    public void StopWay()
+    public void FinishWay()
     {
         IsStarted = false;
         _waypointIndex = 0;
@@ -43,6 +44,8 @@ public class WayPoint : MonoBehaviour
 
     private void Move()
     {
+        if(Time.timeScale == 0)
+            return;
         var target = _waypoints[_waypointIndex].position;
         transform.position = Vector3.MoveTowards(transform.position,
             target, moveVelocity * Random.Range(minVelocity,maxVelocity) );

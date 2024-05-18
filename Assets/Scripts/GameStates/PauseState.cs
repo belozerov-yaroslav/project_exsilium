@@ -32,8 +32,8 @@ namespace GameStates
         {
             Time.timeScale = 1;
             _pauseCanvas.enabled = false;
-            _audioSettnigs.TurnOff();
-            _exitConfirmation.CloseConfirmation();
+            _audioSettnigs.canvas.SetActive(false);
+            _exitConfirmation.canvas.gameObject.SetActive(false);
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -41,6 +41,7 @@ namespace GameStates
 
         public void OnUIButtonPressed()
         {
+            InteractionSoundScript.Instance.PlayMenuButtonSound();
             Transite(null);
         }
 

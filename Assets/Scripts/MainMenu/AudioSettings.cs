@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class AudioSettings : MonoBehaviour
 {
-    [SerializeField] private GameObject canvas;
+    [SerializeField] public GameObject canvas;
     [SerializeField] private Scrollbar scrollbarMaster;
     [SerializeField] private Scrollbar scrollbarMusic;
     [SerializeField] private Scrollbar scrollbarEffects;
@@ -33,6 +33,7 @@ public class AudioSettings : MonoBehaviour
 
     public void TurnOn()
     {
+        InteractionSoundScript.Instance.PlayMenuButtonSound();
         canvas.SetActive(true);
     }
 
@@ -54,6 +55,7 @@ public class AudioSettings : MonoBehaviour
 
     public void TurnOff()
     {
+        InteractionSoundScript.Instance.PlayMenuButtonSound();
         canvas.SetActive(false);
     }
 }

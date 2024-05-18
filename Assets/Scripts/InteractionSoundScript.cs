@@ -19,9 +19,11 @@ public class InteractionSoundScript : MonoBehaviour
     }
     
     public Dictionary<ItemEnum, AudioSource> ItemSounds = new Dictionary<ItemEnum, AudioSource>();
-    [SerializeField]public AudioSource pickingUpSound;
+    [SerializeField] public AudioSource pickingUpSound;
     [SerializeField] public AudioSource openDoorSound;
     [SerializeField] public AudioSource closedDoorSound;
+    [SerializeField] public AudioSource dialogButtonSound;
+    [SerializeField] public AudioSource menuButtonSound;
     
     void Start()
     {
@@ -30,6 +32,16 @@ public class InteractionSoundScript : MonoBehaviour
             var itemInteractionElem = transform.GetChild(i).GetComponent<ItemInteractionClass>();
             ItemSounds[itemInteractionElem.itemEnum] = itemInteractionElem.itemInteractionSound;
         }
+    }
+
+    public void PlayMenuButtonSound()
+    {
+        menuButtonSound.Play();
+    }
+
+    public void PlayDialogButtonSound()
+    {
+        dialogButtonSound.Play();
     }
 
 }
