@@ -32,8 +32,8 @@ namespace GameStates
         {
             Time.timeScale = 1;
             _pauseCanvas.enabled = false;
-            _audioSettnigs.canvas.SetActive(false);
-            _exitConfirmation.canvas.gameObject.SetActive(false);
+            _audioSettnigs.TurnOff();
+            _exitConfirmation.CloseConfirmation();
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

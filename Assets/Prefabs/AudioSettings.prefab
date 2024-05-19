@@ -293,8 +293,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4649639427661078792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -496,6 +496,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4521400880597988008}
         m_TargetAssemblyTypeName: AudioSettings, Assembly-CSharp
         m_MethodName: TurnOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8572119917502726175}
+        m_TargetAssemblyTypeName: MenuButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1237,8 +1249,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3634611042811512120}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.9, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1313,7 +1325,7 @@ RectTransform:
   m_Father: {fileID: 7115519288299997975}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1574,6 +1586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8979983110574341095}
   - component: {fileID: 4521400880597988008}
+  - component: {fileID: 8572119917502726175}
   m_Layer: 0
   m_Name: AudioSettings
   m_TagString: Untagged
@@ -1619,3 +1632,15 @@ MonoBehaviour:
   master: {fileID: 24300002, guid: da24d069bceef904c99959aac4e78167, type: 2}
   music: {fileID: 8889563390814546244, guid: da24d069bceef904c99959aac4e78167, type: 2}
   effects: {fileID: 6984243204654046896, guid: da24d069bceef904c99959aac4e78167, type: 2}
+--- !u!114 &8572119917502726175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037634440016741137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fa16a37bb9ad8439abde4d62d91622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

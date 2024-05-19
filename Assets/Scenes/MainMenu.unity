@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 48620132}
   - component: {fileID: 48620131}
   - component: {fileID: 48620130}
+  - component: {fileID: 48620134}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -230,6 +231,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &48620134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48620129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17fa16a37bb9ad8439abde4d62d91622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &337559218
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +329,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2118029321}
         m_TargetAssemblyTypeName: NewGameConfirmation, Assembly-CSharp
         m_MethodName: ConfirmNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 48620134}
+        m_TargetAssemblyTypeName: MenuButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -933,6 +958,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 48620134}
+        m_TargetAssemblyTypeName: MenuButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &865159423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1102,6 +1139,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1599895590}
         m_TargetAssemblyTypeName: NewGameConfirmation, Assembly-CSharp
         m_MethodName: ConfirmNewGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 48620134}
+        m_TargetAssemblyTypeName: MenuButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2132,82 +2181,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 315437405523549262, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 315437405523549262, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 573466380837250176, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 799290948}
-    - target: {fileID: 4129701306471015672, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 526896224}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayMenuButtonSound
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: InteractionSoundScript, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5870751364016257491, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346885276262289275, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a1403d628c4090c46af0e084c339add1, type: 3}
-    - target: {fileID: 6346885276262289275, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060675333803266704, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060675333803266704, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8060675333803266704, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710436733046566382, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710436733046566382, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8710436733046566382, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8979983110574341095, guid: 1b0f7d0042e134843b8f711bae161808, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3945493
@@ -2641,6 +2618,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 48620134}
+        m_TargetAssemblyTypeName: MenuButtonSound, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2084087090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,58 +2676,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1509900521259318726, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -249
-      objectReference: {fileID: 0}
-    - target: {fileID: 1509900521259318726, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -333
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792296115533029935, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 211
-      objectReference: {fileID: 0}
-    - target: {fileID: 1792296115533029935, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -333
-      objectReference: {fileID: 0}
     - target: {fileID: 3940740745505072859, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_Name
       value: ExitGameConfirmation
-      objectReference: {fileID: 0}
-    - target: {fileID: 4255627737891016567, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052170905105738976, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 799290948}
-    - target: {fileID: 6947152747676861783, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -251
-      objectReference: {fileID: 0}
-    - target: {fileID: 6947152747676861783, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -330.80002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305951240452120768, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 211
-      objectReference: {fileID: 0}
-    - target: {fileID: 7305951240452120768, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -330.80002
-      objectReference: {fileID: 0}
-    - target: {fileID: 8659782022524707940, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8659782022524707940, guid: c6687cebe8954a74d96997731e92196b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -284.30002
-      objectReference: {fileID: 0}
     - target: {fileID: 9186538531567498459, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4569062
