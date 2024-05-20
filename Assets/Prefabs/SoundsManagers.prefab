@@ -475,7 +475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemEnum: 1
-  itemInteractionSound: {fileID: 0}
+  itemInteractionSound: {fileID: 610675223097884350}
 --- !u!82 &610675223097884350
 AudioSource:
   m_ObjectHideFlags: 0
@@ -486,7 +486,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -1503709260638590983, guid: da24d069bceef904c99959aac4e78167, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 53f4a8d8e0f343940876366e84e96c65, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
