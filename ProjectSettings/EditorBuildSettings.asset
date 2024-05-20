@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level 1 new pause.unity
     guid: ba6c6335d3b137d42be6887696a0f5d8
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 583742d2a202b8948aa0d5e863687219
   m_configObjects: {}
