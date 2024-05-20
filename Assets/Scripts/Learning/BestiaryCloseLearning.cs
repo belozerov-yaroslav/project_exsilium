@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.OpenVR;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class BestiaryCloseLearning : AbstractLearning
     [SerializeField] private GameObject learningHint;
     private bool isEnabled;
     public static BestiaryCloseLearning Instance { get; private set; }
+
+    public override bool OverrideStack => true;
 
     private void Awake()
     {
@@ -21,19 +24,16 @@ public class BestiaryCloseLearning : AbstractLearning
     {
         isEnabled = true;
         learningHint.SetActive(true);
-        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += ListenInput;
-        
     }
 
     public override void StopLearning()
     {
         isEnabled = false;
         learningHint.SetActive(false);
-        CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= ListenInput;
         InventoryLearning.Instance?.TryStartLearning();
     }
 
-    private void ListenInput(InputAction.CallbackContext callbackContext)
+    public void OnBestiaryClose()
     {
         if (!isEnabled) return;
         _wasCompleted = true;

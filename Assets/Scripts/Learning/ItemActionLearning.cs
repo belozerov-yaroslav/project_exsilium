@@ -10,6 +10,8 @@ public class ItemActionLearning : AbstractLearning
     public static ItemActionLearning Instance { get; private set; }
     private bool isEnabled;
 
+    public override bool OverrideStack => true;
+
     private void Awake()
     {
         if (Instance != null)
