@@ -43,11 +43,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
-        CustomInputInitializer.CustomInput.Dialogue.NextPhrase.performed += _ =>
-        {
-            if (currentStory.currentChoices.Count == 0)
-                ContinueStory();
-        };
         dialogueIsPlaying = false;
         dialoguePanel.Hide();
         _dialoguePanelAnimation = GetComponentInChildren<DialoguePanelAnimation>();
@@ -78,7 +73,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
-            
             dialoguePanel.DisplayMessage(_dialogueParser.ParseLine(currentStory.Continue(), currentStory.currentTags));
             DisplayChoices();
         }
@@ -132,12 +126,5 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Tried to update variable that wasn't initialized by globals.ink: " + variableName);
         }
-    }
-
-    // This method will get called anytime the application exits.
-    // Depending on your game, you may want to save variable state in other places.
-    public void OnApplicationQuit()
-    {
-        //dialogueVariables.SaveVariables();
     }
 }

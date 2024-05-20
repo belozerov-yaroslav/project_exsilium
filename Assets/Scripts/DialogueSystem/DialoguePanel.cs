@@ -46,6 +46,8 @@ public class DialoguePanel : MonoBehaviour
     public void Show()
     {
         _dialoguePanelAnimation.TurnOn();
+        DeleteAllMessages();
+        DeleteChoiceButtons();
         dialogueCanvas.enabled = true;
     }
 

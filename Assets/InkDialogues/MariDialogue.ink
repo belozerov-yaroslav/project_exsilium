@@ -1,5 +1,6 @@
 INCLUDE globals.ink
 
+{ take_money: -> end_end}
 { liho_banished:-> end_dialogue}
 { mari_met:-> meet }
 -> first_meet
@@ -45,15 +46,20 @@ INCLUDE globals.ink
 
 
 === beer ===
-Идите спать, Фёдор. Кабак закрывается.#author:mari
-+ [Уйти] -> END
+Идите спать, Фёдор. Кабак закрыт.#author:mari
++ [Взять деньги и уйти] -> END
 
 === end_dialogue ===
 Ну что, получилось избавиться от демона?#author:mari
 + Да, это было Лихо, я его изгнал.#author:fedor
 - Спасибо за помощь! Вот ваши пять рублей. #author:mari
+~ take_money = true
 + [* Взять деньги *]
 + Раз уж работа сделана, то можно и выпить пива. Налейте мне кружку. #author:fedor
 -> beer
 - Теперь мне надо идти домой#author:fedor
++ [Уйти] -> END
+
+=== end_end ===
+Спасибо за помощь!#author:mari
 + [Уйти] -> END
