@@ -129,7 +129,7 @@ MonoBehaviour:
   currentSlide: {fileID: 2184874873398585569}
   instructionImage: {fileID: 5517159751031903305}
   instructionTransparency: 0.5
-  instructionDelay: 4
+  instructionDelay: 3.5
   appearanceTime: 1
 --- !u!1 &3001930517229651528
 GameObject:
