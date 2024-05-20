@@ -37,6 +37,7 @@ namespace GameStates
             _bestiary.CloseBestiary();
             BestiaryNavigationLearning.Instance?.StopLearning();
             BestiaryCloseLearning.Instance?.OnBestiaryClose();
+            InventoryLearning.Instance?.TryStartLearning();
             Transite(null);
         }
     }

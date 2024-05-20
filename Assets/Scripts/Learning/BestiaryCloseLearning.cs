@@ -35,8 +35,8 @@ public class BestiaryCloseLearning : AbstractLearning
 
     public void OnBestiaryClose()
     {
-        if (!isEnabled) return;
         _wasCompleted = true;
+        if (!isEnabled) return;
         LearningManager.Instance.StopLearning();
         StopLearning();
     }
