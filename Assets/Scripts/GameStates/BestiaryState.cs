@@ -21,6 +21,8 @@ namespace GameStates
             CustomInputInitializer.CustomInput.Bestiary.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += CloseBestiary;
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
+            BestiaryOpenLearning.Instance?.OnBestiaryOpen();
+            BestiaryNavigationLearning.Instance?.TryStartLearning();
         }
 
         public override void TurnOff()
@@ -33,6 +35,8 @@ namespace GameStates
         private void CloseBestiary(InputAction.CallbackContext callbackContext)
         {
             _bestiary.CloseBestiary();
+            BestiaryNavigationLearning.Instance?.StopLearning();
+            BestiaryCloseLearning.Instance?.OnBestiaryClose();
             Transite(null);
         }
     }

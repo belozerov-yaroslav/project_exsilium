@@ -27,13 +27,12 @@ public class InventoryLearning : AbstractLearning
     {
         isEnabled = false;
         learningHint.SetActive(false);
-        ItemActionLearning.Instance?.TryStartLearning();
     }
 
     public void OnItemPicked()
     {
-        if (!isEnabled) return;
         _wasCompleted = true;
+        if (!isEnabled) return;
         LearningManager.Instance.StopLearning();
         StopLearning();
     }

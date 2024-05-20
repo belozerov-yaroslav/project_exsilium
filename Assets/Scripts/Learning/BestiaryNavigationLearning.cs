@@ -11,6 +11,8 @@ public class BestiaryNavigationLearning : AbstractLearning
     public static BestiaryNavigationLearning Instance { get; private set; }
     private bool isEnabled;
 
+    public override bool OverrideStack => true;
+
     private void Awake()
     {
         if (Instance != null)
@@ -27,17 +29,18 @@ public class BestiaryNavigationLearning : AbstractLearning
 
     public override void StopLearning()
     {
+        if (!isEnabled) return;
         isEnabled = false;
         learningHint.SetActive(false);
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed -= OnBestiaryInput;
-        BestiaryCloseLearning.Instance?.TryStartLearning();
+        LearningManager.Instance.StopLearning();
     }
 
     private void OnBestiaryInput(InputAction.CallbackContext callbackContext)
     {
         if (!isEnabled) return;
         _wasCompleted = true;
-        LearningManager.Instance.StopLearning();
         StopLearning();
+        BestiaryCloseLearning.Instance?.TryStartLearning();
     }
 }

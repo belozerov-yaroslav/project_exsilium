@@ -36,7 +36,7 @@ public class GameStateMachine : MonoBehaviour
     {
         if (state is PauseState && LevelLoader.Instance.IsLoad())
             return;
-        if (state == null)
+        if (state is null)
         {
             _statesStack.Pop().TurnOff();
             _statesStack.Peek().TurnOn();
