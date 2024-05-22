@@ -13,6 +13,8 @@ namespace InGameObjects.FirstLevel
             if (Inventory.Inventory.Instance.IsFullInventory())
             {
                 InteractionSoundScript.Instance.openDoorSound.Play();
+                AmbientScript.Instance.StopAmbient();
+                MusicManager.Instance.ChangeLevelMusic(pubLevelName);
                 SaveSystem.SaveSceneState(pubLevelName);
                 SceneManager.LoadScene(pubLevelName);
             }

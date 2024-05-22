@@ -20,6 +20,7 @@ public class DoorInRoom : MonoBehaviour, InteractionAbstraction
     {
         if (Inventory.Inventory.Instance.IsFullInventory())
         {
+            AmbientScript.Instance.StopAmbient();
             globalLight2D.intensity = 0.5f;
             InteractionSoundScript.Instance.openDoorSound.Play();
             _playerRigidbody2D.position = roomTeleport.position;
