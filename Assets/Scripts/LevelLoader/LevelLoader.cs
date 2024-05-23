@@ -55,6 +55,8 @@ public class LevelLoader : MonoBehaviour
         crossFade.gameObject.SetActive(true);
         transitionAnimator.SetTrigger(Start1);
         clickBlocker.SetActive(true);
+        
+        MusicManager.Instance.ChangeLevelMusic(levelName);
 
         yield return new WaitForSeconds(transitionTime);
 

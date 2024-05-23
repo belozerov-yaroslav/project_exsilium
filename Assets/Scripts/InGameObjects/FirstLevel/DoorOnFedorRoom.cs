@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
 {
@@ -22,6 +23,7 @@ public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
         {
             globalLight2D.intensity = 0.15f;
             InteractionSoundScript.Instance.openDoorSound.Play();
+            AmbientScript.Instance.AppearAmbient(SceneManager.GetActiveScene().name);
             _playerRigidbody2D.position = streetTeleport.position;
         }
         else
