@@ -457,6 +457,7 @@ GameObject:
   - component: {fileID: 19271707}
   - component: {fileID: 19271706}
   - component: {fileID: 19271708}
+  - component: {fileID: 19271709}
   m_Layer: 0
   m_Name: DoorToHall
   m_TagString: Untagged
@@ -544,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outlineManager: {fileID: 19271707}
-  _action: {fileID: 0}
+  _action: {fileID: 19271709}
 --- !u!114 &19271707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +604,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 1.96875}
   m_EdgeRadius: 0
+--- !u!114 &19271709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19271703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8105422dc1dd50940a6e8420ed08567e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelName: Level6
 --- !u!114 &21681999 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1238459192339978503, guid: 9ded274fd0b06ee488b82ea4173ec7e3, type: 3}
@@ -2101,6 +2115,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &431911553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 431911554}
+  m_Layer: 0
+  m_Name: Office
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &431911554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431911553}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.208, y: 2.389, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 887796962}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &510546537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,6 +3900,58 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &887796961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887796962}
+  - component: {fileID: 887796963}
+  m_Layer: 0
+  m_Name: StartPositions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887796962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887796961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6351776, y: 1.6073054, z: -0.5120084}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1986893109}
+  - {fileID: 431911554}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &887796963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887796961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2906b38f6780c43b13d92cbcdc0576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _defaultPosition: {fileID: 1986893109}
+  _startPositions:
+  - sceneName: Level6
+    positionTransform: {fileID: 1986893109}
+  - sceneName: Level7
+    positionTransform: {fileID: 431911554}
 --- !u!1 &933190255
 GameObject:
   m_ObjectHideFlags: 0
@@ -9097,6 +9194,7 @@ GameObject:
   - component: {fileID: 1401134197}
   - component: {fileID: 1401134196}
   - component: {fileID: 1401134200}
+  - component: {fileID: 1401134201}
   m_Layer: 0
   m_Name: DoorToOffice
   m_TagString: Untagged
@@ -9117,7 +9215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _outlineManager: {fileID: 1401134197}
-  _action: {fileID: 0}
+  _action: {fileID: 1401134201}
 --- !u!114 &1401134197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9243,6 +9341,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 1.96875}
   m_EdgeRadius: 0
+--- !u!114 &1401134201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401134195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8105422dc1dd50940a6e8420ed08567e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelName: Level7
 --- !u!1001 &1450433008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11785,6 +11896,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1986893108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1986893109}
+  m_Layer: 0
+  m_Name: Hall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1986893109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1986893108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.28, y: -4.854, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 887796962}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143634949
 GameObject:
   m_ObjectHideFlags: 0
@@ -11896,3 +12038,4 @@ SceneRoots:
   - {fileID: 812214659}
   - {fileID: 19271705}
   - {fileID: 1401134199}
+  - {fileID: 887796962}
