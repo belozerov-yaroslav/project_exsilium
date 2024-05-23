@@ -13,9 +13,12 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource menuMusic;
     [SerializeField] private AudioSource level1Music;
     [SerializeField] private AudioSource level2Music;
-    [SerializeField] private AudioSource level3Music;
+    [SerializeField] private AudioSource level5Music;
+    [SerializeField] private AudioSource level6Music;
+    [SerializeField] private AudioSource level7Music;
+    [SerializeField] private AudioSource level9Music;
     private Dictionary<string, AudioSource> _musicForLevels = new Dictionary<string, AudioSource>();
-
+    private Dictionary<string, float> _volumesDict = new Dictionary<string, float>();
     private void Awake()
     {
         if (Instance == null)
@@ -25,18 +28,38 @@ public class MusicManager : MonoBehaviour
     private void Start()
     {
         _musicForLevels["MainMenu"] = menuMusic;
+        _volumesDict["MainMenu"] = menuMusic.volume;
         _musicForLevels["Level 1"] = level1Music;
+        var level1Volume = level1Music.volume;
+        _volumesDict["Level 1"] = level1Volume;
         _musicForLevels["Level2"] = level2Music;
+        _volumesDict["Level2"] = level2Music.volume;
         _musicForLevels["Level3"] = level1Music;
+        _volumesDict["Level3"] = level1Volume;
+        _musicForLevels["Level4"] = level1Music;
+        _volumesDict["Level4"] = level1Volume;
+        _musicForLevels["Level5"] = level5Music;
+        _volumesDict["Level5"] = level5Music.volume;
+        _musicForLevels["Level6"] = level6Music;
+        var level6Volume = level6Music.volume;
+        _volumesDict["Level6"] = level6Volume;
+        _musicForLevels["Level7"] = level7Music;
+        _volumesDict["Level7"] = level7Music.volume;
+        _musicForLevels["Level8"] = level6Music;
+        _volumesDict["Level8"] = level6Volume;
+        _musicForLevels["Level9"] = level9Music;
+        _volumesDict["Level9"] = level9Music.volume;
         AppearLevelMusic();
     }
 
     public void ChangeLevelMusic(string nextLevel)
     {
         var previousMusic = _musicForLevels[SceneManager.GetActiveScene().name];
-        var prevVolume = previousMusic.volume;
+        var prevVolume = _volumesDict[SceneManager.GetActiveScene().name];
         var currentMusic = _musicForLevels[nextLevel];
-        var currentVolume = currentMusic.volume; 
+        var currentVolume = _volumesDict[nextLevel];
+        if(previousMusic == currentMusic)
+            return;
         currentMusic.volume = 0f;
         currentMusic.Play();
         StartCoroutine(ChangeValueSmooth.Change(0f, currentVolume,
@@ -57,7 +80,7 @@ public class MusicManager : MonoBehaviour
     private void AppearLevelMusic()
     {
         var currentMusic = _musicForLevels[SceneManager.GetActiveScene().name];
-        var currentVolume = currentMusic.volume; 
+        var currentVolume = _volumesDict[SceneManager.GetActiveScene().name];
         currentMusic.volume = 0f;
         currentMusic.Play();
         StartCoroutine(ChangeValueSmooth.Change(0f, currentVolume,

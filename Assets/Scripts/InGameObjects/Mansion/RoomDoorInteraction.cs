@@ -12,5 +12,8 @@ public class RoomDoorInteraction : MonoBehaviour, InteractionAbstraction
     {
         LastSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_levelName);
+        InteractionSoundScript.Instance.openDoorSound.Play();
+        if(LastSceneName != _levelName)
+            MusicManager.Instance.ChangeLevelMusic(_levelName);
     }
 }

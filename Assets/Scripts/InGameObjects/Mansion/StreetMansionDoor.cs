@@ -7,5 +7,6 @@ public class StreetMansionDoor : MonoBehaviour, InteractionAbstraction
     public void Interact()
     {
         LevelLoader.Instance.LoadLevelWithLoadingScreen("Level6");
+        InteractionSoundScript.Instance.openDoorSound.Play();
     }
 }
