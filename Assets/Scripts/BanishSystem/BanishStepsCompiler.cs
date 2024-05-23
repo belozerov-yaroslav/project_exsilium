@@ -16,6 +16,15 @@ namespace BanishSystem
                     new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Candle }, 70f,
                         PrayEnum.PrayArchangelMichael)
                 }
+            },
+            {
+                2, new[]
+                {
+                    new BanishStep(ItemEnum.Incense, Array.Empty<ItemEnum>(), Array.Empty<ItemEnum>()),
+                    new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Incense }, 70f,
+                        PrayEnum.PrayAgainstDemonsMachinations),
+                    new BanishStep(ItemEnum.Crucifix, Array.Empty<ItemEnum>(), new[] { ItemEnum.Incense }),
+                }
             }
         };
 
