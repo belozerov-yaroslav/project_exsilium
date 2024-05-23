@@ -6,6 +6,10 @@ public static class SaveSystem
     public static void InitGlobals()
     {
         GlobalVariables.LihoBanished = PlayerPrefs.GetInt("lihoBanished") == 1;
+        GlobalVariables.MorokBanished = PlayerPrefs.GetInt("morokBanished") == 1;
+        GlobalVariables.MertvyakBanished= PlayerPrefs.GetInt("mertvyakBanished") == 1;
+        GlobalVariables.ChertBanished = PlayerPrefs.GetInt("chertBanished") == 1;
+        GlobalVariables.NotFirstMansion = PlayerPrefs.GetInt("notFirstMansion") == 1;
     }
 
     public static void SaveGlobal(string name, bool state)
@@ -16,6 +20,10 @@ public static class SaveSystem
     public static void ResetGlobals()
     {
         GlobalVariables.LihoBanished = false;
+        GlobalVariables.MorokBanished = false;
+        GlobalVariables.MertvyakBanished = false;
+        GlobalVariables.ChertBanished = false;
+        GlobalVariables.NotFirstMansion = false;
     }
 
     public static void SaveSceneState(string sceneName)

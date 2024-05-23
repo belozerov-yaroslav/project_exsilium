@@ -16,6 +16,7 @@ namespace Inventory
         private readonly HashSet<ItemEnum> _itemsOnMap = new(); 
 
         public static Inventory Instance { get; private set; }
+        public bool IsLocked;
 
         private void Awake()
         {
@@ -47,6 +48,8 @@ namespace Inventory
 
         private void ChangeCurrentItem(InputAction.CallbackContext context)
         {
+            if (IsLocked)
+                return;
             var keyNumber = int.Parse(context.control.name);
             if (_inventorySlots[keyNumber - 1].IsEmpty()) return;
             InventoryLearning.Instance?.OnItemPicked();
