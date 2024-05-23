@@ -10,6 +10,11 @@ public class RoomDoorInteraction : MonoBehaviour, InteractionAbstraction
 
     public virtual void Interact()
     {
+        if (!Inventory.Inventory.Instance.IsFullInventory())
+        {
+            Player.BubbleText.ShowMessage("Я не могу оставить свои вещи");
+            return;
+        }
         LastSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(_levelName);
         InteractionSoundScript.Instance.openDoorSound.Play();

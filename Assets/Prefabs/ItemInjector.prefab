@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropPlace: {fileID: 0}
-  objectPrefab: {fileID: 0}
+  objectPrefab: {fileID: 4341249168845732820, guid: 190eb0dc568e85f4faafca174bca278e, type: 3}
   itemIcon: {fileID: 21300000, guid: fb899dc90e6b5614889f6a06144fce9e, type: 3}
 --- !u!1 &1275156989339976061
 GameObject:

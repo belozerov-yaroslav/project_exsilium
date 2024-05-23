@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class BedAction : InteractionAbstraction
+public class BedAction : MonoBehaviour, InteractionAbstraction
 {
     [SerializeField] private BedroomDoor _bedroomDoor;
     public void Interact()
     {
-        _bedroomDoor.Locked = true;
-        throw new System.NotImplementedException();
+        GlobalVariables.Slept = true;
+        GlobalVariables.NotFirstMansion = true;
+        FirstVisit.Instance.StopWorking();
     }
 }

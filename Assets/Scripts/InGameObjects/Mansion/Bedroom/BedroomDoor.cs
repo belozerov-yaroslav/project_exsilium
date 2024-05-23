@@ -1,9 +1,8 @@
 public class BedroomDoor : RoomDoorInteraction
 {
-    public bool Locked;
     public override void Interact()
     {
-        if (Locked)
+        if (GlobalVariables.Slept)
         {
             Player.BubbleText.ShowMessage("Мне нужно изгнать дьявола");
             return;

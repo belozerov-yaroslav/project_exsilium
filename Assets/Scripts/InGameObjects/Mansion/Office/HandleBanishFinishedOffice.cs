@@ -17,6 +17,7 @@ namespace InGameObjects.Mansion.Office
         {
             babaika.TurnOff();
             Debug.Log("Изгнание в офисе завершилось");
+            GlobalVariables.MertvyakBanished = true;
             BanishManager.BanishFinished -= HandleBanish;
         }
 

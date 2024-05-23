@@ -9,6 +9,8 @@ public class CupFailing : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        if (GlobalVariables.CupFall)
+            _animator.Play("IdleBroken");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,6 +18,7 @@ public class CupFailing : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             _animator.SetTrigger("Failing");
+            GlobalVariables.CupFall = true;
         }
     }
 }

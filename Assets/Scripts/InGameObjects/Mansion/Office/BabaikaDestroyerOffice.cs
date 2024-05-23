@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class BabaikaDestroyerOffice : MonoBehaviour
 {
-    private void Start()
+    [SerializeField] private GameObject babaika;
+    private void Awake()
     {
+        SaveSystem.InitGlobals();
         if (!GlobalVariables.MertvyakBanished)
             return;
+        Destroy(babaika);
     }
 }

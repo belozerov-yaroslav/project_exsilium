@@ -10,6 +10,8 @@ public static class SaveSystem
         GlobalVariables.MertvyakBanished= PlayerPrefs.GetInt("mertvyakBanished") == 1;
         GlobalVariables.ChertBanished = PlayerPrefs.GetInt("chertBanished") == 1;
         GlobalVariables.NotFirstMansion = PlayerPrefs.GetInt("notFirstMansion") == 1;
+        GlobalVariables.Slept = PlayerPrefs.GetInt("slept") == 1;
+        GlobalVariables.CupFall = PlayerPrefs.GetInt("cupFall") == 1;
     }
 
     public static void SaveGlobal(string name, bool state)
@@ -24,6 +26,8 @@ public static class SaveSystem
         GlobalVariables.MertvyakBanished = false;
         GlobalVariables.ChertBanished = false;
         GlobalVariables.NotFirstMansion = false;
+        GlobalVariables.Slept = false;
+        GlobalVariables.CupFall = false;
     }
 
     public static void SaveSceneState(string sceneName)
