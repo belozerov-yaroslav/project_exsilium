@@ -458,6 +458,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QTE"",
+                    ""type"": ""Button"",
+                    ""id"": ""f8f9094b-a8f2-425a-ae71-acb935bedd62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -502,6 +511,105 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""daa941b5-8de0-4751-8def-37fb5401500a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2dbfa120-406f-46f8-b61b-c34738b20d99"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f98c7bd0-2b21-439f-a8a8-cad9351a6893"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7c19c96-70d0-4d77-9205-38b22ae04b52"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7c23e76-e370-4508-b10e-29ad3a841da7"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af2a808a-fffa-480a-a1fe-dd5cbe190a39"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c586b36-8226-4294-9865-64b0f75275c5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3bf03b8e-3105-4a72-98f8-2690ffa7e445"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70a7a6dd-5b1d-41ca-a0d9-312051318937"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QTE"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -755,6 +863,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
         m_Global_ClosePrayerBook = m_Global.FindAction("ClosePrayerBook", throwIfNotFound: true);
         m_Global_Pause = m_Global.FindAction("Pause", throwIfNotFound: true);
+        m_Global_QTE = m_Global.FindAction("QTE", throwIfNotFound: true);
         // Bestiary
         m_Bestiary = asset.FindActionMap("Bestiary", throwIfNotFound: true);
         m_Bestiary_BestiaryNavigation = m_Bestiary.FindAction("BestiaryNavigation", throwIfNotFound: true);
@@ -909,6 +1018,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Global_OpenBestiary;
     private readonly InputAction m_Global_ClosePrayerBook;
     private readonly InputAction m_Global_Pause;
+    private readonly InputAction m_Global_QTE;
     public struct GlobalActions
     {
         private @CustomInput m_Wrapper;
@@ -916,6 +1026,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @OpenBestiary => m_Wrapper.m_Global_OpenBestiary;
         public InputAction @ClosePrayerBook => m_Wrapper.m_Global_ClosePrayerBook;
         public InputAction @Pause => m_Wrapper.m_Global_Pause;
+        public InputAction @QTE => m_Wrapper.m_Global_QTE;
         public InputActionMap Get() { return m_Wrapper.m_Global; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -934,6 +1045,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @QTE.started += instance.OnQTE;
+            @QTE.performed += instance.OnQTE;
+            @QTE.canceled += instance.OnQTE;
         }
 
         private void UnregisterCallbacks(IGlobalActions instance)
@@ -947,6 +1061,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @QTE.started -= instance.OnQTE;
+            @QTE.performed -= instance.OnQTE;
+            @QTE.canceled -= instance.OnQTE;
         }
 
         public void RemoveCallbacks(IGlobalActions instance)
@@ -1161,6 +1278,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnOpenBestiary(InputAction.CallbackContext context);
         void OnClosePrayerBook(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnQTE(InputAction.CallbackContext context);
     }
     public interface IBestiaryActions
     {
