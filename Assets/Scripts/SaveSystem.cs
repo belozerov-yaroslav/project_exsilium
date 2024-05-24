@@ -33,11 +33,11 @@ public static class SaveSystem
         GlobalVariables.NotFirstMansion = false;
         GlobalVariables.Slept = false;
         GlobalVariables.CupFall = false;
-        GlobalVariables.IsKeyCollected = PlayerPrefs.GetInt("isKeyCollected") == 1;
-        GlobalVariables.IsSafeNoteRead = PlayerPrefs.GetInt("isSafeNoteRead") == 1;
-        GlobalVariables.IsPaintingRemoved = PlayerPrefs.GetInt("isPaintingRemoved") == 1;
-        GlobalVariables.IsSafeOpen = PlayerPrefs.GetInt("isSafeOpen") == 1; 
-        GlobalVariables.IsRevolverCollected = PlayerPrefs.GetInt("isRevolverCollected") == 1;
+        GlobalVariables.IsKeyCollected = false;
+        GlobalVariables.IsSafeNoteRead = false;
+        GlobalVariables.IsPaintingRemoved = false;
+        GlobalVariables.IsSafeOpen = false; 
+        GlobalVariables.IsRevolverCollected = false;
     }
 
     public static void SaveSceneState(string sceneName)
