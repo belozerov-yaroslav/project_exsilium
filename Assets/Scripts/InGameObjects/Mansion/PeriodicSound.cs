@@ -1,6 +1,8 @@
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
+    using Random = UnityEngine.Random;
 
     public class PeriodicSound : MonoBehaviour
     {
@@ -21,7 +23,9 @@
             yield return null;
             while (true)
             {
-                _messages[Random.Range(0, _messages.Count-1)].Play();
+                var t = Random.Range(0, _messages.Count);
+                Debug.Log(t);
+                _messages[t].Play();
                 yield return new WaitForSeconds(Random.Range(10, 20));
             }
         }
