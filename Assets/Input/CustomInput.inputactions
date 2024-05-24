@@ -762,39 +762,6 @@
                     "action": "NextSlide",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "efe0cccd-8779-4a67-a0d9-fa7140287c1c",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSlide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7d70674b-e4d9-4527-992f-42c84f178344",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSlide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7202a455-94ed-4a9c-8eca-de0a4a7d6632",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "NextSlide",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

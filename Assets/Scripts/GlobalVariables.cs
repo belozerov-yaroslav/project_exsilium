@@ -57,4 +57,44 @@ public class GlobalVariables
     }
 
     private static bool cupFall = false;
+    
+    public static bool IsKeyCollected
+    {
+        get {SaveSystem.InitGlobals(); return isKeyCollected; }
+        set { isKeyCollected = value; SaveSystem.SaveGlobal("isKeyCollected", value); }
+    }
+
+    private static bool isKeyCollected = false;
+    
+    public static bool IsSafeNoteRead
+    {
+        get {SaveSystem.InitGlobals(); return isSafeNoteRead; }
+        set { isSafeNoteRead = value; SaveSystem.SaveGlobal("isSafeNoteRead", value); }
+    }
+
+    private static bool isSafeNoteRead = false;
+    
+    public static bool IsPaintingRemoved
+    {
+        get {SaveSystem.InitGlobals(); return isPaintingRemoved; }
+        set { isPaintingRemoved = value; SaveSystem.SaveGlobal("isPaintingRemoved", value); }
+    }
+
+    private static bool isPaintingRemoved = false;
+    
+    public static bool IsSafeOpen
+    {
+        get {SaveSystem.InitGlobals(); return isSafeOpen; }
+        set { isSafeOpen = value; SaveSystem.SaveGlobal("isSafeOpen", value); }
+    }
+
+    private static bool isSafeOpen = false;
+    
+    public static bool IsRevolverCollected
+    {
+        get {SaveSystem.InitGlobals(); return isRevolverCollected; }
+        set { isRevolverCollected = value; SaveSystem.SaveGlobal("isRevolverCollected", value); }
+    }
+
+    private static bool isRevolverCollected = false;
 }

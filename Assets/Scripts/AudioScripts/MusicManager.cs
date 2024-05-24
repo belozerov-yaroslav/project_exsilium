@@ -54,6 +54,7 @@ public class MusicManager : MonoBehaviour
 
     public void ChangeLevelMusic(string nextLevel)
     {
+        StopAllCoroutines();
         var previousMusic = _musicForLevels[SceneManager.GetActiveScene().name];
         var prevVolume = _volumesDict[SceneManager.GetActiveScene().name];
         var currentMusic = _musicForLevels[nextLevel];
@@ -79,6 +80,7 @@ public class MusicManager : MonoBehaviour
 
     private void AppearLevelMusic()
     {
+        StopAllCoroutines();
         var currentMusic = _musicForLevels[SceneManager.GetActiveScene().name];
         var currentVolume = _volumesDict[SceneManager.GetActiveScene().name];
         currentMusic.volume = 0f;
@@ -87,6 +89,4 @@ public class MusicManager : MonoBehaviour
             value => currentMusic.volume = value
             , smoothTime, AnimationCurves.ThirdGrade));
     }
-
-
 }

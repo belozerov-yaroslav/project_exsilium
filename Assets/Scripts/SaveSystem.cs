@@ -12,6 +12,11 @@ public static class SaveSystem
         GlobalVariables.NotFirstMansion = PlayerPrefs.GetInt("notFirstMansion") == 1;
         GlobalVariables.Slept = PlayerPrefs.GetInt("slept") == 1;
         GlobalVariables.CupFall = PlayerPrefs.GetInt("cupFall") == 1;
+        GlobalVariables.IsKeyCollected = PlayerPrefs.GetInt("isKeyCollected") == 1;
+        GlobalVariables.IsSafeNoteRead = PlayerPrefs.GetInt("isSafeNoteRead") == 1;
+        GlobalVariables.IsPaintingRemoved = PlayerPrefs.GetInt("isPaintingRemoved") == 1;
+        GlobalVariables.IsSafeOpen = PlayerPrefs.GetInt("isSafeOpen") == 1; 
+        GlobalVariables.IsRevolverCollected = PlayerPrefs.GetInt("isRevolverCollected") == 1;
     }
 
     public static void SaveGlobal(string name, bool state)
@@ -28,6 +33,11 @@ public static class SaveSystem
         GlobalVariables.NotFirstMansion = false;
         GlobalVariables.Slept = false;
         GlobalVariables.CupFall = false;
+        GlobalVariables.IsKeyCollected = PlayerPrefs.GetInt("isKeyCollected") == 1;
+        GlobalVariables.IsSafeNoteRead = PlayerPrefs.GetInt("isSafeNoteRead") == 1;
+        GlobalVariables.IsPaintingRemoved = PlayerPrefs.GetInt("isPaintingRemoved") == 1;
+        GlobalVariables.IsSafeOpen = PlayerPrefs.GetInt("isSafeOpen") == 1; 
+        GlobalVariables.IsRevolverCollected = PlayerPrefs.GetInt("isRevolverCollected") == 1;
     }
 
     public static void SaveSceneState(string sceneName)
