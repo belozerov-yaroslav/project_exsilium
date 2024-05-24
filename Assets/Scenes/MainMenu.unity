@@ -2676,14 +2676,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1509900521259318726, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -338.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1792296115533029935, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -338.7
+      objectReference: {fileID: 0}
     - target: {fileID: 3940740745505072859, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_Name
       value: ExitGameConfirmation
+      objectReference: {fileID: 0}
+    - target: {fileID: 4255627737891016567, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6052170905105738976, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 799290948}
+    - target: {fileID: 6947152747676861783, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -336.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7305951240452120768, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -336.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659782022524707940, guid: c6687cebe8954a74d96997731e92196b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -290
+      objectReference: {fileID: 0}
     - target: {fileID: 9186538531567498459, guid: c6687cebe8954a74d96997731e92196b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4569062

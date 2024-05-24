@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace InGameObjects.Mansion.Office
 {
@@ -9,7 +10,7 @@ namespace InGameObjects.Mansion.Office
         [SerializeField] private GameObject steps;
         [SerializeField] private Animator ashAnimator;
         [SerializeField] private Animator cameraAnimator;
-        [SerializeField] private StinkyObject stinkyObject;
+        [FormerlySerializedAs("stinkyObject")] [SerializeField] private PeriodicPhrases periodicPhrases;
         private static readonly int Appear = Animator.StringToHash("Appear");
         private static readonly int Headache = Animator.StringToHash("Headache");
 
@@ -21,7 +22,7 @@ namespace InGameObjects.Mansion.Office
         public void TurnOff()
         {
             cameraAnimator.SetBool(Headache, false);
-            stinkyObject.StopStink();
+            periodicPhrases.StopPhrases();
             flameSound.Play();
             Destroy(steps);
             ashAnimator.SetTrigger(Appear);

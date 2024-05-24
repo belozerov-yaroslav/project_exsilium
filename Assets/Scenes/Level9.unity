@@ -814,32 +814,12 @@ PrefabInstance:
       value: PauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 698901019}
     - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ConfirmNewGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: NewGameConfirmation, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6766965886833849115, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7276403715387231063, guid: a1c490040db6ed74798cb94bb0321d4d, type: 3}
       propertyPath: m_Camera
