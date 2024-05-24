@@ -4,7 +4,7 @@ public class GlobalVariables
     // SaveSystem возвращает false при init`е
     public static bool LihoBanished
     {
-        get => lihoBanished;
+        get {SaveSystem.InitGlobals(); return lihoBanished; }
         set { lihoBanished = value; SaveSystem.SaveGlobal("lihoBanished", value); }
     }
 
@@ -12,7 +12,7 @@ public class GlobalVariables
     
     public static bool MorokBanished
     {
-        get => morokBanished;
+        get {SaveSystem.InitGlobals(); return morokBanished; }
         set { morokBanished = value; SaveSystem.SaveGlobal("morokBanished", value); }
     }
 
@@ -20,7 +20,7 @@ public class GlobalVariables
     
     public static bool MertvyakBanished
     {
-        get => mertvyakBanished;
+        get {SaveSystem.InitGlobals(); return mertvyakBanished; }
         set { mertvyakBanished = value; SaveSystem.SaveGlobal("mertvyakBanished", value); }
     }
 
@@ -28,7 +28,7 @@ public class GlobalVariables
     
     public static bool ChertBanished
     {
-        get => chertBanished;
+        get {SaveSystem.InitGlobals(); return chertBanished; }
         set { chertBanished = value; SaveSystem.SaveGlobal("chertBanished", value); }
     }
 
@@ -36,7 +36,7 @@ public class GlobalVariables
     
     public static bool NotFirstMansion
     {
-        get => notFirstMansion;
+        get {SaveSystem.InitGlobals(); return notFirstMansion; }
         set { notFirstMansion = value; SaveSystem.SaveGlobal("notFirstMansion", value); }
     }
 
@@ -44,7 +44,7 @@ public class GlobalVariables
     
     public static bool Slept
     {
-        get => slept;
+        get {SaveSystem.InitGlobals(); return slept; }
         set { slept = value; SaveSystem.SaveGlobal("slept", value); }
     }
 
@@ -52,7 +52,7 @@ public class GlobalVariables
     
     public static bool CupFall
     {
-        get => cupFall;
+        get {SaveSystem.InitGlobals(); return cupFall; }
         set { cupFall = value; SaveSystem.SaveGlobal("cupFall", value); }
     }
 

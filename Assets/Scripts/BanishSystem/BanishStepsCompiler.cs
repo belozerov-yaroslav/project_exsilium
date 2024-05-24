@@ -25,6 +25,14 @@ namespace BanishSystem
                         PrayEnum.PrayAgainstDemonsMachinations),
                     new BanishStep(ItemEnum.Crucifix, Array.Empty<ItemEnum>(), new[] { ItemEnum.Incense }),
                 }
+            },
+            {
+                3, new[]
+                {
+                    new BanishStep(ItemEnum.Chalk, Array.Empty<ItemEnum>(), Array.Empty<ItemEnum>(), 1f),
+                    new BanishStep(ItemEnum.Knife, new[] { ItemEnum.Chalk }, Array.Empty<ItemEnum>()),
+                    new BanishStep(ItemEnum.Candle, new[] { ItemEnum.Chalk }, Array.Empty<ItemEnum>())
+                }
             }
         };
 

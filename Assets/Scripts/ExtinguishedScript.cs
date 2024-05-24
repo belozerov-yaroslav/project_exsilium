@@ -11,7 +11,7 @@ public class ExtinguishedScript : MonoBehaviour
     private Animator _animator;
     private Light2D _candleLight;
     
-    void Start()
+    private void Start()
     {
         BanishManager.BanishFinished += Extinguish;
     }

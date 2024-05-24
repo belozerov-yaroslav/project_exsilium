@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class BabaikaDestroyerKitchen : MonoBehaviour
 {
-    [SerializeField] private GameObject cup;
+    [SerializeField] private GameObject _babaika;
     private void Start()
     {
         if (!GlobalVariables.ChertBanished)
             return;
-        cup.GetComponent<Animator>().Play("IdleBroken");
+        Destroy(_babaika);
     }
 }

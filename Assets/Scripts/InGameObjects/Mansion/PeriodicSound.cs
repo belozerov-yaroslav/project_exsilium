@@ -24,7 +24,6 @@
             while (true)
             {
                 var t = Random.Range(0, _messages.Count);
-                Debug.Log(t);
                 _messages[t].Play();
                 yield return new WaitForSeconds(Random.Range(10, 20));
             }
