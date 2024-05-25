@@ -113,8 +113,8 @@ TextureImporter:
       name: office_tile_map_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 160
+        x: 1
+        y: 171
         width: 32
         height: 32
       alignment: 0
@@ -134,8 +134,8 @@ TextureImporter:
       name: office_tile_map_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 160
+        x: 35
+        y: 171
         width: 32
         height: 32
       alignment: 0
@@ -155,8 +155,8 @@ TextureImporter:
       name: office_tile_map_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 160
+        x: 69
+        y: 171
         width: 32
         height: 32
       alignment: 0
@@ -176,8 +176,8 @@ TextureImporter:
       name: office_tile_map_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 160
+        x: 103
+        y: 171
         width: 32
         height: 32
       alignment: 0
@@ -197,8 +197,8 @@ TextureImporter:
       name: office_tile_map_4
       rect:
         serializedVersion: 2
-        x: 160
-        y: 160
+        x: 171
+        y: 171
         width: 32
         height: 32
       alignment: 0
@@ -218,8 +218,8 @@ TextureImporter:
       name: office_tile_map_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 128
+        x: 1
+        y: 137
         width: 32
         height: 32
       alignment: 0
@@ -239,8 +239,8 @@ TextureImporter:
       name: office_tile_map_6
       rect:
         serializedVersion: 2
-        x: 32
-        y: 128
+        x: 35
+        y: 137
         width: 32
         height: 32
       alignment: 0
@@ -260,8 +260,8 @@ TextureImporter:
       name: office_tile_map_7
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
+        x: 69
+        y: 137
         width: 32
         height: 32
       alignment: 0
@@ -281,8 +281,8 @@ TextureImporter:
       name: office_tile_map_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 128
+        x: 103
+        y: 137
         width: 32
         height: 32
       alignment: 0
@@ -302,8 +302,8 @@ TextureImporter:
       name: office_tile_map_9
       rect:
         serializedVersion: 2
-        x: 160
-        y: 128
+        x: 171
+        y: 137
         width: 32
         height: 32
       alignment: 0
@@ -323,8 +323,8 @@ TextureImporter:
       name: office_tile_map_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 1
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -344,8 +344,8 @@ TextureImporter:
       name: office_tile_map_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 35
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -365,8 +365,8 @@ TextureImporter:
       name: office_tile_map_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 69
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -386,8 +386,8 @@ TextureImporter:
       name: office_tile_map_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 103
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -407,8 +407,8 @@ TextureImporter:
       name: office_tile_map_14
       rect:
         serializedVersion: 2
-        x: 128
-        y: 96
+        x: 137
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -428,8 +428,8 @@ TextureImporter:
       name: office_tile_map_15
       rect:
         serializedVersion: 2
-        x: 160
-        y: 96
+        x: 171
+        y: 103
         width: 32
         height: 32
       alignment: 0
@@ -449,8 +449,8 @@ TextureImporter:
       name: office_tile_map_16
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 35
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -470,8 +470,8 @@ TextureImporter:
       name: office_tile_map_17
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 69
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -491,8 +491,8 @@ TextureImporter:
       name: office_tile_map_18
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 103
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -512,8 +512,8 @@ TextureImporter:
       name: office_tile_map_19
       rect:
         serializedVersion: 2
-        x: 128
-        y: 32
+        x: 137
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -533,8 +533,8 @@ TextureImporter:
       name: office_tile_map_20
       rect:
         serializedVersion: 2
-        x: 160
-        y: 32
+        x: 171
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -554,8 +554,8 @@ TextureImporter:
       name: office_tile_map_21
       rect:
         serializedVersion: 2
-        x: 192
-        y: 32
+        x: 205
+        y: 35
         width: 32
         height: 32
       alignment: 0
@@ -575,8 +575,8 @@ TextureImporter:
       name: office_tile_map_22
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 35
+        y: 1
         width: 32
         height: 32
       alignment: 0
@@ -596,8 +596,8 @@ TextureImporter:
       name: office_tile_map_23
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 69
+        y: 1
         width: 32
         height: 32
       alignment: 0
@@ -617,8 +617,8 @@ TextureImporter:
       name: office_tile_map_24
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 103
+        y: 1
         width: 32
         height: 32
       alignment: 0
@@ -638,8 +638,8 @@ TextureImporter:
       name: office_tile_map_25
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 137
+        y: 1
         width: 32
         height: 32
       alignment: 0
@@ -659,8 +659,8 @@ TextureImporter:
       name: office_tile_map_26
       rect:
         serializedVersion: 2
-        x: 160
-        y: 0
+        x: 171
+        y: 1
         width: 32
         height: 32
       alignment: 0
@@ -680,8 +680,8 @@ TextureImporter:
       name: office_tile_map_27
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
+        x: 205
+        y: 1
         width: 32
         height: 32
       alignment: 0
