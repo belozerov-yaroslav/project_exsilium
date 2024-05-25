@@ -38,6 +38,7 @@ namespace Inventory.Items_Classes
         protected override void DropEffect(GameObject obj)
         {
             ExtinguishedScript.PlacedCandle = obj;
+            BlueCandleScript.PlacedCandle = obj;
         }
 
 

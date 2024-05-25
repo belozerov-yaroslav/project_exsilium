@@ -66,8 +66,7 @@ public class PentagrammController : MonoBehaviour
         }
         else
         {
-            GetQteResult(false);
-            qteButtons.ResetQte();
+            qteButtons.WrongLetter();
         }
     }
 
@@ -75,6 +74,7 @@ public class PentagrammController : MonoBehaviour
 
     public void FinishQte()
     {
+        qteButtons.ResetQte();
         pentagramCanvas.enabled = false;
         _isSuccess = false;
     }
