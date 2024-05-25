@@ -19,6 +19,7 @@ public class InteractionSoundScript : MonoBehaviour
     [SerializeField] public AudioSource closedDoorSound;
     [SerializeField] public AudioSource dialogButtonSound;
     [SerializeField] public AudioSource menuButtonSound;
+    [SerializeField] public AudioSource revolverPickingUpSound;
     
     void Start()
     {

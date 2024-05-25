@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LetterInteraction : MonoBehaviour, InteractionAbstraction
+public class LetterInteraction : MonoBehaviour, IInteraction
 {
     [SerializeField] private string _mansionLevelName = "Level5";
     public void Interact()

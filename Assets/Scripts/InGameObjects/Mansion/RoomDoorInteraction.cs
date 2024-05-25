@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoomDoorInteraction : MonoBehaviour, InteractionAbstraction
+public class RoomDoorInteraction : MonoBehaviour, IInteraction
 {
     [SerializeField] private string _levelName;
     public static string LastSceneName { get; private set; }

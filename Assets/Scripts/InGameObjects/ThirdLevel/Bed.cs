@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bed : MonoBehaviour, InteractionAbstraction
+public class Bed : MonoBehaviour, IInteraction
 {
     public void Interact()
     {

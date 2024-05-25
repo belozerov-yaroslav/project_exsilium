@@ -6,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
-public class DoorEnter : MonoBehaviour, InteractionAbstraction
+public class DoorEnter : MonoBehaviour, IInteraction
 {
     public static bool IsBanishComplete;
     public static bool IsDialogComplete = true;

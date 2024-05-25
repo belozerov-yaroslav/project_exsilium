@@ -1627,8 +1627,8 @@ MonoBehaviour:
   scrollbarMusic: {fileID: 1828502818104236953}
   scrollbarEffects: {fileID: 6593210926027673997}
   masterVolumeDefault: 0.85
-  musicVolumeDefault: 1
-  effectsVolumeDefault: 1
+  musicVolumeDefault: 0.7
+  effectsVolumeDefault: 0.87
   master: {fileID: 24300002, guid: da24d069bceef904c99959aac4e78167, type: 2}
   music: {fileID: 8889563390814546244, guid: da24d069bceef904c99959aac4e78167, type: 2}
   effects: {fileID: 6984243204654046896, guid: da24d069bceef904c99959aac4e78167, type: 2}

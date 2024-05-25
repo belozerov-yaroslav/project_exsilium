@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class DoorInBasement : MonoBehaviour, InteractionAbstraction
+public class DoorInBasement : MonoBehaviour, IInteraction
 {
     [SerializeField] private Transform _teleportPosition;
     [SerializeField] private Rigidbody2D _playerRigidbody2D;

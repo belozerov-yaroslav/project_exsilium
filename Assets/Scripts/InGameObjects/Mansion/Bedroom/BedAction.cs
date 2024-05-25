@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BedAction : MonoBehaviour, InteractionAbstraction
+public class BedAction : MonoBehaviour, IInteraction
 {
     [SerializeField] private Slides _slildes; 
     public void Interact()

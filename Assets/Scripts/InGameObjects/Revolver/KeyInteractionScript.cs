@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class KeyInteractionScript : MonoBehaviour, InteractionAbstraction
+public class KeyInteractionScript : MonoBehaviour, IInteraction
 {
     private void Start()
     {

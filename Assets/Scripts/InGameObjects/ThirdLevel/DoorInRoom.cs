@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
-public class DoorInRoom : MonoBehaviour, InteractionAbstraction
+public class DoorInRoom : MonoBehaviour, IInteraction
 {
     private Rigidbody2D _playerRigidbody2D;
     [SerializeField] private Transform roomTeleport;

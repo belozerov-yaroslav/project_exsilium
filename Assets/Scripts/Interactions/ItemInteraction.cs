@@ -1,7 +1,7 @@
 using Inventory.Items_Classes;
 using UnityEngine;
 
-public class ItemInteraction : MonoBehaviour, InteractionAbstraction
+public class ItemInteraction : MonoBehaviour, IInteraction
 {
     public Item item;
     public void Interact()
