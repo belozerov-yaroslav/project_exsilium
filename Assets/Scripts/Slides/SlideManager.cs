@@ -18,6 +18,7 @@ public class SlideManager : MonoBehaviour
     private int _index;
     private List<Slide> _currentSlides;
     public static SlideManager Instance { get; private set; }
+    public event Action OnSlideEnd;
 
 
     private void Awake()
@@ -58,6 +59,7 @@ public class SlideManager : MonoBehaviour
         _currentSlides[_index - 1].StopAllCoroutines();
         _currentSlides[_index - 1].TurnOff();
         GameStateMachine.Instance.StateTransition(null);
+        OnSlideEnd?.Invoke();
     }
 
     private void TurnOnInstruction()

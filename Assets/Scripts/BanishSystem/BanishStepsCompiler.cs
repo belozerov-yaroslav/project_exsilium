@@ -33,6 +33,15 @@ namespace BanishSystem
                     new BanishStep(ItemEnum.Knife, new[] { ItemEnum.Chalk }, Array.Empty<ItemEnum>()),
                     new BanishStep(ItemEnum.Candle, new[] { ItemEnum.Chalk }, Array.Empty<ItemEnum>())
                 }
+            },
+            {
+                4, new[]
+                {
+                    new BanishStep(ItemEnum.Herbs, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
+                    new BanishStep(ItemEnum.Icon, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
+                    new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }, 
+                        70f, PrayEnum.PrayHolySpirit)
+                }
             }
         };
 

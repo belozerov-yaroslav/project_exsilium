@@ -21,4 +21,9 @@ public class BlueCandleScript : MonoBehaviour
         _animator = PlacedCandle.GetComponent<Animator>();
         _animator.SetTrigger(BlueFlame);
     }
+
+    private void OnDestroy()
+    {
+        BanishManager.BanishFinished -= ChangeColor;
+    }
 }
