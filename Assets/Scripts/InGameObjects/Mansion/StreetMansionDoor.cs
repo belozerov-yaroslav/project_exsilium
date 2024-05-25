@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StreetMansionDoor : MonoBehaviour, InteractionAbstraction
+public class StreetMansionDoor : MonoBehaviour, IInteraction
 {
     public void Interact()
     {

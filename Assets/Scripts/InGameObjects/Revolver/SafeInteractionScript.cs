@@ -45,12 +45,14 @@ public class SafeInteractionScript : MonoBehaviour
 
     private void OnInteractionPerformed(InputAction.CallbackContext obj)
     {
-        if (_ifPlayerInTrigger && !GlobalVariables.IsSafeOpen && GlobalVariables.IsPaintingRemoved && GlobalVariables.IsKeyCollected)
-            OpenSafe();
-        else if (GlobalVariables.IsPaintingRemoved && !GlobalVariables.IsSafeOpen)
+        if (GlobalVariables.IsPaintingRemoved && !GlobalVariables.IsSafeOpen && _ifPlayerInTrigger)
         {
-            Player.BubbleText.ShowMessage("У меня нет ключа от этого сейфа");
-            closedSound.Play();
+            if (GlobalVariables.IsKeyCollected) OpenSafe();
+            else
+            {
+                Player.BubbleText.ShowMessage("У меня нет ключа от этого сейфа");
+                closedSound.Play();
+            }
         }
     }
 

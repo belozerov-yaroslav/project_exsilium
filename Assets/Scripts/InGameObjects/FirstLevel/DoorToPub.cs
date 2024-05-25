@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace InGameObjects.FirstLevel
 {
-    public class DoorToPub : MonoBehaviour, InteractionAbstraction
+    public class DoorToPub : MonoBehaviour, IInteraction
     {
         [SerializeField] private string pubLevelName;
 

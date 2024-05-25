@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DialogueTrigger : MonoBehaviour, InteractionAbstraction
+public class DialogueTrigger : MonoBehaviour, IInteraction
 {
     [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
 

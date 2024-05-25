@@ -35,7 +35,7 @@ public class InteractionManager : MonoBehaviour
         if (_ifPlayerInTrigger)
         {
             InteractionLearning.Instance?.OnInteractionCompleted();
-            (_action as InteractionAbstraction).Interact();
+            (_action as IInteraction).Interact();
         }
     }
 }

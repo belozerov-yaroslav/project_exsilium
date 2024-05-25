@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class DoorOnFedorRoom : MonoBehaviour, InteractionAbstraction
+public class DoorOnFedorRoom : MonoBehaviour, IInteraction
 {
     private Rigidbody2D _playerRigidbody2D;
     [SerializeField] private Transform streetTeleport;

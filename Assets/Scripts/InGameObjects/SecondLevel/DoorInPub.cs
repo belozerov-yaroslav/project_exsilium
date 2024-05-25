@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
-public class DoorInPub : MonoBehaviour, InteractionAbstraction
+public class DoorInPub : MonoBehaviour, IInteraction
 {
     [SerializeField] private Transform _teleportPosition;
     [SerializeField] private Rigidbody2D _playerTransform;

@@ -2,7 +2,7 @@
 
 namespace InGameObjects.Revolver
 {
-    public class RevolverInteractionScript : MonoBehaviour, InteractionAbstraction
+    public class RevolverInteractionScript : MonoBehaviour, IInteraction
     {
         private void Start()
         {
