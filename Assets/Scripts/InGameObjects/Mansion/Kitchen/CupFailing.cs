@@ -18,7 +18,7 @@ public class CupFailing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && GlobalVariables.Slept && !GlobalVariables.ChertBanished)
         {
             _animator.SetTrigger("Failing");
             GlobalVariables.CupFall = true;

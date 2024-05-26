@@ -12,10 +12,17 @@ public class WhisperOff : MonoBehaviour
         if (!GlobalVariables.Slept)
         {
             _whisper.StopSounds();
-            SlideManager.Instance.OnSlideEnd += () =>
-            {
-                _whisper.StartCoroutine(_whisper.StartSounds());
-            };
+            SlideManager.Instance.OnSlideEnd += Handle;
         }
+    }
+
+    private void OnDestroy()
+    {
+        SlideManager.Instance.OnSlideEnd -= Handle;
+    }
+
+    private void Handle()
+    {
+        _whisper.StartCoroutine(_whisper.StartSounds());
     }
 }

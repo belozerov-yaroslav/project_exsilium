@@ -6,7 +6,7 @@ public class BabaikaDestroyerKitchen : MonoBehaviour
     [SerializeField] private GameObject _babaika;
     private void Start()
     {
-        if (!GlobalVariables.ChertBanished)
+        if (GlobalVariables.Slept && !GlobalVariables.ChertBanished)
             return;
         Destroy(_babaika);
     }

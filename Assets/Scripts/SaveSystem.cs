@@ -18,6 +18,7 @@ public static class SaveSystem
         GlobalVariables.IsSafeOpen = PlayerPrefs.GetInt("isSafeOpen") == 1; 
         GlobalVariables.IsRevolverCollected = PlayerPrefs.GetInt("isRevolverCollected") == 1;
         GlobalVariables.IsPentagramLearned = PlayerPrefs.GetInt("isPentagramLearned") == 1;
+        GlobalVariables.Slept2 = PlayerPrefs.GetInt("slept2") == 1;
     }
 
     public static void SaveGlobal(string name, bool state)
@@ -40,6 +41,7 @@ public static class SaveSystem
         GlobalVariables.IsSafeOpen = false; 
         GlobalVariables.IsRevolverCollected = false;
         GlobalVariables.IsPentagramLearned = false;
+        GlobalVariables.Slept2 = false;
     }
 
     public static void SaveSceneState(string sceneName)

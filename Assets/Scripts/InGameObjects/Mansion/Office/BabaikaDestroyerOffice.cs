@@ -6,8 +6,7 @@ public class BabaikaDestroyerOffice : MonoBehaviour
     [SerializeField] private GameObject babaika;
     private void Awake()
     {
-        SaveSystem.InitGlobals();
-        if (!GlobalVariables.MertvyakBanished)
+        if (GlobalVariables.Slept && !GlobalVariables.MertvyakBanished)
             return;
         Destroy(babaika);
     }

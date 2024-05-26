@@ -29,7 +29,6 @@ public class PentagrammController : MonoBehaviour
         }
     }
 
-
     public void AppearInterface()
     {
         PentagramLearning.Instance.CheckLearning();

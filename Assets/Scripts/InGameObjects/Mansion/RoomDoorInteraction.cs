@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RoomDoorInteraction : MonoBehaviour, IInteraction
 {
     [SerializeField] private string _levelName;
-    public static string LastSceneName { get; private set; }
+    public static string LastSceneName { get; set; }
 
     public virtual void Interact()
     {

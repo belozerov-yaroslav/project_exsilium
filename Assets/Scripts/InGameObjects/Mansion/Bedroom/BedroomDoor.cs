@@ -2,10 +2,21 @@ public class BedroomDoor : RoomDoorInteraction
 {
     public override void Interact()
     {
-        if (GlobalVariables.Slept && !GlobalVariables.MorokBanished)
+        if (GlobalVariables.Slept)
         {
-            Player.BubbleText.ShowMessage("Мне нужно изгнать дьявола");
-            return;
+            if (GlobalVariables.MorokBanished)
+            {
+                if (!GlobalVariables.Slept2)
+                {
+                    Player.BubbleText.ShowMessage("Мне надо поспать");
+                    return;
+                }
+            }
+            else
+            {
+                Player.BubbleText.ShowMessage("Мне нужно изгнать дьявола");
+                return;
+            }
         }
         base.Interact();
     }

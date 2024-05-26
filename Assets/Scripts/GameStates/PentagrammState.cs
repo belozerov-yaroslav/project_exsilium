@@ -18,14 +18,12 @@ public class PentagrammState : GameState
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         PentagrammController.Instance.AppearInterface();
-        CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
     }
 
     public override void TurnOff()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
     }
     
 }

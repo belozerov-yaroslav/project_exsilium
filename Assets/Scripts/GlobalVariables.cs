@@ -105,4 +105,12 @@ public class GlobalVariables
     }
 
     private static bool isPentagramLearned = false;
+    
+    public static bool Slept2
+    {
+        get {SaveSystem.InitGlobals(); return slept2; }
+        set { slept2 = value; SaveSystem.SaveGlobal("slept2", value); }
+    }
+
+    private static bool slept2 = false;
 }
