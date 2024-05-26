@@ -164,6 +164,8 @@ MonoBehaviour:
   _pauseCanvas: {fileID: 0}
   _audioSettnigs: {fileID: 0}
   _exitConfirmation: {fileID: 0}
+  Normal: {fileID: 24500006, guid: da24d069bceef904c99959aac4e78167, type: 2}
+  Pause: {fileID: 5520106290465804949, guid: da24d069bceef904c99959aac4e78167, type: 2}
 --- !u!114 &8775755103528957093
 MonoBehaviour:
   m_ObjectHideFlags: 0
