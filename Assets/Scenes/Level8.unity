@@ -1726,6 +1726,8 @@ MonoBehaviour:
   - {fileID: 189814078}
   - {fileID: 189814077}
   - {fileID: 189814076}
+  maxWaitTime: 20
+  minWaitTime: 10
 --- !u!114 &189814080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10499,8 +10501,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a562e1329b5784395726950b80cbce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAlpha: 10
-  _minAlpha: 1
+  _maxAlpha: 20
+  _minAlpha: 5
   _minStep: 1
   _speed: 3
 --- !u!4 &1615237406 stripped

@@ -97,4 +97,12 @@ public class GlobalVariables
     }
 
     private static bool isRevolverCollected = false;
+    
+    public static bool IsPentagramLearned
+    {
+        get {SaveSystem.InitGlobals(); return isPentagramLearned; }
+        set { isPentagramLearned = value; SaveSystem.SaveGlobal("isPentagramLearned", value); }
+    }
+
+    private static bool isPentagramLearned = false;
 }

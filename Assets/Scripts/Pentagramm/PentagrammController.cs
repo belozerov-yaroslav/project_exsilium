@@ -32,6 +32,7 @@ public class PentagrammController : MonoBehaviour
 
     public void AppearInterface()
     {
+        PentagramLearning.Instance.CheckLearning();
         _startTime = Time.time;
         pentagramCanvas.enabled = true;
         SmoothAppearance(backPanel);
@@ -74,6 +75,7 @@ public class PentagrammController : MonoBehaviour
 
     public void FinishQte()
     {
+        GlobalVariables.IsPentagramLearned = true;
         qteButtons.ResetQte();
         pentagramCanvas.enabled = false;
         _isSuccess = false;

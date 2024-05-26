@@ -17,6 +17,7 @@ public static class SaveSystem
         GlobalVariables.IsPaintingRemoved = PlayerPrefs.GetInt("isPaintingRemoved") == 1;
         GlobalVariables.IsSafeOpen = PlayerPrefs.GetInt("isSafeOpen") == 1; 
         GlobalVariables.IsRevolverCollected = PlayerPrefs.GetInt("isRevolverCollected") == 1;
+        GlobalVariables.IsPentagramLearned = PlayerPrefs.GetInt("isPentagramLearned") == 1;
     }
 
     public static void SaveGlobal(string name, bool state)
@@ -38,6 +39,7 @@ public static class SaveSystem
         GlobalVariables.IsPaintingRemoved = false;
         GlobalVariables.IsSafeOpen = false; 
         GlobalVariables.IsRevolverCollected = false;
+        GlobalVariables.IsPentagramLearned = false;
     }
 
     public static void SaveSceneState(string sceneName)
