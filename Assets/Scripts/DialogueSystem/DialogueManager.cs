@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DialogueSystem;
@@ -26,6 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     private List<string> currentTextChoices = new();
     private DialoguePanelAnimation _dialoguePanelAnimation;
+    public event Action OnDialogueEnd;
     private void Awake()
     {
         if (instance != null)
@@ -67,6 +69,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.StopListening(currentStory);
         dialogueIsPlaying = false;
         dialoguePanel.Hide();
+        OnDialogueEnd?.Invoke();
     }
 
     private void ContinueStory()

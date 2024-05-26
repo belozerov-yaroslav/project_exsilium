@@ -3,7 +3,6 @@ using UnityEngine;
 public class BedAction : MonoBehaviour, IInteraction
 {
     [SerializeField] private Slides _slildes; 
-    [SerializeField] private Slides _slildes2; 
     public void Interact()
     {
         if (GlobalVariables.Slept)
@@ -12,8 +11,9 @@ public class BedAction : MonoBehaviour, IInteraction
             {
                 if (GlobalVariables.ChertBanished && GlobalVariables.MertvyakBanished)
                 {
-                    _slildes2.ShowSlides();
-                    GlobalVariables.Slept2 = true;
+                    RoomDoorInteraction.LastSceneName = "Sleep";
+                    GlobalVariables.Slept3 = true;
+                    LevelLoader.Instance.LoadLevelWithLoadingScreen("Level9");
                 }
                 else
                 {
@@ -21,8 +21,8 @@ public class BedAction : MonoBehaviour, IInteraction
                         Player.BubbleText.ShowMessage("Мне нужно изгнать призраков в других комнатах");
                     else
                     {
-                        RoomDoorInteraction.LastSceneName = "Sleep";
                         GlobalVariables.Slept2 = true;
+                        RoomDoorInteraction.LastSceneName = "Sleep";
                         LevelLoader.Instance.LoadLevelWithLoadingScreen("Level9");
                     }
                 }

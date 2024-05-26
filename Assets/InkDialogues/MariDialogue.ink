@@ -1,5 +1,6 @@
 INCLUDE globals.ink
 
+
 { take_money: -> end_end}
 { liho_banished:-> end_dialogue}
 { mari_met:-> meet }
