@@ -10183,8 +10183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34ad3c53ef95164dacfe9d07659228e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slides:
-  - {fileID: 2143001991}
+  slides: []
 --- !u!114 &2143001993
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameStates;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class SlideManager : MonoBehaviour
     [SerializeField] private float instructionTransparency = 0.6f;
     [SerializeField] private float instructionDelay = 2;
     [SerializeField] private float appearanceTime = 1;
+    public AudioMixerSnapshot Normal;
+    public AudioMixerSnapshot Pause;
+    
     private int _index;
     private List<Slide> _currentSlides;
     public static SlideManager Instance { get; private set; }
@@ -30,6 +34,7 @@ public class SlideManager : MonoBehaviour
 
     public void ShowSlideGroup(List<Slide> slides)
     {
+        Pause.TransitionTo(0.5f);
         CustomInputInitializer.CustomInput.SlideShow.NextSlide.performed += NextSlide;
         CustomInputInitializer.CustomInput.SlideShow.NextSlide.performed += TurnOffInstruction;
         slideCanvas.gameObject.SetActive(true);
@@ -60,6 +65,7 @@ public class SlideManager : MonoBehaviour
         _currentSlides[_index - 1].TurnOff();
         GameStateMachine.Instance.StateTransition(null);
         OnSlideEnd?.Invoke();
+        Normal.TransitionTo(0.5f);
     }
 
     private void TurnOnInstruction()
