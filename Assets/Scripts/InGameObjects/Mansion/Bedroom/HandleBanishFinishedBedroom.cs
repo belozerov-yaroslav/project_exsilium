@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class HandleBanishFinishedBedroom : MonoBehaviour
 {
+    public static GameObject PlacedHerbs;
+    private Animator _animator;
     [SerializeField] private GameObject _babaika;
+    private static readonly int ColorHerbs = Animator.StringToHash("Color Herbs");
+
     private void Start()
     {
         BanishManager.BanishFinished += Handle;
@@ -12,7 +16,9 @@ public class HandleBanishFinishedBedroom : MonoBehaviour
 
     private void Handle()
     {
-        Debug.Log("Изгание в спальне завершено");
+        _animator = PlacedHerbs.GetComponent<Animator>();
+        _animator.SetTrigger(ColorHerbs);
+        Debug.Log("Изгнание в спальне завершено");
         Destroy(_babaika);
         GlobalVariables.MorokBanished = true;
     }

@@ -34,6 +34,11 @@ namespace Inventory.Items_Classes
             WasInteracted?.Invoke(CollectInfo());
         }
 
+        protected override void DropEffect(GameObject obj)
+        {
+            HandleBanishFinishedBedroom.PlacedHerbs = obj;
+        }
+
         public override event Action<BanishStep> WasInteracted;
     }
 }
