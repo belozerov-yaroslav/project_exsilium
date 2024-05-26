@@ -12,6 +12,7 @@ public class AmbientScript : MonoBehaviour
     
     [SerializeField] private AudioSource spbAmbient;
     [SerializeField] private AudioSource basementAmbient;
+    [SerializeField] private AudioSource mansionAmbient;
     
     private Dictionary<string, AudioSource> _ambientForLevels = new Dictionary<string, AudioSource>();
     
@@ -27,11 +28,13 @@ public class AmbientScript : MonoBehaviour
         _ambientForLevels["Level 1"] = spbAmbient;
         _ambientForLevels["Level2"] = basementAmbient;
         _ambientForLevels["Level3"] = spbAmbient;
-        
+        _ambientForLevels["Level5"] = mansionAmbient;
     }
 
     public void AppearAmbient(string levelName)
     {
+        if(!_ambientForLevels.ContainsKey(levelName))
+            return;
         var currentMusic = _ambientForLevels[levelName];
         var currentVolume = currentMusic.volume; 
         currentMusic.volume = 0f;
