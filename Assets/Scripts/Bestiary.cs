@@ -8,10 +8,10 @@ public class Bestiary : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Canvas _canvas;
-    private const float MaxPage = 4.01f;
+    private const float MaxPage = 7.01f;
     private float _page;
     private static readonly int Page = Animator.StringToHash("Page");
-    private static readonly int Browsed = Animator.StringToHash("Browsed");
+    private static readonly int Browsing = Animator.StringToHash("Browsing");
     private static readonly int PrevPage = Animator.StringToHash("prevPage");
     public AudioSource openSound;
     public AudioSource closeSound;
@@ -29,7 +29,7 @@ public class Bestiary : MonoBehaviour
         animator.SetFloat(PrevPage, _page + 0.01f);
         _page = value;
         animator.SetFloat(Page, _page);
-        animator.SetTrigger(Browsed);
+        animator.SetBool(Browsing, true);
         browsingSound.Play();
     }
     
@@ -37,6 +37,11 @@ public class Bestiary : MonoBehaviour
     {
         _canvas.enabled = true;
         openSound.Play();
+    }
+
+    public void CancelBrowsing()
+    {
+        animator.SetBool(Browsing, false);
     }
 
     public void CloseBestiary()
