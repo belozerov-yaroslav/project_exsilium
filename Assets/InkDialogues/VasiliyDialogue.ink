@@ -2,6 +2,12 @@ INCLUDE globals.ink
 
 
 Выбор концовки:
-+ Зелёная -> END
-+ Жёлтая -> END
-+ Красная -> END
++ { not banish_ghost } Зелёная 
+~ green_ending = true
+-> END
++ { take_revolver } Жёлтая 
+~ orange_ending = true
+-> END
++ Красная 
+~ red_ending = true
+-> END
