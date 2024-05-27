@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LearningManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class LearningManager : MonoBehaviour
 
     public bool TryStartLearning(AbstractLearning learning)
     {
+        if (_currentLearningStack.Any(stackLearning => stackLearning == learning))
+            return false;
         if (_currentLearningStack.Count != 0 && !learning.OverrideStack) return false;
         if (_currentLearningStack.Count != 0)
             _currentLearningStack.Peek().StopLearning();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using BanishSystem;
@@ -14,6 +15,11 @@ public class ExtinguishedScript : MonoBehaviour
     private void Start()
     {
         BanishManager.BanishFinished += Extinguish;
+    }
+
+    private void OnDestroy()
+    {
+        BanishManager.BanishFinished -= Extinguish;
     }
 
     public void Extinguish()
