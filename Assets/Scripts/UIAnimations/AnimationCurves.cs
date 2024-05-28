@@ -15,4 +15,9 @@ public static class AnimationCurves
     {
         return (float)Math.Pow(value, 3);
     }
+
+    public static float CameraCurve(float value)
+    {
+        return (float)(-Math.Pow(-value + 1, 3) + 1);
+    }
 }

@@ -12,7 +12,7 @@ public class DialogueTrigger : MonoBehaviour, IInteraction
     {
         if (!DialogueManager.GetInstance().dialogueIsPlaying)
         {
-            DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+            DialogueManager.GetInstance().EnterDialogueMode(inkJSON, transform.position, Player.Instance.transform.position);
         }
     }
 }

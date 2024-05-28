@@ -17,8 +17,10 @@ public class DialoguePanelAnimation : MonoBehaviour
     {
         _animator.SetTrigger("TurnOn");
     }
-    public void TurnOff()
+    public void TurnOff(bool revertCamera)
     {
+        if (revertCamera)
+            CameraMovement.Instance.RevertPosition(0.2f);
         _animator.SetTrigger("TurnOff");
     }
 

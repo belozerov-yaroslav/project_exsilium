@@ -16,7 +16,7 @@ public class Vasil : MonoBehaviour
     private void OnAnimationEnd()
     {
         DialogueManager.GetInstance().SetVariableState("take_revolver", new BoolValue(GlobalVariables.IsRevolverCollected));
-        DialogueManager.GetInstance().EnterDialogueMode(inkJSON);
+        DialogueManager.GetInstance().EnterDialogueMode(inkJSON, transform.position, Player.Instance.transform.position);
         DialogueManager.GetInstance().OnDialogueEnd += Ending;
     }
 

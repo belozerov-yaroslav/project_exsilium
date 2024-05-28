@@ -14,9 +14,9 @@ public class ChangeValueSmooth
         {
             time += Time.deltaTime;
             if (startValue < endValue)
-                valueSetter(curve(startValue + segmentSize * time / appearanceTime));
+                valueSetter(startValue + segmentSize * curve(time / appearanceTime));
             else
-                valueSetter(curve(startValue - segmentSize * time / appearanceTime));
+                valueSetter(startValue - segmentSize * curve(time / appearanceTime));
             yield return null;
         }
 

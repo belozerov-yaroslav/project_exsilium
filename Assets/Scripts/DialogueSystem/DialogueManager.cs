@@ -28,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     private List<string> currentTextChoices = new();
     private DialoguePanelAnimation _dialoguePanelAnimation;
     public event Action OnDialogueEnd;
+
+    private bool _cameraRevert = true;
     private void Awake()
     {
         if (instance != null)
@@ -51,14 +53,17 @@ public class DialogueManager : MonoBehaviour
         _dialoguePanelAnimation.OnTurnOff += ExitDialogueMode;
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON)
+    public void EnterDialogueMode(TextAsset inkJSON, Vector2 tellerPosition, Vector2 listenerPosition, bool cameraRevert=true)
     {
+        var cameraPosition = (tellerPosition + listenerPosition) / 2 + new Vector2(2.25f, 0.6f);
+        CameraMovement.Instance.MoveToPosition(cameraPosition, 0.5f);
         dialogSound.Play();
         currentStory = new Story(inkJSON.text);
         dialogueIsPlaying = true;
         dialoguePanel.Show();
         dialogueVariables.StartListening(currentStory);
         GameStateMachine.Instance.StateTransition(DialogueState.Instance);
+        _cameraRevert = cameraRevert;
         ContinueStory();
     }
 
@@ -81,7 +86,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            _dialoguePanelAnimation.TurnOff();
+            _dialoguePanelAnimation.TurnOff(_cameraRevert);
         }
     }
 
