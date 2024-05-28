@@ -6,7 +6,6 @@ namespace GameStates
 {
     public class BestiaryState : GameState
     {
-        [SerializeField] private Bestiary _bestiary; 
         public static GameState Instance { get; private set; }
         private void Awake()
         {
@@ -17,7 +16,7 @@ namespace GameStates
 
         public override void TurnOn()
         {
-            _bestiary.OpenBestiary();
+            Bestiary.Instance.OpenBestiary();
             CustomInputInitializer.CustomInput.Bestiary.Enable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed += CloseBestiary;
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
@@ -34,7 +33,7 @@ namespace GameStates
 
         private void CloseBestiary(InputAction.CallbackContext callbackContext)
         {
-            _bestiary.CloseBestiary();
+            Bestiary.Instance.CloseBestiary();
             BestiaryNavigationLearning.Instance?.StopLearning();
             BestiaryCloseLearning.Instance?.OnBestiaryClose();
             InventoryLearning.Instance?.TryStartLearning();

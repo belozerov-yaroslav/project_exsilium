@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +8,7 @@ public class Bestiary : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private Canvas _canvas;
+    [SerializeField] private TextMeshProUGUI _pageCountText;
     private const float MaxPage = 7.01f;
     private float _page;
     private static readonly int Page = Animator.StringToHash("Page");
@@ -16,9 +17,18 @@ public class Bestiary : MonoBehaviour
     public AudioSource openSound;
     public AudioSource closeSound;
     public AudioSource browsingSound;
+    public static Bestiary Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Debug.LogError("Two Bestiary in the scene");
+        Instance = this;
+    }
 
     private void Start()
     {
+        _pageCountText.text = "1";
         CustomInputInitializer.CustomInput.Bestiary.BestiaryNavigation.performed += HandleNavigation;
     }
 
@@ -28,6 +38,7 @@ public class Bestiary : MonoBehaviour
         if (!(value > -0.01) || !(value < MaxPage)) return;
         animator.SetFloat(PrevPage, _page + 0.01f);
         _page = value;
+        _pageCountText.text = ((int)Math.Round(_page + 1)).ToString();
         animator.SetFloat(Page, _page);
         animator.SetBool(Browsing, true);
         browsingSound.Play();
