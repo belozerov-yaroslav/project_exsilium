@@ -23,6 +23,7 @@ public class WhisperOff : MonoBehaviour
 
     private void Handle()
     {
-        _whisper.StartCoroutine(_whisper.StartSounds());
+        if (GlobalVariables.Slept)
+            _whisper.StartCoroutine(_whisper.StartSounds());
     }
 }

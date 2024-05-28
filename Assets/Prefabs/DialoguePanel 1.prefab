@@ -653,6 +653,8 @@ MonoBehaviour:
     _authors:
     - {fileID: 11400000, guid: 123b250bf05816d4585cfe2c8b7b88f0, type: 2}
     - {fileID: 11400000, guid: e22e07f037aabd24fa4821c7e4f0c25a, type: 2}
+    - {fileID: 11400000, guid: e9aa99d610312c04ab7f906ffb07fbe1, type: 2}
+    - {fileID: 11400000, guid: 59ea13ec348258c41ab80d9027f7baf8, type: 2}
   dialogSound: {fileID: 1459859833940071172}
 --- !u!82 &1459859833940071172
 AudioSource:
