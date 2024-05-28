@@ -17,8 +17,16 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource level6Music;
     [SerializeField] private AudioSource level7Music;
     [SerializeField] private AudioSource level9Music;
+    
+    [SerializeField] public AudioSource greenMusic;
+    [SerializeField] public AudioSource orangeMusic;
+    [SerializeField] public AudioSource redMusic;
+    
     private Dictionary<string, AudioSource> _musicForLevels = new Dictionary<string, AudioSource>();
     private Dictionary<string, float> _volumesDict = new Dictionary<string, float>();
+    
+    private string LastName { get; set; }
+    
     private void Awake()
     {
         if (Instance == null)
@@ -49,14 +57,21 @@ public class MusicManager : MonoBehaviour
         _volumesDict["Level8"] = level6Volume;
         _musicForLevels["Level9"] = level9Music;
         _volumesDict["Level9"] = level9Music.volume;
+        
+        _musicForLevels["green end"] = greenMusic;
+        _volumesDict["green end"] = greenMusic.volume;
+        _musicForLevels["orange end"] = orangeMusic;
+        _volumesDict["orange end"] = orangeMusic.volume;
+        _musicForLevels["red end"] = redMusic;
+        _volumesDict["red end"] = redMusic.volume;
         AppearLevelMusic();
     }
 
     public void ChangeLevelMusic(string nextLevel)
     {
         StopAllCoroutines();
-        var previousMusic = _musicForLevels[SceneManager.GetActiveScene().name];
-        var prevVolume = _volumesDict[SceneManager.GetActiveScene().name];
+        var previousMusic = _musicForLevels[LastName];
+        var prevVolume = _volumesDict[LastName];
         var currentMusic = _musicForLevels[nextLevel];
         var currentVolume = _volumesDict[nextLevel];
         if(previousMusic == currentMusic)
@@ -76,17 +91,20 @@ public class MusicManager : MonoBehaviour
                     previousMusic.volume = prevVolume;
                 }
             }, smoothTime, AnimationCurves.ThirdGrade));
+        LastName = nextLevel;
     }
 
     private void AppearLevelMusic()
     {
+        var levelName = SceneManager.GetActiveScene().name;
         StopAllCoroutines();
-        var currentMusic = _musicForLevels[SceneManager.GetActiveScene().name];
-        var currentVolume = _volumesDict[SceneManager.GetActiveScene().name];
+        var currentMusic = _musicForLevels[levelName];
+        var currentVolume = _volumesDict[levelName];
         currentMusic.volume = 0f;
         currentMusic.Play();
         StartCoroutine(ChangeValueSmooth.Change(0f, currentVolume,
             value => currentMusic.volume = value
             , smoothTime, AnimationCurves.ThirdGrade));
+        LastName = levelName;
     }
 }

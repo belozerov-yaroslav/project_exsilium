@@ -40,7 +40,7 @@ namespace BanishSystem
                     new BanishStep(ItemEnum.Herbs, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
                     new BanishStep(ItemEnum.Icon, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
                     new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }, 
-                        70f, PrayEnum.PrayHolySpirit)
+                        70f, PrayEnum.PrayAgainstDemonsMachinations)
                 }
             }
         };
