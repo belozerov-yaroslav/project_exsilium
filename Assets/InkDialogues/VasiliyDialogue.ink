@@ -5,17 +5,6 @@ VAR know_about_box = false
 
 -> part1
 
-Выбор концовки:
-+ { not banish_ghost } Зелёная 
-~ green_ending = true
--> END
-+ { take_revolver } Жёлтая 
-~ orange_ending = true
--> END
-+ Красная 
-~ red_ending = true
--> END
-
 
 === part1 ===
 Вот мы и встретились#author:vasil
@@ -28,7 +17,7 @@ VAR know_about_box = false
 + Я бы тоже не согласился, это мне ещё повезло что он решил со мной поиграться, а не убил сразу.#author:fedor
 -На твоём месте я бы начал меньше говорить и больше слушать *кладёт руку на рукоять револьвера*. #author:vasil
 + [* Слушать *] -> part2
-+ { take_revolver } Выстрелить
++ { take_revolver } * Выстрелить *
 ~ orange_ending = true
 -> END
 
@@ -49,7 +38,7 @@ VAR know_about_box = false
 + [ Сказать ] -> truth
 + { not know_about_box } Я не понимаю о чём ты#author:fedor
 -> dont_know
-+ { take_revolver } Выстрелить
++ { take_revolver } [* Выстрелить *]
 ~ orange_ending = true
 -> END
 
@@ -75,11 +64,15 @@ VAR know_about_box = false
 
 === part3 ===
 Я тебе верю#author:vasil
-+ { not take_revolver } И что теперь?
+{ not take_revolver: -> last_question }
++ { take_revolver } \* Василий тянется к револьверу, надо что-то делать, иначе живым мне не уйти *#author:fedor 
+-> last_question
+
+
+=== last_question ===
++ И что теперь?#author:fedor 
 ~ red_ending = true
 -> END
-+ { take_revolver } Выстрелить
++ { take_revolver } [* Выстрелить *]
 ~ orange_ending = true
 -> END
-
-

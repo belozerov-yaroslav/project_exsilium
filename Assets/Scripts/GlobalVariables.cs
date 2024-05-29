@@ -115,12 +115,4 @@ public class GlobalVariables
     private static bool slept2 = false;
     
     public static bool Slept3 { get; set; }
-
-    public static bool BanishGhost
-    {
-        get {SaveSystem.InitGlobals(); return banishGhost; }
-        set { banishGhost = value; SaveSystem.SaveGlobal("banishGhost", value); }
-    }
-
-    private static bool banishGhost = false;
 }

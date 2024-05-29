@@ -12,11 +12,12 @@ using UnityEngine.Serialization;
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private DialoguePanel dialoguePanel;
-    [Header("Load Globals JSON")]
-    [SerializeField] private TextAsset loadGlobalsJSON;
+
+    [Header("Load Globals JSON")] [SerializeField]
+    private TextAsset loadGlobalsJSON;
 
     [SerializeField] private DialogueParser _dialogueParser;
-    [SerializeField]private AudioSource dialogSound;
+    [SerializeField] private AudioSource dialogSound;
 
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
@@ -30,12 +31,14 @@ public class DialogueManager : MonoBehaviour
     public event Action OnDialogueEnd;
 
     private bool _cameraRevert = true;
+
     private void Awake()
     {
         if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
+
         instance = this;
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
@@ -53,7 +56,8 @@ public class DialogueManager : MonoBehaviour
         _dialoguePanelAnimation.OnTurnOff += ExitDialogueMode;
     }
 
-    public void EnterDialogueMode(TextAsset inkJSON, Vector2 tellerPosition, Vector2 listenerPosition, bool cameraRevert=true)
+    public void EnterDialogueMode(TextAsset inkJSON, Vector2 tellerPosition, Vector2 listenerPosition,
+        bool cameraRevert = true)
     {
         var cameraPosition = (tellerPosition + listenerPosition) / 2 + new Vector2(2.25f, 0.6f);
         CameraMovement.Instance.MoveToPosition(cameraPosition, 0.5f);
@@ -77,17 +81,21 @@ public class DialogueManager : MonoBehaviour
         OnDialogueEnd?.Invoke();
     }
 
-    private void ContinueStory()
+    private DialogueLine ContinueStory()
     {
         if (currentStory.canContinue)
         {
-            dialoguePanel.DisplayMessage(_dialogueParser.ParseLine(currentStory.Continue(), currentStory.currentTags));
+            var dialogueString = _dialogueParser.ParseLine(currentStory.Continue(), currentStory.currentTags);
+            dialoguePanel.DisplayMessage(dialogueString);
             DisplayChoices();
+            return dialogueString;
         }
         else
         {
             _dialoguePanelAnimation.TurnOff(_cameraRevert);
         }
+
+        return null;
     }
 
     private void DisplayChoices()
@@ -97,23 +105,19 @@ public class DialogueManager : MonoBehaviour
         {
             currentTextChoices.Add(choice.text);
         }
+
         dialoguePanel.DisplayChoices(currentTextChoices);
     }
+
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
-        if (currentTextChoices[choiceIndex].StartsWith('*'))
-        {
-            currentTextChoices.Clear();
-            ContinueStory();
-        }
-        else
-        {
-            currentTextChoices.Clear();
-            ContinueStory();
-            ContinueStory();
-        }
+        currentTextChoices.Clear();
+        var line = new DialogueLine(); 
+        while (currentTextChoices.Count == 0 && line != null)
+            line = ContinueStory();
     }
+
     public Ink.Runtime.Object GetVariableState(string variableName)
     {
         Ink.Runtime.Object variableValue = null;
@@ -122,8 +126,10 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.LogWarning("Ink Variable was found to be null: " + variableName);
         }
+
         return variableValue;
     }
+
     public void SetVariableState(string variableName, Ink.Runtime.Object variableValue)
     {
         if (dialogueVariables.variables.ContainsKey(variableName))

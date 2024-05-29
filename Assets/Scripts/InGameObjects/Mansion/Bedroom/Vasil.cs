@@ -1,15 +1,35 @@
 using System;
 using Ink.Runtime;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Vasil : MonoBehaviour
 {
-    public static Animator Animator { get; private set; }
+    private Animator _animator;
+    private SpriteRenderer _sprite;
+    private static readonly int WalkInHash = Animator.StringToHash("WalkIn");
+    public static Vasil Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+            Debug.LogError("Two Vasil in the scene");
+        Instance = this;
+    }
 
     private void Start()
     {
-        Animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
+        _sprite = GetComponent<SpriteRenderer>();
+        gameObject.SetActive(false);
+    }
+
+    public void WalkIn()
+    {
+        gameObject.SetActive(true);
+        _animator.SetTrigger(WalkInHash);
     }
 
     [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
@@ -25,6 +45,9 @@ public class Vasil : MonoBehaviour
         DialogueManager.GetInstance().OnDialogueEnd -= Ending;
         if (((BoolValue)DialogueManager.GetInstance().GetVariableState("green_ending")).value)
         {
+            StartCoroutine(ChangeValueSmooth.Change(1f, 0f,
+                value => _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, value),
+                0.2f));
             global::Ending.Instance.GreenEnding();
         }
         else if (((BoolValue)DialogueManager.GetInstance().GetVariableState("orange_ending")).value)

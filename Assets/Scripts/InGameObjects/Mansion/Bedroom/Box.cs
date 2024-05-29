@@ -8,7 +8,6 @@ public class Box : MonoBehaviour
 {
     [SerializeField] private OutlineManager boxOutline;
     [Header("Ink JSON")] [SerializeField] private TextAsset inkJSON;
-    private static readonly int WalkIn = Animator.StringToHash("WalkIn");
 
     [SerializeField] private Transform _cameraPosition;
 
@@ -29,6 +28,6 @@ public class Box : MonoBehaviour
         boxOutline.TurnOffOutline();
         CameraMovement.Instance.MoveToPosition(_cameraPosition.position, 1f);
         DialogueManager.GetInstance().OnDialogueEnd -= Handle;
-        Vasil.Animator.SetTrigger(WalkIn);
+        Vasil.Instance.WalkIn();
     }
 }
