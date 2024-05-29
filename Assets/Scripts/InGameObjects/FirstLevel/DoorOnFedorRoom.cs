@@ -23,7 +23,7 @@ public class DoorOnFedorRoom : MonoBehaviour, IInteraction
         {
             globalLight2D.intensity = 0.15f;
             InteractionSoundScript.Instance.openDoorSound.Play();
-            AmbientScript.Instance.AppearAmbient(SceneManager.GetActiveScene().name);
+            AmbientScript.Instance.AppearAmbient("Level 1");
             _playerRigidbody2D.position = streetTeleport.position;
         }
         else

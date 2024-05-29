@@ -56,6 +56,7 @@ public class LevelLoader : MonoBehaviour
         transitionAnimator.SetTrigger(Start1);
         clickBlocker.SetActive(true);
         
+        AmbientScript.Instance.StartOnLoad(levelName);
         MusicManager.Instance.ChangeLevelMusic(levelName);
 
         yield return new WaitForSeconds(transitionTime);
