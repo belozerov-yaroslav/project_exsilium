@@ -16,11 +16,13 @@ public class HandleBanishFinishedBedroom : MonoBehaviour
 
     private void Handle()
     {
+        InteractionSoundScript.Instance.banishFinishedSound.Play();
         _animator = PlacedHerbs.GetComponent<Animator>();
         _animator.SetTrigger(ColorHerbs);
-        Debug.Log("Изгнание в спальне завершено");
         Destroy(_babaika);
         GlobalVariables.MorokBanished = true;
+        if (GlobalVariables.MertvyakBanished && GlobalVariables.ChertBanished)
+            Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");
     }
 
     private void OnDestroy()

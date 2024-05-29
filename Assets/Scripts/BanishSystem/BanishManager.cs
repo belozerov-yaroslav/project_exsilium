@@ -11,7 +11,6 @@ namespace BanishSystem
         [SerializeField] private Inventory.Inventory inventory;
         [SerializeField] private int level;
         [SerializeField] private Item[] items;
-        [SerializeField] private AudioSource banishSound;
         private BanishStep[] _steps;
         private int _index;
         private bool _finished;
@@ -35,7 +34,6 @@ namespace BanishSystem
                 if (_index >= _steps.Length - 1)
                 {
                     _finished = true;
-                    banishSound.Play();
                     BanishFinished?.Invoke();
                 }
                 else _index++;

@@ -1,8 +1,16 @@
+using System;
 using UnityEngine;
 
 public class BedAction : MonoBehaviour, IInteraction
 {
-    [SerializeField] private Slides _slildes; 
+    [SerializeField] private Slides _slildes;
+    [SerializeField] private Material defaultMaterial;
+
+    private void Start()
+    {
+        if (GlobalVariables.Slept3) gameObject.GetComponent<SpriteRenderer>().material = defaultMaterial;
+    }
+
     public void Interact()
     {
         if (GlobalVariables.Slept)

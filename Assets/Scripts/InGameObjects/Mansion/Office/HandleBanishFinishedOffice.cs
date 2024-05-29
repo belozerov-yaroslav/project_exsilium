@@ -16,8 +16,10 @@ namespace InGameObjects.Mansion.Office
         private void HandleBanish()
         {
             babaika.TurnOff();
-            Debug.Log("Изгнание в офисе завершилось");
+            InteractionSoundScript.Instance.banishFinishedSound.Play();
             GlobalVariables.MertvyakBanished = true;
+            if (GlobalVariables.ChertBanished && GlobalVariables.MorokBanished)
+                Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");
             BanishManager.BanishFinished -= HandleBanish;
         }
 

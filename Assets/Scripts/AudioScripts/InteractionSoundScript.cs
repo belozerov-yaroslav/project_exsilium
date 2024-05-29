@@ -20,6 +20,7 @@ public class InteractionSoundScript : MonoBehaviour
     [SerializeField] public AudioSource dialogButtonSound;
     [SerializeField] public AudioSource menuButtonSound;
     [SerializeField] public AudioSource revolverPickingUpSound;
+    [SerializeField] public AudioSource banishFinishedSound;
     
     void Start()
     {

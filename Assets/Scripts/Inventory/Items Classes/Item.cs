@@ -38,6 +38,8 @@ namespace Inventory.Items_Classes
         {
             GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
             _animator.SetTrigger(Id); 
+            _animator.SetFloat(LastVertical, -1);
+            _animator.SetFloat(LastHorizontal, 0);
             InteractionSoundScript.Instance.ItemSounds[ItemEnum].Play();
         }
         
@@ -63,8 +65,6 @@ namespace Inventory.Items_Classes
         }
         protected void CompleteAction()
         {
-            _animator.SetFloat(LastVertical, -1);
-            _animator.SetFloat(LastHorizontal, 0);
             ReportCompleted();
             GameStateMachine.Instance.StateTransition(null);
         }

@@ -12,9 +12,12 @@ public class HandleBanishFinishedKitchen : MonoBehaviour
 
     private void Handle()
     {
-        Debug.Log("Изгнание в кухне завершено");
+        InteractionSoundScript.Instance.banishFinishedSound.Play();
         GlobalVariables.ChertBanished = true;
+        if (GlobalVariables.MertvyakBanished && GlobalVariables.MorokBanished)
+            Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");
         Destroy(_babaika);
+        
     }
 
     private void OnDestroy()

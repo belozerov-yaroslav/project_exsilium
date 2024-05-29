@@ -24,12 +24,6 @@ public class Ending : MonoBehaviour
         Instance = this;
         _canvas.enabled = false;
         revolverShot = GetComponent<AudioSource>();
-        MusicManager.Instance.greenMusic.Play();
-        MusicManager.Instance.greenMusic.Stop();
-        MusicManager.Instance.orangeMusic.Play();
-        MusicManager.Instance.orangeMusic.Stop();
-        MusicManager.Instance.redMusic.Play();
-        MusicManager.Instance.redMusic.Stop();
     }
 
     private IEnumerator Fade(Slides slides)
