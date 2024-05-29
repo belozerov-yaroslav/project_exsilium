@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 01edc5e46df7cfe40933fa04eb838cba, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3c794cf4166d64d82c42fdf7ee1177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothTime: 2
+  smoothTime: 1
   menuMusic: {fileID: 2408367639872927281}
   level1Music: {fileID: 6392647319184466664}
   level2Music: {fileID: 6069908564608895208}

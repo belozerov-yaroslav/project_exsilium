@@ -69,6 +69,8 @@ public class MusicManager : MonoBehaviour
 
     public void ChangeLevelMusic(string nextLevel)
     {
+        if (LastName == nextLevel)
+            return;
         StopAllCoroutines();
         var previousMusic = _musicForLevels[LastName];
         var prevVolume = _volumesDict[LastName];

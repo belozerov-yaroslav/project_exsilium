@@ -42,7 +42,7 @@ public class AmbientScript : MonoBehaviour
 
     public void StartOnLoad(string levelName)
     {
-        StartCoroutine(nameof(StopAmbient));
+        StopCoroutine(nameof(StopAmbient));
         if (_ambientOnLoad.Contains(levelName))
         {
             AppearAmbient(levelName);
