@@ -35,9 +35,8 @@ public class Ending : MonoBehaviour
     private IEnumerator Fade(Slides slides)
     {
         _canvas.enabled = true;
-        yield return StartCoroutine(ChangeValueSmooth.Change(0f, 1f,
-            value => _blackImage.color = new Color(_blackImage.color.r, _blackImage.color.g, _blackImage.color.b,
-                value), 0.5f));
+        yield return new WaitForSeconds(0.5f);
+        _blackImage.color = new Color(_blackImage.color.r, _blackImage.color.g, _blackImage.color.b, 1f);
         yield return new WaitForSeconds(1.5f);
         slides.ShowSlides();
     }
