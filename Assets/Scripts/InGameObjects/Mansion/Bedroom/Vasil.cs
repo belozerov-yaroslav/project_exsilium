@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Ink.Runtime;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,8 +27,10 @@ public class Vasil : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void WalkIn()
+    public IEnumerator WalkIn()
     {
+        yield return new WaitForSeconds(1.5f);
+        InteractionSoundScript.Instance.openDoorSound.Play();
         gameObject.SetActive(true);
         _animator.SetTrigger(WalkInHash);
     }
@@ -45,10 +48,7 @@ public class Vasil : MonoBehaviour
         DialogueManager.GetInstance().OnDialogueEnd -= Ending;
         if (((BoolValue)DialogueManager.GetInstance().GetVariableState("green_ending")).value)
         {
-            StartCoroutine(ChangeValueSmooth.Change(1f, 0f,
-                value => _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, value),
-                0.2f));
-            global::Ending.Instance.GreenEnding();
+            StartCoroutine(Disappear());
         }
         else if (((BoolValue)DialogueManager.GetInstance().GetVariableState("orange_ending")).value)
         {
@@ -58,5 +58,16 @@ public class Vasil : MonoBehaviour
         {
             global::Ending.Instance.RedEnding();
         }
+    }
+
+    private IEnumerator Disappear()
+    {
+        yield return new WaitForSeconds(1f);
+        InteractionSoundScript.Instance.banishFinishedSound.Play();
+        StartCoroutine(ChangeValueSmooth.Change(1f, 0f,
+            value => _sprite.color = new Color(_sprite.color.r, _sprite.color.g, _sprite.color.b, value),
+            0.5f));
+        yield return new WaitForSeconds(0.5f);
+        global::Ending.Instance.GreenEnding();
     }
 }

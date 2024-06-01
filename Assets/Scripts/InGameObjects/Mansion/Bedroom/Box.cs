@@ -28,6 +28,6 @@ public class Box : MonoBehaviour
         boxOutline.TurnOffOutline();
         CameraMovement.Instance.MoveToPosition(_cameraPosition.position, 1f);
         DialogueManager.GetInstance().OnDialogueEnd -= Handle;
-        Vasil.Instance.WalkIn();
+        StartCoroutine(Vasil.Instance.WalkIn());
     }
 }

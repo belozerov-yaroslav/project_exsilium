@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerInteraction
+  - Vasiliy
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,10 @@ public class ItemInjector : MonoBehaviour
             var item = transform.GetChild(i).GetComponent<Item>();
             Inventory.Inventory.Instance.AddItem(item);
         }
-        
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 }
