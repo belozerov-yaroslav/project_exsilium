@@ -98,6 +98,8 @@ namespace Inventory
 
         private void OnMouseScroll(InputAction.CallbackContext callbackContext)
         {
+            if (IsLocked)
+                return;
             if (callbackContext.ReadValue<float>() > 0)
             {
                 if (_indexCurrentItem == -1)
