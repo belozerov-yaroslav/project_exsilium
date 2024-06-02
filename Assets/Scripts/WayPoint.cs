@@ -15,8 +15,8 @@ public class WayPoint : MonoBehaviour
     private int _waypointIndex = 0;
     
     public bool IsStarted { get; set; }
-    
-    private void Start()
+
+    public void FillWaypoints()
     {
         _waypoints = new Transform[path.transform.childCount];
         for (var i = 0; i < path.transform.childCount; i++)
@@ -25,7 +25,6 @@ public class WayPoint : MonoBehaviour
         }
 
         _waypoints[0] = transform;
-
     }
     
     private void FixedUpdate()

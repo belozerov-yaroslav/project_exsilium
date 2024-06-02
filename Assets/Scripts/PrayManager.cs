@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PrayManager : MonoBehaviour
 {
-    [SerializeField] public GameObject path;
     public Canvas PrayGameCanvas;
 
     public WayPoint wayPoint;
@@ -29,6 +28,11 @@ public class PrayManager : MonoBehaviour
     [SerializeField] private AudioSource thirdPraySound;
     [SerializeField] private AudioSource fourthPraySound;
 
+    [SerializeField] private GameObject path1;
+    [SerializeField] private GameObject path2;
+    [SerializeField] private GameObject path3;
+    [SerializeField] private GameObject path4;
+
     private void Start()
     {
         praySounds = new Dictionary<PrayEnum, AudioSource>
@@ -44,34 +48,37 @@ public class PrayManager : MonoBehaviour
     public void FirstButtonAction()
     {
         targetCircle.pray = PrayEnum.PrayHolySpirit;
+        wayPoint.path = path1;
         StartCircle();
     }
     
     public void SecondButtonAction()
     {
+        wayPoint.path = path2;
         targetCircle.pray =  PrayEnum.PrayAgainstDemonsMachinations;
         StartCircle();
     }
     
     public void ThirdButtonAction()
     {
+        wayPoint.path = path3;
         targetCircle.pray = PrayEnum.PrayArchangelMichael;
         StartCircle();
     }
 
     public void FourthButtonAction()
     {
+        wayPoint.path = path4;
         targetCircle.pray = PrayEnum.PrayFairCross;
         StartCircle();
     }
 
-    public void SetWaypoint() => wayPoint.moveVelocity = _velocityDict[targetCircle.pray];
-
     public void StartCircle()
     {
+        wayPoint.FillWaypoints();
         PrayerBookState.IsBlocked = true;
         PrayGameCanvas.enabled = true;
-        SetWaypoint();
+        wayPoint.moveVelocity = _velocityDict[targetCircle.pray];
         targetCircle.praySound = praySounds[targetCircle.pray];
         targetCircle.StartAim();
     }
