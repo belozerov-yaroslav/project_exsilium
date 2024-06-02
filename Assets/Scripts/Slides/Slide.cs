@@ -13,7 +13,7 @@ public class Slide : MonoBehaviour
 
     public void TurnOn()
     {
-        var c = StartCoroutine(FadeInImage());
+        StartCoroutine(FadeInImage());
     }
 
     public void TurnOff()
@@ -24,7 +24,7 @@ public class Slide : MonoBehaviour
     private IEnumerator FadeInImage()
     {
         currentImage.sprite = image;
-        yield return StartCoroutine(ChangeValueSmooth.Change(0f, 1f,
+        yield return StartCoroutine(ChangeValueSmooth.Change(currentImage.color.a, 1f,
             value => currentImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.ThirdGrade));
         previousImage.color = new Color(1, 1, 1, 1f);
         previousImage.sprite = image;
@@ -34,8 +34,8 @@ public class Slide : MonoBehaviour
     private IEnumerator FadeOutImage()
     {
         previousImage.sprite = image;
-        yield return StartCoroutine(ChangeValueSmooth.Change(1f, 0f,
-            value => previousImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.ThirdGrade));
         currentImage.color = new Color(1, 1, 1, 0f);
+        yield return StartCoroutine(ChangeValueSmooth.Change(previousImage.color.a, 0f,
+            value => previousImage.color = new Color(1, 1, 1, value), fadeDuration, AnimationCurves.ThirdGrade));
     }
 }
