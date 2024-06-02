@@ -16,6 +16,11 @@ public class PentagramLearning : MonoBehaviour
     {
         CheckLearning();
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     public void CheckLearning()
     {

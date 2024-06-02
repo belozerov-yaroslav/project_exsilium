@@ -22,6 +22,11 @@ public class FirstVisit : MonoBehaviour
         CustomInputInitializer.CustomInput.Player.ItemScroll.performed += ShowBubble;
         Inventory.Inventory.Instance.IsLocked = true;
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     private void ShowBubble(InputAction.CallbackContext callbackContext)
     {

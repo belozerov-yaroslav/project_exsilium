@@ -28,6 +28,11 @@ public class PentagrammController : MonoBehaviour
             Instance = this;
         }
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     public void AppearInterface()
     {

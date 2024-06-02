@@ -27,6 +27,11 @@ public class Ending : MonoBehaviour
         _canvas.enabled = false;
         revolverShot = GetComponent<AudioSource>();
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     private IEnumerator Revolver()
     {

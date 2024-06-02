@@ -25,6 +25,11 @@ public class Bestiary : MonoBehaviour
             Debug.LogError("Two Bestiary in the scene");
         Instance = this;
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     private void Start()
     {

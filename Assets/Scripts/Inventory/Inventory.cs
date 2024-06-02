@@ -36,7 +36,12 @@ namespace Inventory
             CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnItemInteraction;
             CustomInputInitializer.CustomInput.Player.ItemScroll.performed += OnMouseScroll;
 
-            ItemInjector.instance?.Inject();
+            ItemInjector.Instance?.Inject();
+        }
+        
+        private void OnDestroy()
+        {
+            Instance = null;
         }
 
         public void AddItem(Item newItem)

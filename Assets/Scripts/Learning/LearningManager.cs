@@ -16,6 +16,11 @@ public class LearningManager : MonoBehaviour
         Instance = this;
     }
 
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public bool TryStartLearning(AbstractLearning learning)
     {
         if (_currentLearningStack.Any(stackLearning => stackLearning == learning))

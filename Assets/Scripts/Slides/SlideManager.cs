@@ -32,6 +32,11 @@ public class SlideManager : MonoBehaviour
             Debug.LogWarning("Found more than one slideManager in the scene");
         Instance = this;
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     public void ShowSlideGroup(List<Slide> slides)
     {

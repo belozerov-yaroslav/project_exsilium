@@ -7,12 +7,12 @@ using UnityEngine;
 
 public class ItemInjector : MonoBehaviour
 {
-    public static ItemInjector instance { get; private set; }
+    public static ItemInjector Instance { get; private set; }
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
             Debug.LogError("More than one ItemInjector in the scene");
-        instance = this;
+        Instance = this;
     }
 
     public void Inject()
@@ -26,6 +26,6 @@ public class ItemInjector : MonoBehaviour
 
     private void OnDestroy()
     {
-        instance = null;
+        Instance = null;
     }
 }

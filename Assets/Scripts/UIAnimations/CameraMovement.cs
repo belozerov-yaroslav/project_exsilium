@@ -17,6 +17,11 @@ public class CameraMovement : MonoBehaviour
             Debug.LogError("Two camera movement in the scene");
         Instance = this;
     }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
 
     private void Update()
     {

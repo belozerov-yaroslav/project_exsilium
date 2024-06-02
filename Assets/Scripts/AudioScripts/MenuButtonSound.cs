@@ -8,5 +8,4 @@ public class MenuButtonSound : MonoBehaviour
     {
         InteractionSoundScript.Instance.PlayMenuButtonSound();
     }
-    
 }
