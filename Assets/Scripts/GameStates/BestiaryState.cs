@@ -29,11 +29,11 @@ namespace GameStates
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
             CustomInputInitializer.CustomInput.Bestiary.Disable();
             CustomInputInitializer.CustomInput.Global.OpenBestiary.performed -= CloseBestiary;
+            Bestiary.Instance.CloseBestiary();
         }
 
         private void CloseBestiary(InputAction.CallbackContext callbackContext)
         {
-            Bestiary.Instance.CloseBestiary();
             BestiaryNavigationLearning.Instance?.StopLearning();
             BestiaryCloseLearning.Instance?.OnBestiaryClose();
             InventoryLearning.Instance?.TryStartLearning();

@@ -19,6 +19,7 @@ public class FirstVisit : MonoBehaviour
         if (GlobalVariables.NotFirstMansion)
             return;
         CustomInputInitializer.CustomInput.Player.ItemChange.performed += ShowBubble;
+        CustomInputInitializer.CustomInput.Player.ItemScroll.performed += ShowBubble;
         Inventory.Inventory.Instance.IsLocked = true;
     }
 
@@ -31,5 +32,6 @@ public class FirstVisit : MonoBehaviour
     {
         Inventory.Inventory.Instance.IsLocked = false;
         CustomInputInitializer.CustomInput.Player.ItemChange.performed -= ShowBubble;
+        CustomInputInitializer.CustomInput.Player.ItemScroll.performed -= ShowBubble;
     }
 }

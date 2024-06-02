@@ -13,7 +13,7 @@ namespace Inventory
         private int _indexCurrentItem = -1;
         private bool _isOpened;
 
-        private readonly HashSet<ItemEnum> _itemsOnMap = new(); 
+        private readonly HashSet<ItemEnum> _itemsOnMap = new();
 
         public static Inventory Instance { get; private set; }
         public bool IsLocked;
@@ -31,11 +31,11 @@ namespace Inventory
             {
                 _inventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
             }
-            
+
             CustomInputInitializer.CustomInput.Player.ItemChange.performed += OnNumButtonPressed;
             CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnItemInteraction;
-            CustomInputInitializer.CustomInput.Player.ItemScroll.performed += OnMouseScroll; 
-            
+            CustomInputInitializer.CustomInput.Player.ItemScroll.performed += OnMouseScroll;
+
             ItemInjector.instance?.Inject();
         }
 
@@ -45,7 +45,7 @@ namespace Inventory
                 _itemsOnMap.Remove(newItem.ItemEnum);
             _inventorySlots[(int)(newItem.ItemEnum - 1)].InsertItem(newItem);
         }
-        
+
 
         private void ChangeCurrentItem(int keyNumber)
         {
@@ -61,7 +61,7 @@ namespace Inventory
             {
                 if (_indexCurrentItem != -1)
                     _inventorySlots[_indexCurrentItem].TurnItem(false);
-                
+
                 _indexCurrentItem = keyNumber - 1;
                 _inventorySlots[_indexCurrentItem].TurnItem(true);
             }
@@ -73,7 +73,7 @@ namespace Inventory
                 return;
             ChangeCurrentItem(int.Parse(callbackContext.control.name));
         }
-        
+
         private void OnItemInteraction(InputAction.CallbackContext obj)
         {
             if (_indexCurrentItem == -1) return;
@@ -89,7 +89,7 @@ namespace Inventory
         {
             return !_inventorySlots.Any(slot => slot.IsEmpty());
         }
-        
+
 
         public ItemEnum[] GetItemsOnMap()
         {
@@ -98,28 +98,48 @@ namespace Inventory
 
         private void OnMouseScroll(InputAction.CallbackContext callbackContext)
         {
+            if (IsLocked)
+                return;
             if (callbackContext.ReadValue<float>() > 0)
             {
                 if (_indexCurrentItem == -1)
                 {
-                    ChangeCurrentItem(9);
+                    for (var i = 8; i >= 0; i--)
+                    {
+                        if (_inventorySlots[i].IsEmpty()) continue;
+                        ChangeCurrentItem(i + 1);
+                        break;
+                    }
                 }
                 else
                 {
-                    if (_indexCurrentItem != 0)
-                        ChangeCurrentItem(_indexCurrentItem);
+                    for (var i = _indexCurrentItem - 1; i >= 0; i--)
+                    {
+                        if (_inventorySlots[i].IsEmpty()) continue;
+                        ChangeCurrentItem(i + 1);
+                        break;
+                    }
                 }
             }
             else
             {
                 if (_indexCurrentItem == -1)
                 {
-                    ChangeCurrentItem(1);
+                    for (var i = 0; i <= 8; i++)
+                    {
+                        if (_inventorySlots[i].IsEmpty()) continue;
+                        ChangeCurrentItem(i + 1);
+                        break;
+                    }
                 }
                 else
                 {
-                    if (_indexCurrentItem != 8)
-                        ChangeCurrentItem(_indexCurrentItem + 2);
+                    for (var i = _indexCurrentItem + 1; i <= 8; i++)
+                    {
+                        if (_inventorySlots[i].IsEmpty()) continue;
+                        ChangeCurrentItem(i + 1);
+                        break;
+                    }
                 }
             }
         }
