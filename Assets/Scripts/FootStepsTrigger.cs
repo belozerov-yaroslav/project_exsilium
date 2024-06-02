@@ -23,7 +23,7 @@ public class FootStepsTrigger : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         if ((other.CompareTag("Player") && player.CheckVelocity()) ||
-            (vasiliyAnimator is not null && vasiliyAnimator.gameObject.activeInHierarchy &&
+            (Vasil.Instance is not null && vasiliyAnimator is not null && vasiliyAnimator.gameObject.activeInHierarchy &&
              vasiliyAnimator.GetCurrentAnimatorClipInfo(0)
                  .FirstOrDefault().clip.name ==
              "New Animation"))

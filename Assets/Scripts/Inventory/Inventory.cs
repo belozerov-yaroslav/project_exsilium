@@ -32,8 +32,9 @@ namespace Inventory
                 _inventorySlots.Add(transform.GetChild(i).GetComponent<ItemSlot>());
             }
             
-            CustomInputInitializer.CustomInput.Player.ItemChange.performed += ChangeCurrentItem;
+            CustomInputInitializer.CustomInput.Player.ItemChange.performed += OnNumButtonPressed;
             CustomInputInitializer.CustomInput.Player.ItemIteraction.performed += OnItemInteraction;
+            CustomInputInitializer.CustomInput.Player.ItemScroll.performed += OnMouseScroll; 
             
             ItemInjector.instance?.Inject();
         }
@@ -46,11 +47,8 @@ namespace Inventory
         }
         
 
-        private void ChangeCurrentItem(InputAction.CallbackContext context)
+        private void ChangeCurrentItem(int keyNumber)
         {
-            if (IsLocked)
-                return;
-            var keyNumber = int.Parse(context.control.name);
             if (_inventorySlots[keyNumber - 1].IsEmpty()) return;
             InventoryLearning.Instance?.OnItemPicked();
             ItemActionLearning.Instance?.TryStartLearning();
@@ -67,6 +65,13 @@ namespace Inventory
                 _indexCurrentItem = keyNumber - 1;
                 _inventorySlots[_indexCurrentItem].TurnItem(true);
             }
+        }
+
+        private void OnNumButtonPressed(InputAction.CallbackContext callbackContext)
+        {
+            if (IsLocked)
+                return;
+            ChangeCurrentItem(int.Parse(callbackContext.control.name));
         }
         
         private void OnItemInteraction(InputAction.CallbackContext obj)
@@ -89,6 +94,34 @@ namespace Inventory
         public ItemEnum[] GetItemsOnMap()
         {
             return _itemsOnMap.ToArray();
+        }
+
+        private void OnMouseScroll(InputAction.CallbackContext callbackContext)
+        {
+            if (callbackContext.ReadValue<float>() > 0)
+            {
+                if (_indexCurrentItem == -1)
+                {
+                    ChangeCurrentItem(9);
+                }
+                else
+                {
+                    if (_indexCurrentItem != 0)
+                        ChangeCurrentItem(_indexCurrentItem);
+                }
+            }
+            else
+            {
+                if (_indexCurrentItem == -1)
+                {
+                    ChangeCurrentItem(1);
+                }
+                else
+                {
+                    if (_indexCurrentItem != 8)
+                        ChangeCurrentItem(_indexCurrentItem + 2);
+                }
+            }
         }
     }
 }

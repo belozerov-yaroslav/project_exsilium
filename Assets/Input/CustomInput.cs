@@ -71,6 +71,15 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ItemScroll"",
+                    ""type"": ""Button"",
+                    ""id"": ""364f23a8-2b86-435e-b77b-ff3c8b9caa02"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -425,6 +434,39 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""ItemChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""7c8d33db-7379-408e-8946-351954308a31"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemScroll"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""388fa4cb-ed00-4f6d-bcac-2c1974a6bb4d"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""71d2c825-51d5-4cd9-af0c-0d4af3566b26"",
+                    ""path"": ""<Mouse>/scroll/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ItemScroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -825,6 +867,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_ItemIteraction = m_Player.FindAction("ItemIteraction", throwIfNotFound: true);
         m_Player_ItemChange = m_Player.FindAction("ItemChange", throwIfNotFound: true);
+        m_Player_ItemScroll = m_Player.FindAction("ItemScroll", throwIfNotFound: true);
         // Global
         m_Global = asset.FindActionMap("Global", throwIfNotFound: true);
         m_Global_OpenBestiary = m_Global.FindAction("OpenBestiary", throwIfNotFound: true);
@@ -909,6 +952,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_ItemIteraction;
     private readonly InputAction m_Player_ItemChange;
+    private readonly InputAction m_Player_ItemScroll;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -918,6 +962,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @ItemIteraction => m_Wrapper.m_Player_ItemIteraction;
         public InputAction @ItemChange => m_Wrapper.m_Player_ItemChange;
+        public InputAction @ItemScroll => m_Wrapper.m_Player_ItemScroll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -942,6 +987,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ItemChange.started += instance.OnItemChange;
             @ItemChange.performed += instance.OnItemChange;
             @ItemChange.canceled += instance.OnItemChange;
+            @ItemScroll.started += instance.OnItemScroll;
+            @ItemScroll.performed += instance.OnItemScroll;
+            @ItemScroll.canceled += instance.OnItemScroll;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -961,6 +1009,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @ItemChange.started -= instance.OnItemChange;
             @ItemChange.performed -= instance.OnItemChange;
             @ItemChange.canceled -= instance.OnItemChange;
+            @ItemScroll.started -= instance.OnItemScroll;
+            @ItemScroll.performed -= instance.OnItemScroll;
+            @ItemScroll.canceled -= instance.OnItemScroll;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1239,6 +1290,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnItemIteraction(InputAction.CallbackContext context);
         void OnItemChange(InputAction.CallbackContext context);
+        void OnItemScroll(InputAction.CallbackContext context);
     }
     public interface IGlobalActions
     {
