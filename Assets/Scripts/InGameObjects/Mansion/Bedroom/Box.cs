@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameStates;
+using Ink.Runtime;
 using UnityEngine;
 
 public class Box : MonoBehaviour
@@ -26,6 +27,8 @@ public class Box : MonoBehaviour
     private void Handle()
     {
         boxOutline.TurnOffOutline();
+        if (((BoolValue)DialogueManager.GetInstance().GetVariableState("banish_ghost")).value)
+            InteractionSoundScript.Instance.banishFinishedSound.Play();
         CameraMovement.Instance.MoveToPosition(_cameraPosition.position, 1f);
         DialogueManager.GetInstance().OnDialogueEnd -= Handle;
         StartCoroutine(Vasil.Instance.WalkIn());

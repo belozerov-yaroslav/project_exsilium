@@ -13,7 +13,7 @@ namespace BanishSystem
                 {
                     new BanishStep(ItemEnum.Candle, Array.Empty<ItemEnum>(), Array.Empty<ItemEnum>()),
                     new BanishStep(ItemEnum.Salt, new[] { ItemEnum.Candle }, new[] { ItemEnum.Candle }),
-                    new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Candle }, 70f,
+                    new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Candle }, 60f,
                         PrayEnum.PrayArchangelMichael)
                 }
             },
@@ -40,7 +40,7 @@ namespace BanishSystem
                     new BanishStep(ItemEnum.Herbs, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
                     new BanishStep(ItemEnum.Icon, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }),
                     new BanishStep(ItemEnum.PrayerBook, Array.Empty<ItemEnum>(), new[] { ItemEnum.Herbs }, 
-                        70f, PrayEnum.PrayAgainstDemonsMachinations)
+                        75f, PrayEnum.PrayAgainstDemonsMachinations)
                 }
             }
         };

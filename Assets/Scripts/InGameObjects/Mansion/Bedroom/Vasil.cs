@@ -29,7 +29,7 @@ public class Vasil : MonoBehaviour
 
     public IEnumerator WalkIn()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3f);
         InteractionSoundScript.Instance.openDoorSound.Play();
         gameObject.SetActive(true);
         _animator.SetTrigger(WalkInHash);
@@ -69,5 +69,10 @@ public class Vasil : MonoBehaviour
             0.5f));
         yield return new WaitForSeconds(0.5f);
         global::Ending.Instance.GreenEnding();
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 }
