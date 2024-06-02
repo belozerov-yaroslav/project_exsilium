@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using BanishSystem;
@@ -15,11 +16,30 @@ public class PrayManager : MonoBehaviour
     
     private static Dictionary<PrayEnum, float> _velocityDict = new Dictionary<PrayEnum, float>
     {
-        {PrayEnum.PrayHolySpirit,0.007f},
-        {PrayEnum.PrayAgainstDemonsMachinations,0.01f},
-        {PrayEnum.PrayArchangelMichael , 0.015f},
-        {PrayEnum.PrayFairCross, 0.020f}
+        {PrayEnum.PrayHolySpirit,0.05f},
+        {PrayEnum.PrayAgainstDemonsMachinations,0.03f},
+        {PrayEnum.PrayArchangelMichael , 0.05f},
+        {PrayEnum.PrayFairCross, 0.04f}
     };
+
+    private Dictionary<PrayEnum, AudioSource> praySounds = new Dictionary<PrayEnum, AudioSource>();
+
+    [SerializeField] private AudioSource firstPraySound;
+    [SerializeField] private AudioSource secondPraySound;
+    [SerializeField] private AudioSource thirdPraySound;
+    [SerializeField] private AudioSource fourthPraySound;
+
+    private void Start()
+    {
+        praySounds = new Dictionary<PrayEnum, AudioSource>
+        {
+            {PrayEnum.PrayHolySpirit,firstPraySound},
+            {PrayEnum.PrayAgainstDemonsMachinations,secondPraySound},
+            {PrayEnum.PrayArchangelMichael , thirdPraySound},
+            {PrayEnum.PrayFairCross, fourthPraySound}
+        };
+        
+    }
 
     public void FirstButtonAction()
     {
@@ -52,6 +72,7 @@ public class PrayManager : MonoBehaviour
         PrayerBookState.IsBlocked = true;
         PrayGameCanvas.enabled = true;
         SetWaypoint();
+        targetCircle.praySound = praySounds[targetCircle.pray];
         targetCircle.StartAim();
     }
     

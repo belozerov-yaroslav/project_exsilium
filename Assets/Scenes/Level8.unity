@@ -3425,6 +3425,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 178261086135263145, guid: f3734245613454f42b8155a044a7eade, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480964620146744782, guid: f3734245613454f42b8155a044a7eade, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3594688892632922834, guid: da24d069bceef904c99959aac4e78167, type: 2}
     - target: {fileID: 3992978861183001695, guid: f3734245613454f42b8155a044a7eade, type: 3}
       propertyPath: m_Name
       value: SoundsManagers

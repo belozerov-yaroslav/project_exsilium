@@ -8,6 +8,8 @@ public class Pentagram : MonoBehaviour
 {
     private Animator pentagramAnimator;
     public Image pentagramImage;
+    [SerializeField]private AudioSource chalkSound;
+    [SerializeField]private AudioSource starSound;
     private static readonly int Start1 = Animator.StringToHash("Start");
     private static readonly int Circle1 = Animator.StringToHash("Start Circle");
 
@@ -20,11 +22,13 @@ public class Pentagram : MonoBehaviour
     public void DrawStartState()
     {
         pentagramAnimator.SetTrigger(Start1);
+        starSound.Play();
     }
 
     public void DrawCircle()
     {
-       pentagramAnimator.SetTrigger(Circle1); 
+       pentagramAnimator.SetTrigger(Circle1);
+       chalkSound.Play();
     }
 
     public void DrawCompleted()
