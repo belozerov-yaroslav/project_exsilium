@@ -22,7 +22,12 @@ public class BestiaryOpenLearning : AbstractLearning
     {
         TryStartLearning();
     }
-    
+
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public override void StartLearning()
     {
         isEnabled = true;

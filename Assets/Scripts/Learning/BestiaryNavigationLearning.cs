@@ -36,6 +36,11 @@ public class BestiaryNavigationLearning : AbstractLearning
         LearningManager.Instance.StopLearning();
     }
 
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     private void OnBestiaryInput(InputAction.CallbackContext callbackContext)
     {
         if (!isEnabled) return;
