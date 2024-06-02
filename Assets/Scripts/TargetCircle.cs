@@ -13,6 +13,7 @@ public class TargetCircle : MonoBehaviour
     public Canvas PrayGameCanvas;
     
     public GameObject backGroundPanel;
+    public AudioSource praySound;
     
     private WayPoint _waypointScript;
     private Image _backgroundImage;
@@ -33,7 +34,6 @@ public class TargetCircle : MonoBehaviour
     
     [SerializeField] public float transparencyStep;
     
-    //Дефолтные значения для нового запуска
     private Color _defaultBackColor;
     private Color _defaultCircleColor;
     private Vector2 _startPosition;
@@ -75,7 +75,11 @@ public class TargetCircle : MonoBehaviour
         _appearanceScript.StartAppear();
     }
 
-    public void StartMove() => _waypointScript.IsStarted = true;
+    public void StartMove()
+    {
+        praySound.Play();
+        _waypointScript.IsStarted = true;
+    }
 
 
     public delegate void Result(float percent,PrayEnum pray);
@@ -83,6 +87,7 @@ public class TargetCircle : MonoBehaviour
     
     public void FinishAim()
     {
+        praySound.Stop();
         _isStarted = false;
         _waypointScript.FinishWay();
         _backgroundImage.color = _defaultBackColor;

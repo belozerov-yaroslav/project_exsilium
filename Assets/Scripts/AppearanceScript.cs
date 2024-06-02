@@ -17,8 +17,7 @@ public class AppearanceScript : MonoBehaviour
         _currentColor = spriteRenderer.color;
         _startTime = -timeAppearance;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (_startTime + timeAppearance > Time.time)

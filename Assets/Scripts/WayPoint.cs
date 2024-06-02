@@ -28,7 +28,7 @@ public class WayPoint : MonoBehaviour
 
     }
     
-    private void Update()
+    private void FixedUpdate()
     {
         if(!IsStarted) return;
         Move();
