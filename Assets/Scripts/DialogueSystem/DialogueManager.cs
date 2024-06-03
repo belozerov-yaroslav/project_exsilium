@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
     private Story currentStory;
     public bool dialogueIsPlaying { get; private set; }
 
-    public static DialogueManager Instance { get; private set; }
+    public static DialogueManager instance { get; private set; }
 
     private DialogueVariables dialogueVariables;
 
@@ -34,18 +34,18 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null)
+        if (instance != null)
         {
             Debug.LogWarning("Found more than one Dialogue Manager in the scene");
         }
 
-        Instance = this;
+        instance = this;
         dialogueVariables = new DialogueVariables(loadGlobalsJSON);
     }
 
     public static DialogueManager GetInstance()
     {
-        return Instance;
+        return instance;
     }
 
     private void Start()
@@ -54,11 +54,6 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.Hide();
         _dialoguePanelAnimation = GetComponentInChildren<DialoguePanelAnimation>();
         _dialoguePanelAnimation.OnTurnOff += ExitDialogueMode;
-    }
-    
-    private void OnDestroy()
-    {
-        Instance = null;
     }
 
     public void EnterDialogueMode(TextAsset inkJSON, Vector2 tellerPosition, Vector2 listenerPosition,

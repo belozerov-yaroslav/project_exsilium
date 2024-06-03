@@ -20,11 +20,6 @@ public class BestiaryCloseLearning : AbstractLearning
         Instance = this;
     }
     
-    private void OnDestroy()
-    {
-        Instance = null;
-    }
-    
     public override void StartLearning()
     {
         isEnabled = true;

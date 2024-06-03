@@ -45,7 +45,7 @@ namespace Inventory.Items_Classes
         
         protected virtual BanishStep CollectInfo()
         {
-            return new BanishStep(ItemEnum, PlayerInteraction.Instance.GetNearItems(), Inventory.Instance.GetItemsOnMap());
+            return new BanishStep(ItemEnum, PlayerInteraction.instance.GetNearItems(), Inventory.Instance.GetItemsOnMap());
         }
 
         protected abstract void ReportCompleted();

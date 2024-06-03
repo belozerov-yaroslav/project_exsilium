@@ -18,11 +18,6 @@ public class PrayerBookLearning : AbstractLearning
         Instance = this;
     }
     
-    private void OnDestroy()
-    {
-        Instance = null;
-    }
-    
     public override void StartLearning()
     {
         learningHint.SetActive(true);

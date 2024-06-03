@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager Instance { get; private set; }
 
     public float smoothTime;
-
+    
     [SerializeField] private AudioSource menuMusic;
     [SerializeField] private AudioSource level1Music;
     [SerializeField] private AudioSource level2Music;
@@ -17,21 +17,22 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource level6Music;
     [SerializeField] private AudioSource level7Music;
     [SerializeField] private AudioSource level9Music;
-
+    
     [SerializeField] public AudioSource greenMusic;
     [SerializeField] public AudioSource orangeMusic;
     [SerializeField] public AudioSource redMusic;
-
+    
     private Dictionary<string, AudioSource> _musicForLevels = new Dictionary<string, AudioSource>();
     private Dictionary<string, float> _volumesDict = new Dictionary<string, float>();
-
+    
     private string LastName { get; set; }
-
+    
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
     }
+
     private void Start()
     {
         _musicForLevels["MainMenu"] = menuMusic;
@@ -75,7 +76,7 @@ public class MusicManager : MonoBehaviour
         var prevVolume = _volumesDict[LastName];
         var currentMusic = _musicForLevels[nextLevel];
         var currentVolume = _volumesDict[nextLevel];
-        if (previousMusic == currentMusic)
+        if(previousMusic == currentMusic)
             return;
         currentMusic.volume = 0f;
         currentMusic.Play();

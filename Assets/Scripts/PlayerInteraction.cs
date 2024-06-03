@@ -8,19 +8,14 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public static PlayerInteraction Instance { get; private set; }
+    public static PlayerInteraction instance { get; private set; }
     [SerializeField] private Collider2D _collider;
     private readonly HashSet<Item> _itemsInCollider = new();
     void Start()
     {
-        if (Instance != null)
+        if (instance != null)
             Debug.LogError("More than one PlayerInteraction in the scene");
-        Instance = this;
-    }
-    
-    private void OnDestroy()
-    {
-        Instance = null;
+        instance = this;
     }
 
     public ItemEnum[] GetNearItems()
