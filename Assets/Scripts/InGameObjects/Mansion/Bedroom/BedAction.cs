@@ -1,4 +1,5 @@
 using System;
+using GameStates;
 using UnityEngine;
 
 public class BedAction : MonoBehaviour, IInteraction
@@ -21,6 +22,7 @@ public class BedAction : MonoBehaviour, IInteraction
                 {
                     RoomDoorInteraction.LastSceneName = "Sleep";
                     GlobalVariables.Slept3 = true;
+                    GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
                     LevelLoader.Instance.LoadLevelWithLoadingScreen("Level9");
                 }
                 else
@@ -31,6 +33,7 @@ public class BedAction : MonoBehaviour, IInteraction
                     {
                         GlobalVariables.Slept2 = true;
                         RoomDoorInteraction.LastSceneName = "Sleep";
+                        GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
                         LevelLoader.Instance.LoadLevelWithLoadingScreen("Level9");
                     }
                 }
