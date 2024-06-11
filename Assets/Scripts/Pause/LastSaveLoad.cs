@@ -7,6 +7,7 @@ public class LastSaveLoad : MonoBehaviour
     public void Load()
     {
         Time.timeScale = 1f;
+        QuestMarkerManager.Instance.SetCurrentMarker(GlobalVariables.QuestMarker);
         LevelLoader.Instance.LoadLevelWithLoadingScreen(SaveSystem.LoadSceneState());
     }
 }

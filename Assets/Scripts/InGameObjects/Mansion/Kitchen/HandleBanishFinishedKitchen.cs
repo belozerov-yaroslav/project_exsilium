@@ -15,7 +15,10 @@ public class HandleBanishFinishedKitchen : MonoBehaviour
         InteractionSoundScript.Instance.banishFinishedSound.Play();
         GlobalVariables.ChertBanished = true;
         if (GlobalVariables.MertvyakBanished && GlobalVariables.MorokBanished)
-            Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");
+        {
+            QuestMarkerManager.Instance.SetCurrentMarker("Лечь спать");
+            Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");  
+        }
         Destroy(_babaika);
         
     }

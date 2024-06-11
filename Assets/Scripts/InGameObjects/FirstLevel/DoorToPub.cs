@@ -12,6 +12,7 @@ namespace InGameObjects.FirstLevel
         {
             if (Inventory.Inventory.Instance.IsFullInventory())
             {
+                QuestMarkerManager.Instance.SetCurrentMarker("Изгнать призрака в кабаке");
                 InteractionSoundScript.Instance.openDoorSound.Play();
                 AmbientScript.Instance.StopAmbient();
                 MusicManager.Instance.ChangeLevelMusic(pubLevelName);

@@ -16,6 +16,7 @@ public class HandleBanishFinishedBedroom : MonoBehaviour
 
     private void Handle()
     {
+        QuestMarkerManager.Instance.SetCurrentMarker("Лечь спать");
         InteractionSoundScript.Instance.banishFinishedSound.Play();
         _animator = PlacedHerbs.GetComponent<Animator>();
         _animator.SetTrigger(ColorHerbs);
