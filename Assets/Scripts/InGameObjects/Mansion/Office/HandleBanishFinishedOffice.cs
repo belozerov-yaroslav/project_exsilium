@@ -19,7 +19,10 @@ namespace InGameObjects.Mansion.Office
             InteractionSoundScript.Instance.banishFinishedSound.Play();
             GlobalVariables.MertvyakBanished = true;
             if (GlobalVariables.ChertBanished && GlobalVariables.MorokBanished)
+            {
+                QuestMarkerManager.Instance.SetCurrentMarker("Лечь спать");
                 Player.BubbleText.ShowMessage("Уже поздно, мне надо идти спать");
+            }
             BanishManager.BanishFinished -= HandleBanish;
         }
 

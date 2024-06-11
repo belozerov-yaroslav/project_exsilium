@@ -20,6 +20,7 @@ public class BedAction : MonoBehaviour, IInteraction
             {
                 if (GlobalVariables.ChertBanished && GlobalVariables.MertvyakBanished)
                 {
+                    QuestMarkerManager.Instance.SetCurrentMarker("Ожидать развития событий");
                     RoomDoorInteraction.LastSceneName = "Sleep";
                     GlobalVariables.Slept3 = true;
                     GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
@@ -31,6 +32,7 @@ public class BedAction : MonoBehaviour, IInteraction
                         Player.BubbleText.ShowMessage("Мне нужно изгнать призраков в других комнатах");
                     else
                     {
+                        QuestMarkerManager.Instance.SetCurrentMarker("Изгнать призраков во всём поместье");
                         GlobalVariables.Slept2 = true;
                         RoomDoorInteraction.LastSceneName = "Sleep";
                         GameStateMachine.Instance.StateTransition(PlayerFreezeState.Instance);
@@ -46,6 +48,7 @@ public class BedAction : MonoBehaviour, IInteraction
         }
         else
         {
+            QuestMarkerManager.Instance.SetCurrentMarker("Изгнать призрака в спальне");
             _slildes.ShowSlides();
             GlobalVariables.Slept = true;
             GlobalVariables.NotFirstMansion = true;

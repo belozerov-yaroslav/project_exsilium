@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GlobalVariables
 {
     // делайте флаги так, что по умолчанию они false, потому что пока не не сделан сейв
@@ -123,4 +125,12 @@ public class GlobalVariables
     private static bool slept2 = false;
     
     public static bool Slept3 { get; set; }
+    
+    public static string QuestMarker
+    {
+        get {SaveSystem.InitGlobals(); return questMarker; }
+        set { questMarker = value; PlayerPrefs.SetString("questMarker", value); }
+    }
+
+    private static string questMarker = "Собрать вещи и выйти на улицу";
 }

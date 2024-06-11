@@ -25,6 +25,7 @@ public class DoorOnFedorRoom : MonoBehaviour, IInteraction
             InteractionSoundScript.Instance.openDoorSound.Play();
             AmbientScript.Instance.AppearAmbient("Level 1");
             _playerRigidbody2D.position = streetTeleport.position;
+            QuestMarkerManager.Instance.SetCurrentMarker("Дойти до кабака", false);
         }
         else
             Player.BubbleText.ShowMessage("Мне надо собрать мои вещи");

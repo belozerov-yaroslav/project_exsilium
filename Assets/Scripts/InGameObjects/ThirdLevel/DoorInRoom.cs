@@ -20,6 +20,7 @@ public class DoorInRoom : MonoBehaviour, IInteraction
     {
         if (Inventory.Inventory.Instance.IsFullInventory())
         {
+            QuestMarkerManager.Instance.SetCurrentMarker("Лечь спать");
             AmbientScript.Instance.StopAmbient();
             globalLight2D.intensity = 0.5f;
             InteractionSoundScript.Instance.openDoorSound.Play();

@@ -16,7 +16,6 @@ public class DontDestoySoundsScript : MonoBehaviour
         {
             Destroy(gameObject);
         }     
-       
     }
 
 }

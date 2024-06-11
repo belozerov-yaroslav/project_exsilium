@@ -24,6 +24,7 @@ public class DoorEnter : MonoBehaviour, IInteraction
             message = "Я еще не изгнал демона";
         if (Inventory.Inventory.Instance.IsFullInventory() && IsBanishComplete && IsDialogComplete)
         {
+            QuestMarkerManager.Instance.SetCurrentMarker("Дойти до дома");
             MusicManager.Instance.ChangeLevelMusic(sceneName);
             SaveSystem.SaveSceneState(sceneName);
             AmbientScript.Instance.AppearAmbient(sceneName);
