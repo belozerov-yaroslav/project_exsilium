@@ -1026,10 +1026,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1629,9 +1629,7 @@ MonoBehaviour:
   masterVolumeDefault: 0.85
   musicVolumeDefault: 0.7
   effectsVolumeDefault: 0.87
-  master: {fileID: 24300002, guid: da24d069bceef904c99959aac4e78167, type: 2}
-  music: {fileID: 8889563390814546244, guid: da24d069bceef904c99959aac4e78167, type: 2}
-  effects: {fileID: 6984243204654046896, guid: da24d069bceef904c99959aac4e78167, type: 2}
+  mixer: {fileID: 24100000, guid: da24d069bceef904c99959aac4e78167, type: 2}
 --- !u!114 &8572119917502726175
 MonoBehaviour:
   m_ObjectHideFlags: 0
