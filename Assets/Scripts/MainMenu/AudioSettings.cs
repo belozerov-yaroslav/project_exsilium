@@ -11,9 +11,7 @@ public class AudioSettings : MonoBehaviour
     [SerializeField] private float masterVolumeDefault = 0.91f;
     [SerializeField] private float musicVolumeDefault = 1f;
     [SerializeField] private float effectsVolumeDefault = 1f;
-    [SerializeField] private AudioMixerGroup master;
-    [SerializeField] private AudioMixerGroup music;
-    [SerializeField] private AudioMixerGroup effects;
+    [SerializeField] private AudioMixer mixer;
 
     private void Start()
     {
@@ -38,17 +36,26 @@ public class AudioSettings : MonoBehaviour
 
     private void MasterChanged(float value)
     {
-        master.audioMixer.SetFloat("MasterVolume", Mathf.Lerp(-80, 10, value));
+        if(value < 1e-7)
+            mixer.SetFloat("MasterVolume", -80);
+        else
+            mixer.SetFloat("MasterVolume", Mathf.Log10(value)*30);
         PlayerPrefs.SetFloat("MasterVolume", value);
     }
     private void MusicChanged(float value)
     {
-        music.audioMixer.SetFloat("MusicVolume", Mathf.Lerp(-80, 10, value));
+        if(value < 1e-7)
+            mixer.SetFloat("MusicVolume", -80);
+        else
+            mixer.SetFloat("MusicVolume", Mathf.Log10(value)*30);
         PlayerPrefs.SetFloat("MusicVolume", value);
     }
     private void EffectsChanged(float value)
     {
-        effects.audioMixer.SetFloat("EffectsVolume", Mathf.Lerp(-80, 10, value));
+        if(value < 1e-7)
+            mixer.SetFloat("EffectsVolume", -80);
+        else
+            mixer.SetFloat("EffectsVolume", Mathf.Log10(value)*30);
         PlayerPrefs.SetFloat("EffectsVolume", value);
     }
 
