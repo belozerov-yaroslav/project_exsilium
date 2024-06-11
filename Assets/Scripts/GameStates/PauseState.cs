@@ -10,13 +10,12 @@ namespace GameStates
     public class PauseState : GameState
     {
         public static GameState Instance { get; private set; }
-        [SerializeField] private Canvas _pauseCanvas;
         [SerializeField] private AudioSettings _audioSettnigs;
         [SerializeField] private NewGameConfirmation _exitConfirmation;
 
         public AudioMixerSnapshot Normal;
         public AudioMixerSnapshot Pause;
-        
+
         private void Awake()
         {
             if (Instance != null)
@@ -26,7 +25,11 @@ namespace GameStates
 
         public override void TurnOn()
         {
-            _pauseCanvas.enabled = true;
+            PauseInterface.Instance.Show();
+        }
+
+        public void OnInterfaceShow()
+        {
             Time.timeScale = 0;
             Pause.TransitionTo(0.5f);
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
@@ -36,26 +39,34 @@ namespace GameStates
 
         public override void TurnOff()
         {
-            Time.timeScale = 1;
             Normal.TransitionTo(0.5f);
-            _pauseCanvas.enabled = false;
-            _audioSettnigs.TurnOff();
-            _exitConfirmation.CloseConfirmation();
-            CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            _exitConfirmation.CloseConfirmation();
+            _audioSettnigs.TurnOff();
+        }
+        
+        public void OnInterfaceHide()
+        {
+            Transite(null);
         }
 
         public void OnUIButtonPressed()
         {
             InteractionSoundScript.Instance.PlayMenuButtonSound();
-            Transite(null);
+            Time.timeScale = 1;
+            PauseInterface.Instance.Hide();
+            CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
         }
 
         private new void OnPausePressed(InputAction.CallbackContext callbackContext)
         {
             if (!LevelLoader.Instance.IsLoad())
-                Transite(null);
+            {
+                Time.timeScale = 1;
+                PauseInterface.Instance.Hide();
+                CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
+            }
         }
     }
 }
