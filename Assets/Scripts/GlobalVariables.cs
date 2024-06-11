@@ -106,6 +106,14 @@ public class GlobalVariables
 
     private static bool isPentagramLearned = false;
     
+    public static bool ChairFailed
+    {
+        get {SaveSystem.InitGlobals(); return chairFailed; }
+        set { chairFailed = value; SaveSystem.SaveGlobal("chairFailed", value); }
+    }
+
+    private static bool chairFailed = false;
+    
     public static bool Slept2
     {
         get {SaveSystem.InitGlobals(); return slept2; }

@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class CupFailing : MonoBehaviour
+public class ChairFailing : MonoBehaviour
 {
     private Animator _animator;
     private AudioSource _audioSource;
@@ -15,7 +12,7 @@ public class CupFailing : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        if (GlobalVariables.CupFall)
+        if (GlobalVariables.ChairFailed)
             _animator.SetTrigger(Failed);
     }
 
@@ -24,11 +21,11 @@ public class CupFailing : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && GlobalVariables.Slept && !GlobalVariables.ChertBanished)
         {
             _animator.SetTrigger(Failing);
-            GlobalVariables.CupFall = true;
+            GlobalVariables.ChairFailed = true;
         }
     }
 
-    private void PlayBrokeSound()
+    private void PlaySound()
     {
         _audioSource.Play();
     }
