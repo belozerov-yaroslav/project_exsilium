@@ -54,7 +54,7 @@ public class PentagrammController : MonoBehaviour
     {
         var defaultColor = image.color;
         StartCoroutine(ChangeValueSmooth.Change(0f, 1f,
-            value => { image.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, value); }, timeAppear,
+            value => { image.color = new Color(defaultColor.r, defaultColor.g, defaultColor.b, value); }, 0.5f,
             AnimationCurves.Quadratic));
     }
 
