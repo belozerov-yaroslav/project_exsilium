@@ -26,12 +26,12 @@ namespace GameStates
         public override void TurnOn()
         {
             PauseInterface.Instance.Show();
+            Pause.TransitionTo(0.5f);
         }
 
         public void OnInterfaceShow()
         {
             Time.timeScale = 0;
-            Pause.TransitionTo(0.5f);
             CustomInputInitializer.CustomInput.Global.Pause.performed += OnPausePressed;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -43,7 +43,6 @@ namespace GameStates
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             _exitConfirmation.CloseConfirmation();
-            _audioSettnigs.TurnOff();
         }
         
         public void OnInterfaceHide()
@@ -54,6 +53,11 @@ namespace GameStates
         public void OnUIButtonPressed()
         {
             InteractionSoundScript.Instance.PlayMenuButtonSound();
+            ClosePauseMenu();
+        }
+
+        private void ClosePauseMenu()
+        {
             Time.timeScale = 1;
             PauseInterface.Instance.Hide();
             CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
@@ -63,9 +67,8 @@ namespace GameStates
         {
             if (!LevelLoader.Instance.IsLoad())
             {
-                Time.timeScale = 1;
-                PauseInterface.Instance.Hide();
-                CustomInputInitializer.CustomInput.Global.Pause.performed -= OnPausePressed;
+                if (_audioSettnigs.Turned) _audioSettnigs.TurnOff();
+                else ClosePauseMenu();
             }
         }
     }

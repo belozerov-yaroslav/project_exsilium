@@ -12,6 +12,7 @@ public class AudioSettings : MonoBehaviour
     [SerializeField] private float musicVolumeDefault = 1f;
     [SerializeField] private float effectsVolumeDefault = 1f;
     [SerializeField] private AudioMixer mixer;
+    public bool Turned { get; private set; }
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class AudioSettings : MonoBehaviour
     public void TurnOn()
     {
         canvas.SetActive(true);
+        Turned = true;
     }
 
     private void MasterChanged(float value)
@@ -62,5 +64,6 @@ public class AudioSettings : MonoBehaviour
     public void TurnOff()
     {
         canvas.SetActive(false);
+        Turned = false;
     }
 }

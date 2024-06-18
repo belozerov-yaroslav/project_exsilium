@@ -9,6 +9,7 @@ public class PauseInterface : MonoBehaviour
     public static PauseInterface Instance { get; private set; }
     private static readonly int Appear = Animator.StringToHash("Appear");
     private static readonly int Disappear = Animator.StringToHash("Disappear");
+    [SerializeField] private AudioSource sound;
 
     private Animator _animator;
     private Canvas _canvas;
@@ -25,6 +26,7 @@ public class PauseInterface : MonoBehaviour
 
     public void Show()
     {
+        sound.Play();
         _canvas.enabled = true;
         _animator.SetTrigger(Appear);
     }
@@ -36,6 +38,7 @@ public class PauseInterface : MonoBehaviour
     
     public void Hide()
     {
+        sound.Play();
         _animator.SetTrigger(Disappear);
     }
     
